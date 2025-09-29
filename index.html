@@ -29,7 +29,7 @@
     .title{font-size:38px;line-height:1.12;margin:0 0 10px}
     .subtitle{color:var(--muted);font-size:16px;margin:0 0 20px}
     .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#1b2440;display:inline-flex;gap:10px;align-items:center}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#1b2440;display:inline-flex;gap:10px;align-items:center;cursor:pointer}
     .btn.primary{background:linear-gradient(135deg, var(--acc), var(--acc2)); color:#0a1022; font-weight:700; border:none}
     .grid{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .kpi{padding:16px}
@@ -72,19 +72,31 @@
 
     <section class="hero">
       <div class="card left">
-        <h2 class="title">La moneda del cohete 🌙</h2>
+        <h2 class="title">Este token lo podrás utilizar en la Luna 🌙</h2>
         <p class="subtitle">Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para <strong>juego (30M)</strong> y <strong>staking (500M)</strong>.</p>
         <div class="cta">
           <a class="btn primary" target="_blank" href="https://polygonscan.com/address/0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7">Ver en Polygonscan</a>
           <a class="btn" target="_blank" href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7">Comprar en Uniswap</a>
           <button class="btn" id="addMetaMask">Añadir a MetaMask</button>
+          <button class="btn" id="connectWallet">🔌 Conectar wallet</button>
         </div>
+
+        <p class="subtitle">Preventa termina en: <strong id="countdown">--d --:--:--</strong></p>
+        <p class="note" id="walletInfo"></p>
+
+        <div class="cta">
+          <a class="btn primary" id="buyCrypto" target="_blank"
+             href="https://app.uniswap.org/#/swap?chain=polygon&outputCurrency=0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7">💱 Comprar con CRIPTO</a>
+          <button class="btn" id="buyCard">💳 Comprar con TARJETA</button>
+        </div>
+
         <div class="grid">
           <div class="kpi card"><h3>Suministro</h3><p>1,000,000,000,000 MoWo</p></div>
           <div class="kpi card"><h3>Red</h3><p>Polygon (POL)</p></div>
           <div class="kpi card"><h3>Contrato</h3><p style="font-size:12px;line-height:1.2;word-break:break-all">0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7</p></div>
         </div>
       </div>
+
       <div class="card imgCard">
         <div style="text-align:center">
           <h3 style="margin:4px 0 6px">Precio de referencia inicial</h3>
@@ -112,11 +124,11 @@
       <div class="card box">
         <h2>Cómo comprar</h2>
         <ol style="margin:8px 0 0 18px">
-          <li>Conecta MetaMask a <strong>Polygon</strong> (tienes que tener POL para gas).</li>
-          <li>Abre <a target="_blank" href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7">Uniswap con MoWo cargado</a>.</li>
-          <li>Elige la cantidad de POL o MoWo y confirma el swap.</li>
+          <li>Conecta tu wallet a <strong>Polygon</strong> (POL para gas).</li>
+          <li>Usa <a target="_blank" href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7">Uniswap</a> para hacer swap a MoWo.</li>
+          <li>O compra POL con tarjeta y luego haz swap.</li>
         </ol>
-        <p class="note">Para aportar liquidez: usa el par <strong>POL/MoWo</strong> y respeta la proporción que desees.</p>
+        <p class="note">Para aportar liquidez: usa el par <strong>POL/MoWo</strong> y respeta la proporción deseada.</p>
       </div>
     </section>
 
@@ -134,7 +146,7 @@
         <ul>
           <li>Q4: DApp de staking (UI), panel de juego y recompensas.</li>
           <li>Q1: Auditoría externa y expansión a BNB/ETH.</li>
-          <li>Q2: Integración con paymasters (gasless UX).</li>
+          <li>Q2: Integración con on-ramp y UX gasless.</li>
         </ul>
         <p class="note">Este sitio es informativo. No constituye consejo financiero.</p>
       </div>
@@ -142,6 +154,11 @@
 
     <p class="footer">© <span id="y"></span> MoonWord • Hecho con ♥ para la comunidad. &nbsp;·&nbsp; <span class="warn">Siempre verifica la dirección del contrato en Polygonscan.</span></p>
   </div>
+
+  <!-- Librerías para wallet & on-ramp -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="https://unpkg.com/@walletconnect/ethereum-provider@2.11.1/dist/index.umd.min.js"></script>
+  <script src="https://global.transak.com/sdk/v1.1/widget.js"></script>
 
 <script>
   // Año dinámico
@@ -159,8 +176,8 @@
             address: '0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7',
             symbol: 'MoWo',
             decimals: 18,
-            // Sube tu logo a este repositorio (por ejemplo /logo.png) y cambia la URL absoluta:
-            image: 'https://raw.githubusercontent.com/USER/moonword-site/main/logo.png'
+            // Cambia por tu logo real en tu repo:
+            image: 'https://raw.githubusercontent.com/MaxStudiotoken/MoonWorld/main/logo.png'
           },
         },
       });
@@ -168,6 +185,120 @@
     } catch (err) {
       console.error(err); alert('Error al añadir token a MetaMask.');
     }
+  });
+
+  // ================== CONFIG ==================
+  const TOKEN_ADDRESS = '0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7';
+  const POLYGON_HEX = '0x89';
+  // Preventa: 4 meses desde hoy (pon una fecha exacta si quieres)
+  const presaleEnd = new Date(Date.now() + 120*24*60*60*1000);
+  // WalletConnect Project ID (regístralo gratis)
+  const WC_PROJECT_ID = 'REEMPLAZA_CON_TU_PROJECT_ID';
+
+  // ========== Cuenta atrás ==========
+  const cdEl = document.getElementById('countdown');
+  function tickCountdown(){
+    const now = Date.now();
+    let s = Math.max(0, Math.floor((presaleEnd.getTime() - now)/1000));
+    const d = Math.floor(s/86400); s%=86400;
+    const h = String(Math.floor(s/3600)).padStart(2,'0'); s%=3600;
+    const m = String(Math.floor(s/60)).padStart(2,'0');
+    const sec = String(s%60).padStart(2,'0');
+    cdEl.textContent = `${d}d ${h}:${m}:${sec}`;
+  }
+  tickCountdown(); setInterval(tickCountdown, 1000);
+
+  // ========== Conectar wallet ==========
+  const connectBtn = document.getElementById('connectWallet');
+  const walletInfo = document.getElementById('walletInfo');
+
+  function short(addr){ return addr ? `${addr.slice(0,6)}...${addr.slice(-4)}` : ''; }
+
+  async function ensurePolygon(provider){
+    try {
+      await provider.request({ method:'wallet_switchEthereumChain', params:[{ chainId: POLYGON_HEX }] });
+    } catch (e) {
+      if (e.code === 4902) {
+        await provider.request({
+          method:'wallet_addEthereumChain',
+          params:[{
+            chainId: POLYGON_HEX,
+            chainName:'Polygon Mainnet',
+            nativeCurrency:{ name:'POL', symbol:'POL', decimals:18 },
+            rpcUrls:['https://polygon-rpc.com'],
+            blockExplorerUrls:['https://polygonscan.com']
+          }]
+        });
+      } else { throw e; }
+    }
+  }
+
+  async function connectInjected(){
+    if (!window.ethereum) { alert('Instala MetaMask o usa una wallet con navegador.'); return null; }
+    await ensurePolygon(window.ethereum);
+    const accounts = await window.ethereum.request({ method:'eth_requestAccounts' });
+    return { provider: window.ethereum, account: accounts[0] };
+  }
+
+  async function connectWalletConnect(){
+    if (!window.WalletConnectEthereumProvider) { alert('No se pudo cargar WalletConnect'); return null; }
+    const wc = await window.WalletConnectEthereumProvider.default.init({
+      projectId: WC_PROJECT_ID,
+      chains: [137],
+      showQrModal: true,
+      rpcMap: { 137: 'https://polygon-rpc.com' }
+    });
+    const accounts = await wc.enable();
+    return { provider: wc, account: accounts[0] };
+  }
+
+  async function chooseAndConnect(){
+    // Modal simple de selección
+    const choice = await new Promise(resolve=>{
+      const modal = document.createElement('div');
+      modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:9999';
+      modal.innerHTML = `
+        <div style="background:#141b33;border:1px solid rgba(255,255,255,.15);padding:18px 16px;border-radius:14px;min-width:300px">
+          <h3 style="margin:0 0 10px">Conectar wallet</h3>
+          <button id="optInjected" class="btn" style="width:100%;margin-bottom:8px">🦊 MetaMask / Trust (navegador)</button>
+          <button id="optWC" class="btn" style="width:100%">🔗 WalletConnect (QR)</button>
+          <p class="note" style="margin-top:10px;color:#9aa3b2">Red: Polygon · Si usas móvil, WalletConnect abrirá tu app.</p>
+        </div>`;
+      document.body.appendChild(modal);
+      modal.querySelector('#optInjected').onclick = ()=>{ document.body.removeChild(modal); resolve('injected'); };
+      modal.querySelector('#optWC').onclick = ()=>{ document.body.removeChild(modal); resolve('wc'); };
+    });
+
+    try {
+      let session = null;
+      if (choice === 'injected') session = await connectInjected();
+      else session = await connectWalletConnect();
+      if (!session) return;
+
+      walletInfo.textContent = `✅ Conectado: ${short(session.account)} · Polygon`;
+      connectBtn.textContent = `✅ ${short(session.account)}`;
+      window.mowoProvider = new ethers.providers.Web3Provider(session.provider, 'any');
+      window.mowoSigner   = window.mowoProvider.getSigner();
+    } catch (err) {
+      console.error(err); alert('No se pudo conectar la wallet.');
+    }
+  }
+
+  connectBtn.addEventListener('click', chooseAndConnect);
+
+  // ========== Comprar con tarjeta (Transak) ==========
+  document.getElementById('buyCard').addEventListener('click', ()=>{
+    let addrPromise = (async ()=>{ try { return window.mowoSigner ? await window.mowoSigner.getAddress() : ''; } catch(e){ return ''; }})();
+    addrPromise.then((addr)=>{
+      const t = new TransakSDK({
+        apiKey: 'TU_API_KEY_DE_TRANSAK', // <-- cámbialo
+        environment: 'PRODUCTION',
+        defaultCryptoCurrency: 'POL',
+        network: 'polygon',
+        walletAddress: addr || ''
+      });
+      t.init();
+    });
   });
 </script>
 </body>
