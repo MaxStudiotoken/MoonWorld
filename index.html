@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MoonWord (MoWo) — Token oficial</title>
+  <meta name="description" content="MoonWord (MoWo) — token ERC-20 en Polygon. Staking flexible y bloqueado, pool de juego, supply fijo 1 billón (1,000,000,000,000).">
+  <meta property="og:title" content="MoonWord (MoWo) — Token oficial">
+  <meta property="og:description" content="Staking flexible y bloqueado. Supply fijo. En Polygon.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0e1224">
+  <style>
+    :root{
+      --bg:#0b0f1a; --card:#12182a; --muted:#98a2b3; --text:#e6e9f2; --acc:#7dd3fc; --acc2:#a78bfa; --ok:#22c55e;
+      --shadow: 0 20px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%, #162036 0%, transparent 60%), var(--bg); color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1050px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;gap:16px; padding:14px 0 26px}
+    .logo{width:52px;height:52px;flex:0 0 52px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.35))}
+    .brand h1{margin:0;font-size:22px;letter-spacing:.3px}
+    .brand .sym{opacity:.8;font-weight:600}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .hero .left{padding:28px}
+    .title{font-size:38px;line-height:1.12;margin:0 0 10px}
+    .subtitle{color:var(--muted);font-size:16px;margin:0 0 20px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#1b2440;display:inline-flex;gap:10px;align-items:center}
+    .btn.primary{background:linear-gradient(135deg, var(--acc), var(--acc2)); color:#0a1022; font-weight:700; border:none}
+    .grid{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .kpi{padding:16px}
+    .kpi h3{margin:6px 0 6px;font-size:14px;color:var(--muted);font-weight:600}
+    .kpi p{margin:0;font-size:18px;font-weight:700}
+    .panel{margin:36px 0;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .panel .box{padding:22px}
+    h2{margin:0 0 12px;font-size:24px}
+    ul{margin:10px 0 0 18px; color:var(--muted)}
+    .tokenomics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .pill{padding:14px;border-radius:14px;background:#0f1528;border:1px solid rgba(255,255,255,.08)}
+    .footer{margin:40px 0 10px;text-align:center;color:#7a849a;font-size:13px}
+    .note{font-size:12px;color:#9aa3b2;margin-top:10px}
+    .imgCard{display:flex;align-items:center;justify-content:center;padding:18px}
+    .warn{color:#fbbf24;font-weight:600}
+    @media (max-width:950px){ .hero{grid-template-columns:1fr} .panel{grid-template-columns:1fr} .grid{grid-template-columns:1fr} .tokenomics{grid-template-columns:1fr 1fr} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <!-- LOGO SVG INLINE -->
+      <svg class="logo" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-label="MoWo">
+        <defs>
+          <radialGradient id="g1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#1f2a52"/></radialGradient>
+          <linearGradient id="g2" x1="0" x2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#7dd3fc"/></linearGradient>
+        </defs>
+        <circle cx="64" cy="64" r="62" fill="url(#g1)" stroke="#101631" stroke-width="4"/>
+        <path d="M64 20c14 12 18 25 18 34 0 16-12 30-18 34-6-4-18-18-18-34 0-9 4-22 18-34z" fill="url(#g2)"/>
+        <circle cx="45" cy="82" r="6" fill="#0b0f1a"/><circle cx="83" cy="82" r="6" fill="#0b0f1a"/>
+        <path d="M24 98c26 18 54 18 80 0" stroke="#0b0f1a" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M84 36l14-4-4 14-10-10z" fill="#fff" opacity=".9"/>
+        <path d="M92 28l12-6-6 12-6-6z" fill="#fff" opacity=".7"/>
+      </svg>
+      <div class="brand">
+        <h1>MoonWord <span class="sym">($MoWo)</span></h1>
+        <div style="color:#9aa3b2;font-size:13px">Token ERC-20 en Polygon • Staking flexible y bloqueado</div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="card left">
+        <h2 class="title">La moneda del cohete 🌙</h2>
+        <p class="subtitle">Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para <strong>juego (30M)</strong> y <strong>staking (500M)</strong>.</p>
+        <div class="cta">
+          <a class="btn primary" target="_blank" href="https://polygonscan.com/address/0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7">Ver en Polygonscan</a>
+          <a class="btn" target="_blank" href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7">Comprar en Uniswap</a>
+          <button class="btn" id="addMetaMask">Añadir a MetaMask</button>
+        </div>
+        <div class="grid">
+          <div class="kpi card"><h3>Suministro</h3><p>1,000,000,000,000 MoWo</p></div>
+          <div class="kpi card"><h3>Red</h3><p>Polygon (POL)</p></div>
+          <div class="kpi card"><h3>Contrato</h3><p style="font-size:12px;line-height:1.2;word-break:break-all">0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7</p></div>
+        </div>
+      </div>
+      <div class="card imgCard">
+        <div style="text-align:center">
+          <h3 style="margin:4px 0 6px">Precio de referencia inicial</h3>
+          <p class="subtitle" style="margin:0 0 10px">1 POL = <strong>100,000 MoWo</strong></p>
+          <div class="pill" style="display:inline-block;margin-top:6px">Par: POL / MoWo • Comisión 0.3%</div>
+          <p class="note">El precio de mercado lo determina el AMM según liquidez/operaciones.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="card box">
+        <h2>Tokenomics</h2>
+        <div class="tokenomics">
+          <div class="pill"><strong>Supply total</strong><br>1,000,000,000,000</div>
+          <div class="pill"><strong>Pool juego</strong><br>30,000,000 (en contrato)</div>
+          <div class="pill"><strong>Pool staking</strong><br>500,000,000 (en contrato)</div>
+        </div>
+        <ul>
+          <li>Sin airdrop automático, sin mint posterior.</li>
+          <li>Roles seguros para recompensas de juego y ajustes de APR.</li>
+          <li>Staking flexible (salida libre) y bloqueado (30/90/180 días).</li>
+        </ul>
+      </div>
+      <div class="card box">
+        <h2>Cómo comprar</h2>
+        <ol style="margin:8px 0 0 18px">
+          <li>Conecta MetaMask a <strong>Polygon</strong> (tienes que tener POL para gas).</li>
+          <li>Abre <a target="_blank" href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7">Uniswap con MoWo cargado</a>.</li>
+          <li>Elige la cantidad de POL o MoWo y confirma el swap.</li>
+        </ol>
+        <p class="note">Para aportar liquidez: usa el par <strong>POL/MoWo</strong> y respeta la proporción que desees.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="card box">
+        <h2>Staking</h2>
+        <ul>
+          <li><strong>Flexible:</strong> APR por defecto 8% anual. Puedes entrar/salir cuando quieras. Recompensas lineales.</li>
+          <li><strong>Bloqueado:</strong> 30/90/180 días con APR superiores. Reclamación al finalizar (principal + reward).</li>
+          <li>Las recompensas salen del <em>staking pool</em> (500M). Si se agota, los pagos se limitan a lo disponible.</li>
+        </ul>
+      </div>
+      <div class="card box">
+        <h2>Roadmap breve</h2>
+        <ul>
+          <li>Q4: DApp de staking (UI), panel de juego y recompensas.</li>
+          <li>Q1: Auditoría externa y expansión a BNB/ETH.</li>
+          <li>Q2: Integración con paymasters (gasless UX).</li>
+        </ul>
+        <p class="note">Este sitio es informativo. No constituye consejo financiero.</p>
+      </div>
+    </section>
+
+    <p class="footer">© <span id="y"></span> MoonWord • Hecho con ♥ para la comunidad. &nbsp;·&nbsp; <span class="warn">Siempre verifica la dirección del contrato en Polygonscan.</span></p>
+  </div>
+
+<script>
+  // Año dinámico
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Añadir token a MetaMask
+  document.getElementById('addMetaMask').addEventListener('click', async () => {
+    if (!window.ethereum) { alert('Necesitas MetaMask para añadir el token.'); return; }
+    try {
+      const wasAdded = await window.ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: '0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7',
+            symbol: 'MoWo',
+            decimals: 18,
+            // Sube tu logo a este repositorio (por ejemplo /logo.png) y cambia la URL absoluta:
+            image: 'https://raw.githubusercontent.com/USER/moonword-site/main/logo.png'
+          },
+        },
+      });
+      if (!wasAdded) alert('No se pudo añadir el token (cancelado).');
+    } catch (err) {
+      console.error(err); alert('Error al añadir token a MetaMask.');
+    }
+  });
+</script>
+</body>
+</html>
