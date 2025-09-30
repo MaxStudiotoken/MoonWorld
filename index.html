@@ -12,7 +12,7 @@
 <style>
   :root{
     --bg:#070812; --bg2:#0d1022; --card:#0e1533; --muted:#9aa3b2; --text:#e8ecf7;
-    --neon1:#7dd3fc; --neon2:#a78bfa; --neon3:#00ffa3; --pink:#ff00ff; --yellow:#ffe76b;
+    --neon1:#7dd3fc; --neon2:#a78bfa; --neon3:#00ffa3; --pink:#ff00ff;
     --shadow: 0 28px 70px rgba(0,0,0,.55);
     --radius:20px;
   }
@@ -34,15 +34,26 @@
     filter:saturate(120%);
   }
   /* Estrellas (canvas) */
-  #stars{position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.85; mix-blend-mode:screen}
+  #stars{position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.9; mix-blend-mode:screen}
 
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1180px;margin:0 auto;padding:26px}
   header{display:flex;align-items:center;gap:16px;margin:6px 0 14px}
   .brand h1{margin:0;font-size:28px;letter-spacing:.3px;color:var(--neon1);text-shadow:0 0 12px var(--neon1)}
   .brand small{display:block;color:var(--muted)}
-  .lang{margin-left:auto}
-  select{background:#0f1630;color:#cfe9ff;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:8px}
+
+  /* Selector de idioma con banderas */
+  .lang{margin-left:auto; position:relative}
+  .langBtn{
+    background:#0f1630;border:1px solid rgba(255,255,255,.15);color:#cfe9ff;border-radius:10px;padding:8px 12px;cursor:pointer;
+  }
+  .langMenu{
+    position:absolute; right:0; top:42px; background:#0f1630;border:1px solid rgba(255,255,255,.12);
+    border-radius:12px; padding:6px; display:none; min-width:160px; z-index:10;
+  }
+  .langItem{display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:8px;cursor:pointer}
+  .langItem:hover{background:#151d43}
+  .flag{font-size:18px; width:22px; text-align:center}
 
   .card{background:linear-gradient(180deg,rgba(20,24,52,.78),rgba(12,16,38,.78));
         border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); box-shadow:var(--shadow)}
@@ -72,34 +83,23 @@
   .footer{text-align:center;color:#98a2b3;font-size:13px;margin:40px 0 10px}
 
   /* Logo central grande */
-  .heroLogo{
-    display:flex;align-items:center;justify-content:center;padding:26px 10px;
-    border-left:1px solid rgba(255,255,255,.08)
-  }
+  .heroLogo{display:flex;align-items:center;justify-content:center;padding:26px 10px;border-left:1px solid rgba(255,255,255,.08)}
   .logoBig{
-    width:320px;height:320px;border-radius:50%;
+    width:420px;height:420px;border-radius:50%;
     background:radial-gradient(circle at 45% 35%, #ffffff 0%, #c2e9ff 10%, #7dd3fc 25%, #2b3a7a 55%, #0b1028 75%);
-    box-shadow:0 0 50px rgba(125,211,252,.45), 0 0 120px rgba(255,0,255,.25);
-    display:flex;align-items:center;justify-content:center;overflow:hidden;border:4px solid rgba(255,255,255,.1)
+    box-shadow:0 0 60px rgba(125,211,252,.55), 0 0 140px rgba(255,0,255,.28);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;border:5px solid rgba(255,255,255,.12)
   }
-  .logoBig img{width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 0 18px rgba(255,255,255,.35))}
+  .logoBig img{width:92%;height:92%;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 0 22px rgba(255,255,255,.38))}
   .logoCaption{margin-top:10px;text-align:center;color:#bfe5ff;font-weight:900;letter-spacing:.4px}
 
   /* Donut pie cyberpunk */
   .donutWrap{display:flex;gap:18px;align-items:center}
-  .donut{
-    --p1: 9.09; /* 100M / (100M+1000M) * 100 */
-    --p2: 90.91; /* 1000M / (100M+1000M) * 100 */
-    width:160px;height:160px;border-radius:50%;
-    background:
-      conic-gradient(var(--pink) 0 calc(var(--p1)*1%), var(--neon3) 0 100%);
-    position:relative;
-    box-shadow:0 0 30px rgba(255,0,255,.35), 0 0 24px rgba(0,255,163,.25) inset;
+  .donut{ --p1: 9.09; --p2: 90.91; width:160px;height:160px;border-radius:50%;
+    background:conic-gradient(var(--pink) 0 calc(var(--p1)*1%), var(--neon3) 0 100%);
+    position:relative; box-shadow:0 0 30px rgba(255,0,255,.35), 0 0 24px rgba(0,255,163,.25) inset;
   }
-  .donut::after{
-    content:""; position:absolute; inset:18px; background:#0b1128; border-radius:50%;
-    box-shadow:inset 0 0 10px rgba(255,255,255,.08);
-  }
+  .donut::after{content:""; position:absolute; inset:18px; background:#0b1128; border-radius:50%; box-shadow:inset 0 0 10px rgba(255,255,255,.08)}
   .legend{font-size:13px}
   .legend .item{display:flex;align-items:center;gap:8px;margin:6px 0}
   .legend .dot{width:12px;height:12px;border-radius:2px}
@@ -108,7 +108,7 @@
   @media(max-width:1000px){
     .hero{grid-template-columns:1fr}
     .heroLogo{border-left:none;border-top:1px solid rgba(255,255,255,.08)}
-    .logoBig{width:260px;height:260px}
+    .logoBig{width:320px;height:320px}
   }
 </style>
 </head>
@@ -122,13 +122,20 @@
       <h1>MoonWorld <span class="sym">($MoWo)</span></h1>
       <small data-i="header_sub">Token ERC-20 en Polygon • Staking flexible y bloqueado</small>
     </div>
+
+    <!-- Language with flags -->
     <div class="lang">
-      <select id="langSel" aria-label="language">
-        <option value="es">ES</option><option value="en">EN</option>
-        <option value="ru">RU</option><option value="ar">AR</option>
-        <option value="de">DE</option><option value="fr">FR</option>
-        <option value="it">IT</option><option value="zh">中文</option>
-      </select>
+      <button class="langBtn" id="langBtn">🇪🇸 Español ▾</button>
+      <div class="langMenu" id="langMenu">
+        <div class="langItem" data-lang="es"><span class="flag">🇪🇸</span>Español</div>
+        <div class="langItem" data-lang="en"><span class="flag">🇬🇧</span>English</div>
+        <div class="langItem" data-lang="ru"><span class="flag">🇷🇺</span>Русский</div>
+        <div class="langItem" data-lang="ar"><span class="flag">🇸🇦</span>العربية</div>
+        <div class="langItem" data-lang="de"><span class="flag">🇩🇪</span>Deutsch</div>
+        <div class="langItem" data-lang="fr"><span class="flag">🇫🇷</span>Français</div>
+        <div class="langItem" data-lang="it"><span class="flag">🇮🇹</span>Italiano</div>
+        <div class="langItem" data-lang="zh"><span class="flag">🇨🇳</span>中文</div>
+      </div>
     </div>
   </header>
 
@@ -147,6 +154,7 @@
            href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121" data-i="btn_uniswap">Comprar en Uniswap</a>
         <button class="btn ghost" id="addMetaMask" data-i="btn_add">Añadir a MetaMask</button>
         <button class="btn ghost" id="connectWallet">🔌 <span data-i="btn_connect">Conectar wallet</span></button>
+        <button class="btn primary" id="buyCard">💳 <span data-i="buy_card">Comprar con tarjeta (GPay/Apple Pay)</span></button>
       </div>
 
       <div class="ribbon" data-i="ribbon">Preventa limitada — precio preferente hasta que termine el contador.</div>
@@ -212,16 +220,15 @@
     </div>
   </section>
 
-  <!-- TRANSPARENCIA: CONTRATO EN PÁGINA (resumen) -->
+  <!-- TRANSPARENCIA -->
   <section class="card box" style="margin-top:8px">
     <h2>🔎 <span data-i="src_title">Código del contrato (resumen)</span></h2>
     <details>
       <summary data-i="src_hint">Ver/ocultar fragmento</summary>
-      <pre>// Nombre: MoonWorld (MoWo) — contrato actualizado con pools: 100M juego & 1,000M staking.
+      <pre>// Nombre: MoonWorld (MoWo) — pools: 100M juego & 1,000M staking.
 // Dirección: 0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121
-// Roles: ADMIN, GAME_ROLE, STAKING_ROLE, SALE_ROLE
-// Staking: flexible + bloqueado (30/90/180 días). APRs por defecto 8/12/20/30%.
-// Venta con tarjeta (off-chain): SALE_ROLE distribuye desde la wallet del owner.</pre>
+// Staking: flexible + bloqueado (30/90/180 días), APR por defecto 8/12/20/30%.
+// Venta con tarjeta (off-chain): el integrador fiat cobra y el owner distribuye MoWo desde su wallet.</pre>
     </details>
     <p class="note">Verifica el contrato completo en Polygonscan para ABI/bytecode y compilación.</p>
   </section>
@@ -239,7 +246,7 @@
   const TOKEN_ADDRESS = '0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121';
   const POLYGON_HEX = '0x89';
   const presaleEnd = new Date(Date.now() + 120*24*60*60*1000); // ~4 meses
-  const WC_PROJECT_ID = 'REEMPLAZA_CON_TU_PROJECT_ID'; // Opcional (WalletConnect)
+  const WC_PROJECT_ID = 'REEMPLAZA_CON_TU_PROJECT_ID'; // WalletConnect
   document.getElementById('y').textContent = new Date().getFullYear();
 
   // ===== i18n =====
@@ -248,6 +255,7 @@
         hero_title:"Este token lo podrás utilizar en la Luna 🌙",
         hero_desc:"Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para <b>juego (100M)</b> y <b>staking (1,000M)</b>.",
         btn_scan:"Ver en Polygonscan", btn_uniswap:"Comprar en Uniswap", btn_add:"Añadir a MetaMask", btn_connect:"Conectar wallet",
+        buy_card:"Comprar con tarjeta (GPay/Apple Pay)",
         ribbon:"Preventa limitada — precio preferente hasta que termine el contador.",
         presale_until:"Preventa termina en: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Suministro", k_chain:"Red", k_addr:"Contrato",
@@ -261,8 +269,9 @@
     },
     en:{header_sub:"ERC-20 on Polygon • Flexible & locked staking",
         hero_title:"You will be able to use this token on the Moon 🌙",
-        hero_desc:"Fixed supply 1,000,000,000,000 MoWo. No future mint. Internal pools: <b>game (100M)</b> & <b>staking (1,000M)</b>.",
+        hero_desc:"Fixed supply 1,000,000,000,000 MoWo. Internal pools: <b>game (100M)</b> & <b>staking (1,000M)</b>.",
         btn_scan:"View on Polygonscan", btn_uniswap:"Buy on Uniswap", btn_add:"Add to MetaMask", btn_connect:"Connect wallet",
+        buy_card:"Buy with card (GPay/Apple Pay)",
         ribbon:"Limited presale — preferred price until timer ends.",
         presale_until:"Presale ends in: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Supply", k_chain:"Network", k_addr:"Contract",
@@ -276,14 +285,15 @@
     },
     ru:{header_sub:"Токен ERC-20 на Polygon • Гибкий и фиксированный стейкинг",
         hero_title:"Этот токен вы сможете использовать на Луне 🌙",
-        hero_desc:"Фиксированный объём 1 000 000 000 000 MoWo. Пулы: <b>игры (100M)</b> и <b>стейкинг (1,000M)</b>.",
+        hero_desc:"Фиксированный объём. Пулы: <b>игры (100M)</b> и <b>стейкинг (1,000M)</b>.",
         btn_scan:"Открыть в Polygonscan", btn_uniswap:"Купить на Uniswap", btn_add:"Добавить в MetaMask", btn_connect:"Подключить кошелёк",
+        buy_card:"Покупка картой (GPay/Apple Pay)",
         ribbon:"Ограниченная предпродажа — льготная цена до конца таймера.",
         presale_until:"Предпродажа заканчивается через: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Эмиссия", k_chain:"Сеть", k_addr:"Контракт",
         amm_note:"Рыночную цену задаёт AMM.",
-        tok_title:"Токеномика", tok_nomint:"Нет автодропа и доп. эмиссии.",
-        tok_roles:"Безопасные роли: игровые награды, фиат-продажи, обновление APR.",
+        tok_title:"Токеномика", tok_nomint:"Без автодропа и доп. эмиссии.",
+        tok_roles:"Безопасные роли: награды, фиат-продажи, APR.",
         tok_modes:"Гибкий/фиксированный стейкинг (30/90/180 дн).",
         stake_title:"О стейкинге", stake_flex:"Гибкий стейкинг: claim в любое время.",
         stake_examples:"Примеры для 1000 MoWo", stake_fund:"Выплаты из пула 1,000M.",
@@ -291,14 +301,15 @@
     },
     ar:{header_sub:"رمز ERC-20 على شبكة بوليجون • رهن مرن ومقفل",
         hero_title:"ستستخدم هذا الرمز على القمر 🌙",
-        hero_desc:"معروض ثابت 1,000,000,000,000 MoWo. خزانات <b>اللعبة (100M)</b> و<b>الرهن (1,000M)</b>.",
+        hero_desc:"خزانات: <b>اللعبة (100M)</b> و<b>الرهن (1,000M)</b>.",
         btn_scan:"عرض على Polygonscan", btn_uniswap:"الشراء عبر Uniswap", btn_add:"إضافة إلى MetaMask", btn_connect:"اتصال المحفظة",
+        buy_card:"الشراء بالبطاقة (Google/Apple Pay)",
         ribbon:"بيع مسبق محدود — سعر مميز حتى نهاية المؤقت.",
         presale_until:"ينتهي البيع المسبق خلال: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"الإجمالي", k_chain:"الشبكة", k_addr:"العقد",
         amm_note:"السعر يحدده AMM حسب السيولة.",
         tok_title:"اقتصاد الرمز", tok_nomint:"لا ايردروب تلقائي ولا سك لاحق.",
-        tok_roles:"أدوار آمنة لمكافآت اللعبة والبيع بالبطاقات وتعديل APR.",
+        tok_roles:"أدوار آمنة للمكافآت والبيع بالبطاقات وتعديل APR.",
         tok_modes:"رهن مرن ومقفل (30/90/180 يوماً).",
         stake_title:"شرح الرهن", stake_flex:"رهن مرن مع سحب المكافآت.",
         stake_examples:"أمثلة لـ 1000 MoWo", stake_fund:"المكافآت من خزان 1,000M.",
@@ -306,8 +317,9 @@
     },
     de:{header_sub:"ERC-20-Token auf Polygon • Flexibles & gesperrtes Staking",
         hero_title:"Diesen Token kannst du auf dem Mond nutzen 🌙",
-        hero_desc:"Feste Menge 1.000.000.000.000 MoWo. Pools: <b>Game (100M)</b>, <b>Staking (1,000M)</b>.",
+        hero_desc:"Pools: <b>Game (100M)</b>, <b>Staking (1,000M)</b>.",
         btn_scan:"Auf Polygonscan ansehen", btn_uniswap:"Auf Uniswap kaufen", btn_add:"Zu MetaMask hinzufügen", btn_connect:"Wallet verbinden",
+        buy_card:"Mit Karte kaufen (GPay/Apple Pay)",
         ribbon:"Limitierte Presale-Phase — Vorteilspreis bis Timerende.",
         presale_until:"Presale endet in: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Angebot", k_chain:"Netzwerk", k_addr:"Vertrag",
@@ -321,8 +333,9 @@
     },
     fr:{header_sub:"Token ERC-20 sur Polygon • Staking flexible et verrouillé",
         hero_title:"Ce token sera utilisable sur la Lune 🌙",
-        hero_desc:"Offre fixe 1 000 000 000 000 MoWo. Pools <b>jeu (100M)</b> et <b>staking (1,000M)</b>.",
+        hero_desc:"Pools <b>jeu (100M)</b> et <b>staking (1,000M)</b>.",
         btn_scan:"Voir sur Polygonscan", btn_uniswap:"Acheter sur Uniswap", btn_add:"Ajouter à MetaMask", btn_connect:"Connecter le wallet",
+        buy_card:"Acheter par carte (GPay/Apple Pay)",
         ribbon:"Prévente limitée — prix préférentiel jusqu’à la fin.",
         presale_until:"La prévente se termine dans : <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Offre", k_chain:"Réseau", k_addr:"Contrat",
@@ -336,8 +349,9 @@
     },
     it:{header_sub:"Token ERC-20 su Polygon • Staking flessibile e bloccato",
         hero_title:"Potrai usare questo token sulla Luna 🌙",
-        hero_desc:"Supply fisso 1.000.000.000.000 MoWo. Pool <b>gioco (100M)</b> e <b>staking (1,000M)</b>.",
+        hero_desc:"Pool <b>gioco (100M)</b> e <b>staking (1,000M)</b>.",
         btn_scan:"Vedi su Polygonscan", btn_uniswap:"Compra su Uniswap", btn_add:"Aggiungi a MetaMask", btn_connect:"Connetti wallet",
+        buy_card:"Compra con carta (GPay/Apple Pay)",
         ribbon:"Presale limitato — prezzo preferenziale fino alla fine.",
         presale_until:"La presale termina tra: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Supply", k_chain:"Rete", k_addr:"Contratto",
@@ -351,8 +365,9 @@
     },
     zh:{header_sub:"基于 Polygon 的 ERC-20 • 灵活/锁仓质押",
         hero_title:"此代币将在月球世界中使用 🌙",
-        hero_desc:"固定总量 1,000,000,000,000 MoWo。内置 <b>游戏池（100M）</b> 与 <b>质押池（1,000M）</b>。",
+        hero_desc:"内置 <b>游戏池（100M）</b> 与 <b>质押池（1,000M）</b>。",
         btn_scan:"在 Polygonscan 查看", btn_uniswap:"在 Uniswap 购买", btn_add:"添加到 MetaMask", btn_connect:"连接钱包",
+        buy_card:"银行卡购买（GPay/Apple Pay）",
         ribbon:"限时预售 — 计时结束前享优惠价格。",
         presale_until:"预售结束倒计时：<strong id='countdown'>--d --:--:--</strong>",
         k_supply:"总量", k_chain:"网络", k_addr:"合约",
@@ -364,8 +379,14 @@
         stake_examples:"1000 MoWo 示例", stake_fund:"奖励来自 1,000M 池。",
         src_title:"合约源码（摘要）", src_hint:"展开/折叠", verify_warn:"务必在 Polygonscan 核对合约地址。"}
   };
-  const sel = document.getElementById('langSel');
   const dirMap = { ar:'rtl' };
+
+  // Flags menu
+  const langBtn = document.getElementById('langBtn');
+  const langMenu = document.getElementById('langMenu');
+  langBtn.addEventListener('click', ()=> langMenu.style.display = langMenu.style.display==='block' ? 'none':'block');
+  document.addEventListener('click', (e)=>{ if(!langMenu.contains(e.target) && e.target!==langBtn) langMenu.style.display='none'; });
+
   function applyLang(l){
     const d = i18n[l] || i18n.es;
     document.documentElement.lang = l;
@@ -374,8 +395,14 @@
       const k = el.getAttribute('data-i');
       if (d[k]) el.innerHTML = d[k];
     });
+    // botón cabecera
+    const flags = {es:'🇪🇸',en:'🇬🇧',ru:'🇷🇺',ar:'🇸🇦',de:'🇩🇪',fr:'🇫🇷',it:'🇮🇹',zh:'🇨🇳'};
+    const names = {es:'Español',en:'English',ru:'Русский',ar:'العربية',de:'Deutsch',fr:'Français',it:'Italiano',zh:'中文'};
+    langBtn.textContent = `${flags[l]||'🏳️'} ${names[l]} ▾`;
   }
-  sel.addEventListener('change', e=>applyLang(e.target.value));
+  document.querySelectorAll('.langItem').forEach(el=>{
+    el.addEventListener('click', ()=>{ applyLang(el.dataset.lang); langMenu.style.display='none'; });
+  });
   applyLang('es');
 
   // ===== CountDown =====
@@ -465,16 +492,21 @@
   }
   connectBtn.addEventListener('click', chooseAndConnect);
 
-  // ===== Buy with Card (Transak opcional) =====
-  document.getElementById('buyCard')?.addEventListener('click', async ()=>{
+  // ===== Buy with Card (Transak) =====
+  document.getElementById('buyCard').addEventListener('click', async ()=>{
     let addr = '';
     try{ if (window.mowoSigner) addr = await window.mowoSigner.getAddress(); }catch(e){}
     const t = new TransakSDK({
-      apiKey: 'TU_API_KEY_DE_TRANSAK', // si lo usas
+      apiKey: 'TU_API_KEY_DE_TRANSAK',         // ← pon tu API key de Transak
       environment: 'PRODUCTION',
+      cryptoCurrencyCode: 'POL',               // compra POL para el gas / swaps
       defaultCryptoCurrency: 'POL',
+      walletAddress: addr || '',
       network: 'polygon',
-      walletAddress: addr || ''
+      themeColor: '#7dd3fc',
+      // Opcional: sugerencias de fiat
+      fiatCurrency: 'EUR',
+      // Nota: Transak decide qué métodos (tarjeta, Google Pay, Apple Pay) están disponibles por país.
     });
     t.init();
   });
@@ -486,12 +518,12 @@
     function resize(){ w= c.width = innerWidth; h = c.height = innerHeight; make(); }
     function make(){
       stars = [];
-      const n = Math.min(350, Math.floor((w*h)/6000));
+      const n = Math.min(420, Math.floor((w*h)/5500));
       for(let i=0;i<n;i++){
         stars.push({
           x: Math.random()*w,
           y: Math.random()*h,
-          r: Math.random()*1.2+0.3,
+          r: Math.random()*1.4+0.3,
           a: Math.random()*0.5+0.5,
           s: Math.random()*0.02+0.005
         });
@@ -501,11 +533,11 @@
       ctx.clearRect(0,0,w,h);
       for(const st of stars){
         st.a += st.s;
-        const alpha = 0.4 + 0.6*Math.abs(Math.sin(st.a));
+        const alpha = 0.35 + 0.65*Math.abs(Math.sin(st.a));
         ctx.beginPath();
         ctx.arc(st.x,st.y,st.r,0,Math.PI*2);
         ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-        ctx.shadowBlur = 6; ctx.shadowColor = '#7dd3fc';
+        ctx.shadowBlur = 8; ctx.shadowColor = '#7dd3fc';
         ctx.fill();
       }
       requestAnimationFrame(draw);
@@ -514,7 +546,7 @@
     resize(); draw();
   })();
 
-  // ===== init lang =====
+  // init ES
   applyLang('es');
 </script>
 </body>
