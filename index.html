@@ -2,7 +2,7 @@
 <html lang="es" dir="ltr">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>MoonWorld (MoWo) — Token oficial</title>
 <meta name="description" content="MoonWorld (MoWo) — token ERC-20 en Polygon. Preventa limitada, staking flexible/bloqueado, transparencia total y un juego Android ciberpunk lunar.">
 <meta property="og:title" content="MoonWorld (MoWo) — Token oficial">
@@ -22,7 +22,7 @@
     margin:0; color:var(--text);
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
     background:linear-gradient(180deg,var(--bg),var(--bg2));
-    overflow-x:hidden;
+    overflow-x:hidden; /* evita scroll lateral */
   }
   /* Nebulosas neon de fondo */
   .neon-bg{
@@ -38,7 +38,7 @@
 
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1180px;margin:0 auto;padding:26px}
-  header{display:flex;align-items:center;gap:16px;margin:6px 0 14px}
+  header{display:flex;align-items:center;gap:16px;margin:6px 0 14px;flex-wrap:wrap}
   .brand h1{margin:0;font-size:28px;letter-spacing:.3px;color:var(--neon1);text-shadow:0 0 12px var(--neon1)}
   .brand small{display:block;color:var(--muted)}
 
@@ -57,7 +57,9 @@
 
   .card{background:linear-gradient(180deg,rgba(20,24,52,.78),rgba(12,16,38,.78));
         border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); box-shadow:var(--shadow)}
-  .hero{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+  .hero{
+    display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;
+  }
   .heroLeft{padding:26px}
   .title{font-size:36px;margin:0 0 10px;text-shadow:0 0 14px var(--pink)}
   .subtitle{color:var(--muted);margin:0 0 14px}
@@ -77,38 +79,51 @@
   details{background:#0f1630;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px}
   details > summary{cursor:pointer;font-weight:800;margin:6px 0}
   pre{white-space:pre-wrap; word-break:break-word; font-size:12px; line-height:1.35; background:#0b1229;border:1px solid rgba(255,255,255,.08); padding:14px;border-radius:10px; max-height:500px; overflow:auto}
-  .buyPanel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
   .ribbon{background:linear-gradient(90deg, rgba(0,255,163,.16), rgba(125,211,252,.16));
           border:1px dashed rgba(0,255,163,.5); color:#afffdf;padding:10px 12px; border-radius:12px; font-weight:900; text-align:center; margin:10px 0}
   .footer{text-align:center;color:#98a2b3;font-size:13px;margin:40px 0 10px}
 
-  /* Logo central grande */
-  .heroLogo{display:flex;align-items:center;justify-content:center;padding:26px 10px;border-left:1px solid rgba(255,255,255,.08)}
+  /* Logo central grande (más grande y responsivo sin overflow) */
+  .heroLogo{
+    display:flex;align-items:center;justify-content:center;padding:26px 10px;
+    border-left:1px solid rgba(255,255,255,.08)
+  }
   .logoBig{
-    width:420px;height:420px;border-radius:50%;
+    width:480px;height:480px; /* ↑ más grande en desktop */
+    max-width:min(92vw, 520px); /* cap para móviles/tablets */
+    max-height:min(92vw, 520px);
+    border-radius:50%;
     background:radial-gradient(circle at 45% 35%, #ffffff 0%, #c2e9ff 10%, #7dd3fc 25%, #2b3a7a 55%, #0b1028 75%);
-    box-shadow:0 0 60px rgba(125,211,252,.55), 0 0 140px rgba(255,0,255,.28);
+    box-shadow:0 0 70px rgba(125,211,252,.55), 0 0 160px rgba(255,0,255,.28);
     display:flex;align-items:center;justify-content:center;overflow:hidden;border:5px solid rgba(255,255,255,.12)
   }
-  .logoBig img{width:92%;height:92%;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 0 22px rgba(255,255,255,.38))}
+  .logoBig img{width:94%;height:94%;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 0 22px rgba(255,255,255,.38))}
   .logoCaption{margin-top:10px;text-align:center;color:#bfe5ff;font-weight:900;letter-spacing:.4px}
 
   /* Donut pie cyberpunk */
-  .donutWrap{display:flex;gap:18px;align-items:center}
-  .donut{ --p1: 9.09; --p2: 90.91; width:160px;height:160px;border-radius:50%;
+  .donutWrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .donut{ --p1: 9.09; --p2: 90.91; width:180px;height:180px;border-radius:50%;
     background:conic-gradient(var(--pink) 0 calc(var(--p1)*1%), var(--neon3) 0 100%);
     position:relative; box-shadow:0 0 30px rgba(255,0,255,.35), 0 0 24px rgba(0,255,163,.25) inset;
   }
-  .donut::after{content:""; position:absolute; inset:18px; background:#0b1128; border-radius:50%; box-shadow:inset 0 0 10px rgba(255,255,255,.08)}
+  .donut::after{content:""; position:absolute; inset:20px; background:#0b1128; border-radius:50%; box-shadow:inset 0 0 10px rgba(255,255,255,.08)}
   .legend{font-size:13px}
   .legend .item{display:flex;align-items:center;gap:8px;margin:6px 0}
   .legend .dot{width:12px;height:12px;border-radius:2px}
   .dot.pink{background:var(--pink)} .dot.green{background:var(--neon3)}
 
+  /* Responsivo móvil */
   @media(max-width:1000px){
     .hero{grid-template-columns:1fr}
     .heroLogo{border-left:none;border-top:1px solid rgba(255,255,255,.08)}
-    .logoBig{width:320px;height:320px}
+    .heroLeft{padding:20px}
+  }
+  @media(max-width:560px){
+    .title{font-size:30px}
+    .metric{grid-template-columns:1fr}
+    .cta{justify-content:center}
+    header{justify-content:space-between}
+    .wrap{padding:18px}
   }
 </style>
 </head>
@@ -172,7 +187,7 @@
     </div>
 
     <div class="heroLogo">
-      <div>
+      <div style="text-align:center">
         <div class="logoBig">
           <img alt="MoonWorld Logo" src="https://raw.githubusercontent.com/MaxStudiotoken/MoonWorld/main/moonworld_logo.png"/>
         </div>
@@ -395,7 +410,6 @@
       const k = el.getAttribute('data-i');
       if (d[k]) el.innerHTML = d[k];
     });
-    // botón cabecera
     const flags = {es:'🇪🇸',en:'🇬🇧',ru:'🇷🇺',ar:'🇸🇦',de:'🇩🇪',fr:'🇫🇷',it:'🇮🇹',zh:'🇨🇳'};
     const names = {es:'Español',en:'English',ru:'Русский',ar:'العربية',de:'Deutsch',fr:'Français',it:'Italiano',zh:'中文'};
     langBtn.textContent = `${flags[l]||'🏳️'} ${names[l]} ▾`;
@@ -471,7 +485,7 @@
       const modal = document.createElement('div');
       modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:9999';
       modal.innerHTML = `
-        <div class="card" style="padding:16px;min-width:300px">
+        <div class="card" style="padding:16px;min-width:300px;max-width:92vw">
           <h3 style="margin:0 0 10px">Conectar wallet</h3>
           <button id="optInjected" class="btn" style="width:100%;margin-bottom:8px">🦊 MetaMask / Trust (navegador)</button>
           <button id="optWC" class="btn" style="width:100%">🔗 WalletConnect (QR)</button>
@@ -497,52 +511,55 @@
     let addr = '';
     try{ if (window.mowoSigner) addr = await window.mowoSigner.getAddress(); }catch(e){}
     const t = new TransakSDK({
-      apiKey: 'TU_API_KEY_DE_TRANSAK',         // ← pon tu API key de Transak
+      apiKey: 'TU_API_KEY_DE_TRANSAK',
       environment: 'PRODUCTION',
-      cryptoCurrencyCode: 'POL',               // compra POL para el gas / swaps
+      cryptoCurrencyCode: 'POL',
       defaultCryptoCurrency: 'POL',
       walletAddress: addr || '',
       network: 'polygon',
       themeColor: '#7dd3fc',
-      // Opcional: sugerencias de fiat
-      fiatCurrency: 'EUR',
-      // Nota: Transak decide qué métodos (tarjeta, Google Pay, Apple Pay) están disponibles por país.
+      fiatCurrency: 'EUR'
     });
     t.init();
   });
 
-  // ===== Starfield Canvas =====
+  // ===== Starfield Canvas (parpadeo + desplazamiento suave + wrap) =====
   (function(){
     const c = document.getElementById('stars'), ctx = c.getContext('2d');
     let w,h,stars=[];
-    function resize(){ w= c.width = innerWidth; h = c.height = innerHeight; make(); }
+    function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; make(); }
+    function rnd(a,b){ return a + Math.random()*(b-a); }
     function make(){
       stars = [];
-      const n = Math.min(420, Math.floor((w*h)/5500));
+      const n = Math.min(500, Math.floor((w*h)/5000));
       for(let i=0;i<n;i++){
         stars.push({
           x: Math.random()*w,
           y: Math.random()*h,
-          r: Math.random()*1.4+0.3,
-          a: Math.random()*0.5+0.5,
-          s: Math.random()*0.02+0.005
+          r: rnd(0.3,1.6),
+          a: Math.random()*Math.PI*2,
+          tw: rnd(0.003,0.02),     // velocidad de parpadeo
+          vx: rnd(-0.03,0.03),     // desplazamiento suave
+          vy: rnd(-0.02,0.02)
         });
       }
     }
     function draw(){
       ctx.clearRect(0,0,w,h);
       for(const st of stars){
-        st.a += st.s;
+        st.a += st.tw;
+        st.x += st.vx; st.y += st.vy;
+        if (st.x < -2) st.x = w+2; if (st.x > w+2) st.x = -2;
+        if (st.y < -2) st.y = h+2; if (st.y > h+2) st.y = -2;
         const alpha = 0.35 + 0.65*Math.abs(Math.sin(st.a));
-        ctx.beginPath();
-        ctx.arc(st.x,st.y,st.r,0,Math.PI*2);
+        ctx.beginPath(); ctx.arc(st.x,st.y,st.r,0,Math.PI*2);
         ctx.fillStyle = `rgba(255,255,255,${alpha})`;
         ctx.shadowBlur = 8; ctx.shadowColor = '#7dd3fc';
         ctx.fill();
       }
       requestAnimationFrame(draw);
     }
-    addEventListener('resize', resize);
+    addEventListener('resize', resize, {passive:true});
     resize(); draw();
   })();
 
