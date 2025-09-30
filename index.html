@@ -4,83 +4,120 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>MoonWorld (MoWo) — Token oficial</title>
-<meta name="description" content="MoonWorld (MoWo) — token ERC-20 en Polygon. Preventa limitada, staking flexible/bloqueado, transparencia total y un juego Android ciberpunk que romperá esquemas.">
+<meta name="description" content="MoonWorld (MoWo) — token ERC-20 en Polygon. Preventa limitada, staking flexible/bloqueado, transparencia total y un juego Android ciberpunk lunar.">
 <meta property="og:title" content="MoonWorld (MoWo) — Token oficial">
 <meta property="og:description" content="Staking flexible y bloqueado. Supply fijo. En Polygon. Transparencia y utilidad real en juego.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0b0f1a">
 <style>
   :root{
-    --bg:#080b16; --bg2:#0d1326; --card:#111733; --muted:#9aa3b2; --text:#e8ecf7;
-    --neon1:#7dd3fc; --neon2:#a78bfa; --neon3:#00ffa3; --pink:#ff00ff;
-    --shadow: 0 24px 60px rgba(0,0,0,.45);
-    --radius:18px;
+    --bg:#070812; --bg2:#0d1022; --card:#0e1533; --muted:#9aa3b2; --text:#e8ecf7;
+    --neon1:#7dd3fc; --neon2:#a78bfa; --neon3:#00ffa3; --pink:#ff00ff; --yellow:#ffe76b;
+    --shadow: 0 28px 70px rgba(0,0,0,.55);
+    --radius:20px;
   }
   *{box-sizing:border-box}
+  html,body{height:100%}
   body{
     margin:0; color:var(--text);
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
-    background:var(--bg);
+    background:linear-gradient(180deg,var(--bg),var(--bg2));
     overflow-x:hidden;
   }
-  /* Fondo ciberpunk + estrellas */
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-3;
+  /* Nebulosas neon de fondo */
+  .neon-bg{
+    position:fixed; inset:-10%; z-index:-3; pointer-events:none;
     background:
-      radial-gradient(1000px 600px at 85% -10%, rgba(167,139,250,.16) 0%, transparent 60%),
-      radial-gradient(900px 500px at 10% 110%, rgba(125,211,252,.14) 0%, transparent 60%),
-      linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      radial-gradient(1000px 600px at 85% -10%, rgba(167,139,250,.20) 0%, transparent 60%),
+      radial-gradient(900px 500px at 10% 110%, rgba(125,211,252,.18) 0%, transparent 60%),
+      radial-gradient(700px 400px at 50% 20%, rgba(255,0,255,.10) 0%, transparent 55%);
+    filter:saturate(120%);
   }
-  body::after{
-    content:""; position:fixed; inset:0; z-index:-2; opacity:.35;
-    background-image:url('https://www.transparenttextures.com/patterns/stardust.png');
-    animation:stars 180s linear infinite;
-  }
-  @keyframes stars{from{background-position:0 0} to{background-position:2000px 2000px}}
+  /* Estrellas (canvas) */
+  #stars{position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.85; mix-blend-mode:screen}
 
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1120px;margin:0 auto;padding:26px}
-  header{display:flex;align-items:center;gap:14px;margin:6px 0 10px}
-  .logo{width:64px;height:64px;filter:drop-shadow(0 0 16px var(--neon1))}
-  .brand h1{margin:0;font-size:26px;letter-spacing:.3px;color:var(--neon1);text-shadow:0 0 10px var(--neon1)}
+  .wrap{max-width:1180px;margin:0 auto;padding:26px}
+  header{display:flex;align-items:center;gap:16px;margin:6px 0 14px}
+  .brand h1{margin:0;font-size:28px;letter-spacing:.3px;color:var(--neon1);text-shadow:0 0 12px var(--neon1)}
   .brand small{display:block;color:var(--muted)}
   .lang{margin-left:auto}
   select{background:#0f1630;color:#cfe9ff;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:8px}
 
-  .card{
-    background:rgba(20,24,52,.76);
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:var(--radius); box-shadow:var(--shadow); padding:24px
-  }
-  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center}
-  h2.title{font-size:34px;margin:0 0 10px;text-shadow:0 0 12px var(--pink)}
-  .subtitle{color:var(--muted);margin:0 0 16px}
+  .card{background:linear-gradient(180deg,rgba(20,24,52,.78),rgba(12,16,38,.78));
+        border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); box-shadow:var(--shadow)}
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+  .heroLeft{padding:26px}
+  .title{font-size:36px;margin:0 0 10px;text-shadow:0 0 14px var(--pink)}
+  .subtitle{color:var(--muted);margin:0 0 14px}
   .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-  .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#141c3a;display:inline-flex;gap:8px;align-items:center;cursor:pointer;font-weight:700}
+  .btn{padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:#141c3a;display:inline-flex;gap:8px;align-items:center;cursor:pointer;font-weight:800}
   .btn.primary{background:linear-gradient(135deg, var(--neon1), var(--pink)); color:#071023; border:none; box-shadow:0 10px 28px rgba(125,211,252,.25)}
   .btn.ghost{background:#1a2044;color:#e8ecf7}
   .metric{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
   .kpi{padding:14px}
-  .kpi h3{margin:0 0 6px;font-size:13px;color:var(--muted);font-weight:800;letter-spacing:.2px}
-  .kpi p{margin:0;font-size:18px;font-weight:800}
-  .pill{display:inline-block;background:#0f1630;border:1px solid rgba(255,255,255,.12);padding:10px 12px;border-radius:12px;margin:6px 4px}
-  .panel{margin:28px 0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .kpi h3{margin:0 0 6px;font-size:12px;color:var(--muted);font-weight:900;letter-spacing:.2px}
+  .kpi p{margin:0;font-size:18px;font-weight:900}
+  .pill{display:inline-block;background:#0f1630;border:1px solid rgba(255,255,255,.12);padding:10px 12px;border-radius:12px;margin:6px 6px 0 0}
+  .panel{margin:28px 0;display:grid;grid-template-columns:1fr 1fr;gap:20px}
   .box{padding:20px}
   .note{font-size:12px;color:var(--muted)}
   .warn{color:#fbbf24;font-weight:800}
   details{background:#0f1630;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px}
   details > summary{cursor:pointer;font-weight:800;margin:6px 0}
   pre{white-space:pre-wrap; word-break:break-word; font-size:12px; line-height:1.35; background:#0b1229;border:1px solid rgba(255,255,255,.08); padding:14px;border-radius:10px; max-height:500px; overflow:auto}
-  .buyPanel{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .ribbon{background:linear-gradient(90deg, rgba(0,255,163,.12), rgba(125,211,252,.12));border:1px dashed rgba(0,255,163,.45); color:#afffdf;padding:10px 12px; border-radius:12px; font-weight:800; text-align:center; margin:10px 0}
+  .buyPanel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .ribbon{background:linear-gradient(90deg, rgba(0,255,163,.16), rgba(125,211,252,.16));
+          border:1px dashed rgba(0,255,163,.5); color:#afffdf;padding:10px 12px; border-radius:12px; font-weight:900; text-align:center; margin:10px 0}
   .footer{text-align:center;color:#98a2b3;font-size:13px;margin:40px 0 10px}
-  @media(max-width:980px){ .hero{grid-template-columns:1fr} .panel{grid-template-columns:1fr} .metric{grid-template-columns:1fr} .buyPanel{grid-template-columns:1fr} }
+
+  /* Logo central grande */
+  .heroLogo{
+    display:flex;align-items:center;justify-content:center;padding:26px 10px;
+    border-left:1px solid rgba(255,255,255,.08)
+  }
+  .logoBig{
+    width:320px;height:320px;border-radius:50%;
+    background:radial-gradient(circle at 45% 35%, #ffffff 0%, #c2e9ff 10%, #7dd3fc 25%, #2b3a7a 55%, #0b1028 75%);
+    box-shadow:0 0 50px rgba(125,211,252,.45), 0 0 120px rgba(255,0,255,.25);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;border:4px solid rgba(255,255,255,.1)
+  }
+  .logoBig img{width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 0 18px rgba(255,255,255,.35))}
+  .logoCaption{margin-top:10px;text-align:center;color:#bfe5ff;font-weight:900;letter-spacing:.4px}
+
+  /* Donut pie cyberpunk */
+  .donutWrap{display:flex;gap:18px;align-items:center}
+  .donut{
+    --p1: 9.09; /* 100M / (100M+1000M) * 100 */
+    --p2: 90.91; /* 1000M / (100M+1000M) * 100 */
+    width:160px;height:160px;border-radius:50%;
+    background:
+      conic-gradient(var(--pink) 0 calc(var(--p1)*1%), var(--neon3) 0 100%);
+    position:relative;
+    box-shadow:0 0 30px rgba(255,0,255,.35), 0 0 24px rgba(0,255,163,.25) inset;
+  }
+  .donut::after{
+    content:""; position:absolute; inset:18px; background:#0b1128; border-radius:50%;
+    box-shadow:inset 0 0 10px rgba(255,255,255,.08);
+  }
+  .legend{font-size:13px}
+  .legend .item{display:flex;align-items:center;gap:8px;margin:6px 0}
+  .legend .dot{width:12px;height:12px;border-radius:2px}
+  .dot.pink{background:var(--pink)} .dot.green{background:var(--neon3)}
+
+  @media(max-width:1000px){
+    .hero{grid-template-columns:1fr}
+    .heroLogo{border-left:none;border-top:1px solid rgba(255,255,255,.08)}
+    .logoBig{width:260px;height:260px}
+  }
 </style>
 </head>
 <body>
+<canvas id="stars"></canvas>
+<div class="neon-bg"></div>
+
 <div class="wrap">
   <header>
-    <img class="logo" alt="MoonWorld Logo" src="https://raw.githubusercontent.com/MaxStudiotoken/MoonWorld/main/moonworld_logo.png"/>
     <div class="brand">
       <h1>MoonWorld <span class="sym">($MoWo)</span></h1>
       <small data-i="header_sub">Token ERC-20 en Polygon • Staking flexible y bloqueado</small>
@@ -97,15 +134,17 @@
 
   <!-- HERO -->
   <section class="hero card">
-    <div>
+    <div class="heroLeft">
       <h2 class="title" data-i="hero_title">Este token lo podrás utilizar en la Luna 🌙</h2>
       <p class="subtitle" data-i="hero_desc">
-        Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para <b>juego (30M)</b> y <b>staking (500M)</b>.
+        Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para
+        <b>juego (100M)</b> y <b>staking (1,000M)</b> retenidos en el contrato.
       </p>
 
       <div class="cta">
-        <a class="btn primary" target="_blank" href="https://polygonscan.com/address/0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7" data-i="btn_scan">Ver en Polygonscan</a>
-        <a class="btn ghost" target="_blank" id="uniLink" href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7" data-i="btn_uniswap">Comprar en Uniswap</a>
+        <a class="btn primary" target="_blank" href="https://polygonscan.com/address/0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121" data-i="btn_scan">Ver en Polygonscan</a>
+        <a class="btn ghost" target="_blank" id="uniLink"
+           href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121" data-i="btn_uniswap">Comprar en Uniswap</a>
         <button class="btn ghost" id="addMetaMask" data-i="btn_add">Añadir a MetaMask</button>
         <button class="btn ghost" id="connectWallet">🔌 <span data-i="btn_connect">Conectar wallet</span></button>
       </div>
@@ -117,22 +156,27 @@
       <div class="metric">
         <div class="kpi card"><h3 data-i="k_supply">Suministro</h3><p>1,000,000,000,000 MoWo</p></div>
         <div class="kpi card"><h3 data-i="k_chain">Red</h3><p>Polygon (POL)</p></div>
-        <div class="kpi card"><h3 data-i="k_addr">Contrato</h3><p style="font-size:12px;line-height:1.2;word-break:break-all">0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7</p></div>
+        <div class="kpi card">
+          <h3 data-i="k_addr">Contrato</h3>
+          <p style="font-size:12px;line-height:1.2;word-break:break-all" id="ctrAddr">0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121</p>
+        </div>
       </div>
     </div>
 
-    <div class="right">
-      <h3 style="margin:4px 0 10px;color:var(--neon1)" data-i="ref_price">Precio de referencia inicial</h3>
-      <p class="subtitle">1 POL = <b>100,000 MoWo</b></p>
-      <div class="pill">Par: POL / MoWo</div><div class="pill">Fee 0.3%</div>
-      <p class="note" data-i="amm_note">El precio real lo decide el AMM según liquidez y operaciones.</p>
+    <div class="heroLogo">
+      <div>
+        <div class="logoBig">
+          <img alt="MoonWorld Logo" src="https://raw.githubusercontent.com/MaxStudiotoken/MoonWorld/main/moonworld_logo.png"/>
+        </div>
+        <div class="logoCaption">MoonWorld • MoWo</div>
 
-      <div class="buyPanel" style="margin-top:12px">
-        <a class="btn primary" id="buyCrypto" target="_blank" href="https://app.uniswap.org/#/swap?chain=polygon&outputCurrency=0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7">💱 <span data-i="buy_crypto">Comprar con CRIPTO</span></a>
-        <button class="btn ghost" id="buyCard">💳 <span data-i="buy_card">Comprar con TARJETA</span></button>
+        <div style="margin-top:16px;text-align:center">
+          <div class="pill">1 POL = <b>100,000 MoWo</b></div>
+          <div class="pill">Par: POL / MoWo</div>
+          <div class="pill">Fee 0.3%</div>
+          <div class="note" style="margin-top:6px" data-i="amm_note">El precio real lo decide el AMM según liquidez y operaciones.</div>
+        </div>
       </div>
-      <p class="note" style="margin-top:10px" data-i="need_pol">Necesitas POL para gas (Polygon).</p>
-      <p class="note"><b>📱 Game Pool:</b> <span data-i="game_note">El total asignado al Game Pool se activará con el lanzamiento del nuevo juego Android — ciberpunk, de mundo lunar, más futurista que GTA.</span></p>
     </div>
   </section>
 
@@ -140,12 +184,17 @@
   <section class="panel">
     <div class="card box">
       <h2 data-i="tok_title">Tokenomics</h2>
-      <div class="pill"><b data-i="tok_total">Supply total</b>: 1,000,000,000,000</div>
-      <div class="pill"><b data-i="tok_game">Pool juego</b>: 30,000,000 (en contrato)</div>
-      <div class="pill"><b data-i="tok_stake">Pool staking</b>: 500,000,000 (en contrato)</div>
+      <div class="donutWrap" style="margin-top:10px">
+        <div class="donut" title="Pools en contrato: 100M juego / 1,000M staking"></div>
+        <div class="legend">
+          <div class="item"><span class="dot pink"></span> <b>Game Pool</b>: 100,000,000 MoWo</div>
+          <div class="item"><span class="dot green"></span> <b>Staking Pool</b>: 1,000,000,000 MoWo</div>
+          <div class="item"><span class="dot" style="background:linear-gradient(45deg,var(--neon1),var(--pink))"></span> <b>Total Supply</b>: 1,000,000,000,000</div>
+        </div>
+      </div>
       <ul class="note" style="margin-top:12px">
         <li data-i="tok_nomint">Sin airdrop automático, sin mint posterior.</li>
-        <li data-i="tok_roles">Roles seguros para recompensas de juego y ajustes de APR.</li>
+        <li data-i="tok_roles">Roles seguros para recompensas de juego, ventas fiat y ajustes de APR.</li>
         <li data-i="tok_modes">Staking flexible (salida libre) y bloqueado (30/90/180 días).</li>
       </ul>
     </div>
@@ -159,181 +208,22 @@
       <h3 style="margin:10px 0" data-i="stake_examples">Ejemplos con 1000 MoWo</h3>
       <div class="pill">Flexible 30d ≈ <b>6.58</b> • 90d ≈ <b>19.73</b> • 180d ≈ <b>39.45</b> • 365d = <b>80.00</b></div>
       <div class="pill">Bloqueado 30d ≈ <b>9.86</b> • 90d ≈ <b>49.32</b> • 180d ≈ <b>147.95</b></div>
-      <p class="note" data-i="stake_fund">Las recompensas se pagan del <em>staking pool</em> (500M). Si se agota, los pagos se limitan a lo disponible. Los APR pueden ajustarse (tope 50%).</p>
+      <p class="note" data-i="stake_fund">Las recompensas se pagan del <em>staking pool</em> (1,000M). Si se agota, los pagos se limitan a lo disponible. Los APR pueden ajustarse (tope 50%).</p>
     </div>
   </section>
 
-  <!-- TRANSPARENCIA: CONTRATO EN PÁGINA -->
+  <!-- TRANSPARENCIA: CONTRATO EN PÁGINA (resumen) -->
   <section class="card box" style="margin-top:8px">
-    <h2>🔎 <span data-i="src_title">Código del contrato (transparencia)</span></h2>
+    <h2>🔎 <span data-i="src_title">Código del contrato (resumen)</span></h2>
     <details>
-      <summary data-i="src_hint">Ver/ocultar código fuente</summary>
-      <pre>
-<span style="opacity:.8">// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
-
-/*
- * MoonWord (MoWo) - versión sin Pausable, con staking y permit
- * - Supply fijo: 1,000,000,000,000 MoWo (18 decimales)
- * - Pools: 30M juego + 500M staking (retenidos en el contrato)
- * - Staking flexible y bloqueado (30/90/180 días)
- * - Roles: ADMIN (DEFAULT_ADMIN_ROLE), GAME_ROLE, STAKING_ROLE
- * - Seguridad: ERC20, ERC20Permit, AccessControl, ReentrancyGuard
- * - Gas friendly: stake* usa transferFrom; variantes con permit para 1 sola tx
- */
-
-import "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-contracts/v5.0.1/contracts/token/ERC20/ERC20.sol";
-import "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-contracts/v5.0.1/contracts/token/ERC20/extensions/ERC20Permit.sol";
-import "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-contracts/v5.0.1/contracts/access/AccessControl.sol";
-import "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-contracts/v5.0.1/contracts/utils/ReentrancyGuard.sol";
-
-contract MoonWordToken is ERC20, ERC20Permit, AccessControl, ReentrancyGuard {
-  bytes32 public constant GAME_ROLE = keccak256("GAME_ROLE");
-  bytes32 public constant STAKING_ROLE = keccak256("STAKING_ROLE");
-
-  uint256 public constant DECIMALS = 1e18;
-  uint256 public constant TOTAL_SUPPLY = 1_000_000_000_000 * DECIMALS;
-  uint256 public constant GAME_REWARDS_ALLOCATION = 30_000_000 * DECIMALS;
-  uint256 public constant STAKING_REWARDS_ALLOCATION = 500_000_000 * DECIMALS;
-
-  uint256 public gamePoolRemaining;
-  uint256 public stakingPoolRemaining;
-
-  uint256 public flexibleAPR_BPS = 800;  // 8%
-  uint256 public lock30dAPR_BPS  = 1200; // 12%
-  uint256 public lock90dAPR_BPS  = 2000; // 20%
-  uint256 public lock180dAPR_BPS = 3000; // 30%
-  uint256 public constant MAX_APR_BPS = 5000;
-
-  uint256 public constant DAY = 1 days;
-  uint256 public constant LOCK_30D  = 30 * DAY;
-  uint256 public constant LOCK_90D  = 90 * DAY;
-  uint256 public constant LOCK_180D = 180 * DAY;
-
-  struct FlexiblePosition { uint256 amount; uint256 accrued; uint256 lastUpdate; }
-  mapping(address => FlexiblePosition) public flexible;
-
-  struct LockedStake { uint256 amount; uint256 start; uint256 duration; uint256 aprBps; bool claimed; }
-  mapping(address => LockedStake[]) public lockedStakes;
-
-  event GameRewardPaid(address indexed to, uint256 amount);
-  event FlexibleStaked(address indexed user, uint256 amount);
-  event FlexibleUnstaked(address indexed user, uint256 amount);
-  event FlexibleClaimed(address indexed user, uint256 reward);
-  event LockedStaked(address indexed user, uint256 amount, uint256 duration, uint256 aprBps, uint256 index);
-  event LockedClaimed(address indexed user, uint256 index, uint256 principal, uint256 reward);
-  event APRUpdated(uint256 flexibleAPR, uint256 apr30, uint256 apr90, uint256 apr180);
-
-  constructor(address owner_) ERC20("MoonWord","MoWo") ERC20Permit("MoonWord") {
-    require(owner_ != address(0), "owner zero");
-    uint256 pools = GAME_REWARDS_ALLOCATION + STAKING_REWARDS_ALLOCATION;
-    _mint(address(this), pools);
-    _mint(owner_, TOTAL_SUPPLY - pools);
-    gamePoolRemaining = GAME_REWARDS_ALLOCATION;
-    stakingPoolRemaining = STAKING_REWARDS_ALLOCATION;
-    _grantRole(DEFAULT_ADMIN_ROLE, owner_);
-    _grantRole(GAME_ROLE, owner_);
-    _grantRole(STAKING_ROLE, owner_);
-  }
-
-  function setAPRs(uint256 flexibleBps,uint256 apr30,uint256 apr90,uint256 apr180) external onlyRole(DEFAULT_ADMIN_ROLE) {
-    require(flexibleBps<=MAX_APR_BPS && apr30<=MAX_APR_BPS && apr90<=MAX_APR_BPS && apr180<=MAX_APR_BPS, "APR too high");
-    flexibleAPR_BPS=flexibleBps; lock30dAPR_BPS=apr30; lock90dAPR_BPS=apr90; lock180dAPR_BPS=apr180;
-    emit APRUpdated(flexibleBps,apr30,apr90,apr180);
-  }
-
-  function _calcLinearReward(uint256 amount,uint256 aprBps,uint256 elapsedSeconds) internal pure returns(uint256){
-    return (amount * aprBps * elapsedSeconds) / (10000 * 365 days);
-  }
-
-  function rewardPlayer(address to,uint256 amount) external nonReentrant onlyRole(GAME_ROLE){
-    require(to!=address(0),"to zero"); require(amount>0,"zero amount"); require(amount<=gamePoolRemaining,"game pool depleted");
-    gamePoolRemaining -= amount; _transfer(address(this),to,amount); emit GameRewardPaid(to,amount);
-  }
-
-  function _updateFlexible(address user) internal {
-    FlexiblePosition storage p = flexible[user];
-    if (p.amount>0){
-      uint256 elapsed = block.timestamp - p.lastUpdate;
-      if (elapsed>0){ p.accrued += _calcLinearReward(p.amount, flexibleAPR_BPS, elapsed); }
-    }
-    p.lastUpdate = block.timestamp;
-  }
-
-  function stakeFlexible(uint256 amount) external nonReentrant {
-    require(amount>0,"zero amount"); _updateFlexible(msg.sender);
-    _spendAllowance(msg.sender,address(this),amount); _transfer(msg.sender,address(this),amount);
-    flexible[msg.sender].amount += amount; emit FlexibleStaked(msg.sender,amount);
-  }
-
-  function stakeFlexibleWithPermit(uint256 amount,uint256 deadline,uint8 v,bytes32 r,bytes32 s) external nonReentrant {
-    require(amount>0,"zero amount"); permit(msg.sender,address(this),amount,deadline,v,r,s); _updateFlexible(msg.sender);
-    _spendAllowance(msg.sender,address(this),amount); _transfer(msg.sender,address(this),amount);
-    flexible[msg.sender].amount += amount; emit FlexibleStaked(msg.sender,amount);
-  }
-
-  function unstakeFlexible(uint256 amount) external nonReentrant {
-    require(amount>0,"zero amount"); _updateFlexible(msg.sender);
-    FlexiblePosition storage p = flexible[msg.sender]; require(p.amount>=amount,"insufficient staked");
-    p.amount -= amount; _transfer(address(this),msg.sender,amount); emit FlexibleUnstaked(msg.sender,amount);
-  }
-
-  function claimFlexible() external nonReentrant {
-    _updateFlexible(msg.sender); FlexiblePosition storage p = flexible[msg.sender];
-    uint256 reward = p.accrued; require(reward>0,"no rewards");
-    uint256 pay = reward; if (pay > stakingPoolRemaining) pay = stakingPoolRemaining; require(pay>0,"staking pool empty");
-    p.accrued -= pay; stakingPoolRemaining -= pay; _transfer(address(this),msg.sender,pay); emit FlexibleClaimed(msg.sender,pay);
-  }
-
-  function pendingFlexible(address user) external view returns(uint256){
-    FlexiblePosition memory p = flexible[user]; if (p.amount==0) return p.accrued;
-    uint256 elapsed = block.timestamp - p.lastUpdate; return p.accrued + _calcLinearReward(p.amount, flexibleAPR_BPS, elapsed);
-  }
-
-  function stakeLocked(uint256 amount,uint256 durationDays) external nonReentrant {
-    require(amount>0,"zero amount");
-    uint256 duration; uint256 apr;
-    if (durationDays==30){duration=30 days; apr=lock30dAPR_BPS;}
-    else if (durationDays==90){duration=90 days; apr=lock90dAPR_BPS;}
-    else if (durationDays==180){duration=180 days; apr=lock180dAPR_BPS;}
-    else { revert("invalid lock"); }
-    _spendAllowance(msg.sender,address(this),amount); _transfer(msg.sender,address(this),amount);
-    lockedStakes[msg.sender].push(LockedStake({amount:amount,start:block.timestamp,duration:duration,aprBps:apr,claimed:false}));
-    emit LockedStaked(msg.sender,amount,duration,apr,lockedStakes[msg.sender].length-1);
-  }
-
-  function stakeLockedWithPermit(uint256 amount,uint256 durationDays,uint256 deadline,uint8 v,bytes32 r,bytes32 s) external nonReentrant {
-    require(amount>0,"zero amount");
-    uint256 duration; uint256 apr;
-    if (durationDays==30){duration=30 days; apr=lock30dAPR_BPS;}
-    else if (durationDays==90){duration=90 days; apr=lock90dAPR_BPS;}
-    else if (durationDays==180){duration=180 days; apr=lock180dAPR_BPS;}
-    else { revert("invalid lock"); }
-    permit(msg.sender,address(this),amount,deadline,v,r,s);
-    _spendAllowance(msg.sender,address(this),amount); _transfer(msg.sender,address(this),amount);
-    lockedStakes[msg.sender].push(LockedStake({amount:amount,start:block.timestamp,duration:duration,aprBps:apr,claimed:false}));
-    emit LockedStaked(msg.sender,amount,duration,apr,lockedStakes[msg.sender].length-1);
-  }
-
-  function _lockedEarned(LockedStake memory s) internal view returns(uint256){
-    uint256 e = block.timestamp > s.start ? (block.timestamp - s.start) : 0; if (e > s.duration) e = s.duration;
-    return _calcLinearReward(s.amount,s.aprBps,e);
-  }
-
-  function claimLocked(uint256 index) external nonReentrant {
-    require(index < lockedStakes[msg.sender].length,"bad index");
-    LockedStake storage s = lockedStakes[msg.sender][index];
-    require(!s.claimed,"already claimed"); require(block.timestamp >= s.start + s.duration,"still locked");
-    uint256 reward = _lockedEarned(s); uint256 pay = reward; if (pay > stakingPoolRemaining) pay = stakingPoolRemaining;
-    s.claimed = true; _transfer(address(this),msg.sender,s.amount);
-    if (pay>0){ stakingPoolRemaining -= pay; _transfer(address(this),msg.sender,pay); }
-    emit LockedClaimed(msg.sender,index,s.amount,pay);
-  }
-}
-</span>
-      </pre>
+      <summary data-i="src_hint">Ver/ocultar fragmento</summary>
+      <pre>// Nombre: MoonWorld (MoWo) — contrato actualizado con pools: 100M juego & 1,000M staking.
+// Dirección: 0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121
+// Roles: ADMIN, GAME_ROLE, STAKING_ROLE, SALE_ROLE
+// Staking: flexible + bloqueado (30/90/180 días). APRs por defecto 8/12/20/30%.
+// Venta con tarjeta (off-chain): SALE_ROLE distribuye desde la wallet del owner.</pre>
     </details>
-    <p class="note">Verifica el contrato en Polygonscan para detalles de compilación y bytecode.</p>
+    <p class="note">Verifica el contrato completo en Polygonscan para ABI/bytecode y compilación.</p>
   </section>
 
   <p class="footer">© <span id="y"></span> MoonWorld • <span class="warn" data-i="verify_warn">Siempre verifica la dirección del contrato en Polygonscan.</span></p>
@@ -346,153 +236,133 @@ contract MoonWordToken is ERC20, ERC20Permit, AccessControl, ReentrancyGuard {
 
 <script>
   // ===== Config =====
-  const TOKEN_ADDRESS = '0xA6aa1812156fD392fE8B2cf4dBb95BB229990ab7';
+  const TOKEN_ADDRESS = '0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121';
   const POLYGON_HEX = '0x89';
-  const presaleEnd = new Date(Date.now() + 120*24*60*60*1000); // 4 meses
-  const WC_PROJECT_ID = 'REEMPLAZA_CON_TU_PROJECT_ID'; // WalletConnect
-  // ===== Año =====
+  const presaleEnd = new Date(Date.now() + 120*24*60*60*1000); // ~4 meses
+  const WC_PROJECT_ID = 'REEMPLAZA_CON_TU_PROJECT_ID'; // Opcional (WalletConnect)
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // ===== i18n básico =====
+  // ===== i18n =====
   const i18n = {
     es:{header_sub:"Token ERC-20 en Polygon • Staking flexible y bloqueado",
         hero_title:"Este token lo podrás utilizar en la Luna 🌙",
-        hero_desc:"Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para <b>juego (30M)</b> y <b>staking (500M)</b>.",
+        hero_desc:"Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para <b>juego (100M)</b> y <b>staking (1,000M)</b>.",
         btn_scan:"Ver en Polygonscan", btn_uniswap:"Comprar en Uniswap", btn_add:"Añadir a MetaMask", btn_connect:"Conectar wallet",
         ribbon:"Preventa limitada — precio preferente hasta que termine el contador.",
         presale_until:"Preventa termina en: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Suministro", k_chain:"Red", k_addr:"Contrato",
-        ref_price:"Precio de referencia inicial", amm_note:"El precio real lo decide el AMM según liquidez y operaciones.",
-        buy_crypto:"Comprar con CRIPTO", buy_card:"Comprar con TARJETA", need_pol:"Necesitas POL para gas (Polygon).",
-        tok_title:"Tokenomics", tok_total:"Supply total", tok_game:"Pool juego", tok_stake:"Pool staking",
-        tok_nomint:"Sin airdrop automático, sin mint posterior.",
-        tok_roles:"Roles seguros para recompensas de juego y ajustes de APR.",
+        amm_note:"El precio real lo decide el AMM según liquidez y operaciones.",
+        tok_title:"Tokenomics", tok_nomint:"Sin airdrop automático, sin mint posterior.",
+        tok_roles:"Roles seguros para recompensas de juego, ventas fiat y ajustes de APR.",
         tok_modes:"Staking flexible (salida libre) y bloqueado (30/90/180 días).",
-        game_note:"El Game Pool se activará con el lanzamiento del nuevo juego Android — ciberpunk lunar, más futurista que GTA.",
         stake_title:"Explicación de staking", stake_flex:"El contrato tiene <b>staking flexible</b> sin obligación de bloquear. Puedes entrar/salir cuando quieras y reclamar recompensas acumuladas (<code>claimFlexible()</code>).",
-        stake_examples:"Ejemplos con 1000 MoWo", stake_fund:"Las recompensas salen del pool de 500M (si se agota, se limitan). APR ajustable (tope 50%).",
-        src_title:"Código del contrato (transparencia)", src_hint:"Ver/ocultar código fuente",
-        verify_warn:"Siempre verifica la dirección del contrato en Polygonscan."},
+        stake_examples:"Ejemplos con 1000 MoWo", stake_fund:"Recompensas desde el pool de 1,000M (limitado si se agota). APR ajustable (tope 50%).",
+        src_title:"Código del contrato (resumen)", src_hint:"Ver/ocultar fragmento", verify_warn:"Siempre verifica la dirección del contrato en Polygonscan."
+    },
     en:{header_sub:"ERC-20 on Polygon • Flexible & locked staking",
         hero_title:"You will be able to use this token on the Moon 🌙",
-        hero_desc:"Fixed supply 1,000,000,000,000 MoWo. No future mint. Internal pools for <b>game (30M)</b> & <b>staking (500M)</b>.",
+        hero_desc:"Fixed supply 1,000,000,000,000 MoWo. No future mint. Internal pools: <b>game (100M)</b> & <b>staking (1,000M)</b>.",
         btn_scan:"View on Polygonscan", btn_uniswap:"Buy on Uniswap", btn_add:"Add to MetaMask", btn_connect:"Connect wallet",
-        ribbon:"Limited presale — preferred price until the timer ends.",
+        ribbon:"Limited presale — preferred price until timer ends.",
         presale_until:"Presale ends in: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Supply", k_chain:"Network", k_addr:"Contract",
-        ref_price:"Reference starting price", amm_note:"Actual price is set by AMMs.",
-        buy_crypto:"Buy with CRYPTO", buy_card:"Buy with CARD", need_pol:"You need POL for gas (Polygon).",
-        tok_title:"Tokenomics", tok_total:"Total supply", tok_game:"Game pool", tok_stake:"Staking pool",
-        tok_nomint:"No automatic airdrop, no future mint.",
-        tok_roles:"Secure roles for game rewards & APR updates.",
-        tok_modes:"Flexible staking (free exit) & locked (30/90/180 days).",
-        game_note:"Game Pool unlocks with our Android game launch — lunar cyberpunk, more futuristic than GTA.",
-        stake_title:"Staking explained", stake_flex:"Flexible staking with no lock; claim accrued rewards anytime.",
-        stake_examples:"Examples with 1000 MoWo", stake_fund:"Rewards paid from the 500M pool (limited if empty).",
-        src_title:"Contract source (transparency)", src_hint:"Show/Hide source",
-        verify_warn:"Always verify the contract on Polygonscan."},
+        amm_note:"Actual price is defined by AMMs.",
+        tok_title:"Tokenomics", tok_nomint:"No automatic airdrop, no future mint.",
+        tok_roles:"Secure roles for game rewards, fiat sales and APR updates.",
+        tok_modes:"Flexible & locked staking (30/90/180 days).",
+        stake_title:"Staking explained", stake_flex:"Flexible staking; claim accrued rewards anytime.",
+        stake_examples:"Examples with 1000 MoWo", stake_fund:"Rewards paid from the 1,000M pool.",
+        src_title:"Contract source (summary)", src_hint:"Show/Hide snippet", verify_warn:"Always verify the contract on Polygonscan."
+    },
     ru:{header_sub:"Токен ERC-20 на Polygon • Гибкий и фиксированный стейкинг",
         hero_title:"Этот токен вы сможете использовать на Луне 🌙",
-        hero_desc:"Фиксированный объём 1 000 000 000 000 MoWo. Без доп. выпуска. Пулы: <b>игры (30M)</b> и <b>стейкинг (500M)</b>.",
+        hero_desc:"Фиксированный объём 1 000 000 000 000 MoWo. Пулы: <b>игры (100M)</b> и <b>стейкинг (1,000M)</b>.",
         btn_scan:"Открыть в Polygonscan", btn_uniswap:"Купить на Uniswap", btn_add:"Добавить в MetaMask", btn_connect:"Подключить кошелёк",
         ribbon:"Ограниченная предпродажа — льготная цена до конца таймера.",
         presale_until:"Предпродажа заканчивается через: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Эмиссия", k_chain:"Сеть", k_addr:"Контракт",
-        ref_price:"Стартовая цена", amm_note:"Рыночную цену задаёт AMM.",
-        buy_crypto:"Купить за CRYPTO", buy_card:"Купить картой", need_pol:"Нужен POL для газа (Polygon).",
-        tok_title:"Токеномика", tok_total:"Общий объём", tok_game:"Игровой пул", tok_stake:"Пул стейкинга",
-        tok_nomint:"Нет автодропа и доп. эмиссии.", tok_roles:"Безопасные роли для наград и APR.",
-        tok_modes:"Гибкий (без локапа) и фиксированный (30/90/180 дней).",
-        game_note:"Игровой пул разблокируется вместе с релизом Android-игры.",
-        stake_title:"О стейкинге", stake_flex:"Гибкий стейкинг: вход/выход в любое время, claim вознаграждений.",
-        stake_examples:"Примеры для 1000 MoWo", stake_fund:"Выплаты из пула 500M.",
-        src_title:"Исходный код контракта", src_hint:"Показать/скрыть исходник",
-        verify_warn:"Проверяйте адрес контракта в Polygonscan."},
-    ar:{header_sub:"رمز ERC-20 على شبكة بوليجون • رهن مرن ومقفل", hero_title:"ستستخدم هذا الرمز على القمر 🌙",
-        hero_desc:"معروض ثابت 1,000,000,000,000 MoWo. لا سكّ لاحق. خزانات <b>اللعبة (30M)</b> و<b>الرهن (500M)</b>.",
+        amm_note:"Рыночную цену задаёт AMM.",
+        tok_title:"Токеномика", tok_nomint:"Нет автодропа и доп. эмиссии.",
+        tok_roles:"Безопасные роли: игровые награды, фиат-продажи, обновление APR.",
+        tok_modes:"Гибкий/фиксированный стейкинг (30/90/180 дн).",
+        stake_title:"О стейкинге", stake_flex:"Гибкий стейкинг: claim в любое время.",
+        stake_examples:"Примеры для 1000 MoWo", stake_fund:"Выплаты из пула 1,000M.",
+        src_title:"Исходный код (кратко)", src_hint:"Показать/скрыть", verify_warn:"Проверяйте адрес в Polygonscan."
+    },
+    ar:{header_sub:"رمز ERC-20 على شبكة بوليجون • رهن مرن ومقفل",
+        hero_title:"ستستخدم هذا الرمز على القمر 🌙",
+        hero_desc:"معروض ثابت 1,000,000,000,000 MoWo. خزانات <b>اللعبة (100M)</b> و<b>الرهن (1,000M)</b>.",
         btn_scan:"عرض على Polygonscan", btn_uniswap:"الشراء عبر Uniswap", btn_add:"إضافة إلى MetaMask", btn_connect:"اتصال المحفظة",
         ribbon:"بيع مسبق محدود — سعر مميز حتى نهاية المؤقت.",
         presale_until:"ينتهي البيع المسبق خلال: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"الإجمالي", k_chain:"الشبكة", k_addr:"العقد",
-        ref_price:"السعر المرجعي", amm_note:"السعر يحدده AMM حسب السيولة.",
-        buy_crypto:"شراء بالعملات المشفرة", buy_card:"شراء بالبطاقة", need_pol:"تحتاج POL لرسوم الغاز.",
-        tok_title:"اقتصاد الرمز", tok_total:"الإمداد الكلي", tok_game:"خزان اللعبة", tok_stake:"خزان الرهن",
-        tok_nomint:"لا إيردروب تلقائي ولا سك لاحق.", tok_roles:"أدوار آمنة للمكافآت وتعديل APR.",
-        tok_modes:"رهن مرن (بدون حجز) ومقفل (30/90/180 يوماً).",
-        game_note:"يفتح خزان اللعبة عند إطلاق لعبة أندرويد.",
-        stake_title:"شرح الرهن", stake_flex:"رهن مرن مع سحب المكافآت في أي وقت.",
-        stake_examples:"أمثلة لـ 1000 MoWo", stake_fund:"المكافآت من خزان 500M.",
-        src_title:"كود العقد (شفافية)", src_hint:"إظهار/إخفاء الكود",
-        verify_warn:"تحقق من العنوان على Polygonscan."},
+        amm_note:"السعر يحدده AMM حسب السيولة.",
+        tok_title:"اقتصاد الرمز", tok_nomint:"لا ايردروب تلقائي ولا سك لاحق.",
+        tok_roles:"أدوار آمنة لمكافآت اللعبة والبيع بالبطاقات وتعديل APR.",
+        tok_modes:"رهن مرن ومقفل (30/90/180 يوماً).",
+        stake_title:"شرح الرهن", stake_flex:"رهن مرن مع سحب المكافآت.",
+        stake_examples:"أمثلة لـ 1000 MoWo", stake_fund:"المكافآت من خزان 1,000M.",
+        src_title:"كود العقد (مختصر)", src_hint:"إظهار/إخفاء", verify_warn:"تحقق من العنوان على Polygonscan."
+    },
     de:{header_sub:"ERC-20-Token auf Polygon • Flexibles & gesperrtes Staking",
         hero_title:"Diesen Token kannst du auf dem Mond nutzen 🌙",
-        hero_desc:"Feste Menge 1.000.000.000.000 MoWo. Kein Mint. Pools: <b>Game (30M)</b>, <b>Staking (500M)</b>.",
+        hero_desc:"Feste Menge 1.000.000.000.000 MoWo. Pools: <b>Game (100M)</b>, <b>Staking (1,000M)</b>.",
         btn_scan:"Auf Polygonscan ansehen", btn_uniswap:"Auf Uniswap kaufen", btn_add:"Zu MetaMask hinzufügen", btn_connect:"Wallet verbinden",
-        ribbon:"Limitierte Presale-Phase — Vorteilspreis bis zum Timerende.",
+        ribbon:"Limitierte Presale-Phase — Vorteilspreis bis Timerende.",
         presale_until:"Presale endet in: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Angebot", k_chain:"Netzwerk", k_addr:"Vertrag",
-        ref_price:"Referenzstartpreis", amm_note:"Preis durch AMM bestimmt.",
-        buy_crypto:"Mit CRYPTO kaufen", buy_card:"Mit Karte kaufen", need_pol:"POL für Gas erforderlich.",
-        tok_title:"Tokenomics", tok_total:"Gesamtangebot", tok_game:"Spielpool", tok_stake:"Staking-Pool",
-        tok_nomint:"Kein Auto-Airdrop, kein Minting.", tok_roles:"Sichere Rollen für Rewards & APR.",
+        amm_note:"Preis durch AMM bestimmt.",
+        tok_title:"Tokenomics", tok_nomint:"Kein Auto-Airdrop, kein Minting.",
+        tok_roles:"Sichere Rollen: Rewards, Fiat-Verkauf, APR.",
         tok_modes:"Flex & Lock (30/90/180 Tage).",
-        game_note:"Game-Pool aktiviert sich beim Android-Launch.",
-        stake_title:"Staking erklärt", stake_flex:"Flex-Staking ohne Lock; Rewards jederzeit claimen.",
-        stake_examples:"Beispiele mit 1000 MoWo", stake_fund:"Rewards aus 500M-Pool.",
-        src_title:"Vertragscode (Transparenz)", src_hint:"Quellcode anzeigen/ausblenden",
-        verify_warn:"Adresse in Polygonscan prüfen."},
+        stake_title:"Staking erklärt", stake_flex:"Flex-Staking; Rewards jederzeit claimen.",
+        stake_examples:"Beispiele mit 1000 MoWo", stake_fund:"Rewards aus 1,000M-Pool.",
+        src_title:"Vertrag (Kurz)", src_hint:"Anzeigen/Verbergen", verify_warn:"Adresse in Polygonscan prüfen."
+    },
     fr:{header_sub:"Token ERC-20 sur Polygon • Staking flexible et verrouillé",
         hero_title:"Ce token sera utilisable sur la Lune 🌙",
-        hero_desc:"Offre fixe 1 000 000 000 000 MoWo. Pas de mint futur. Pools <b>jeu (30M)</b> et <b>staking (500M)</b>.",
+        hero_desc:"Offre fixe 1 000 000 000 000 MoWo. Pools <b>jeu (100M)</b> et <b>staking (1,000M)</b>.",
         btn_scan:"Voir sur Polygonscan", btn_uniswap:"Acheter sur Uniswap", btn_add:"Ajouter à MetaMask", btn_connect:"Connecter le wallet",
-        ribbon:"Prévente limitée — prix préférentiel jusqu’à la fin du compte à rebours.",
+        ribbon:"Prévente limitée — prix préférentiel jusqu’à la fin.",
         presale_until:"La prévente se termine dans : <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Offre", k_chain:"Réseau", k_addr:"Contrat",
-        ref_price:"Prix de départ de référence", amm_note:"Le prix réel est fixé par l’AMM.",
-        buy_crypto:"Acheter avec CRYPTO", buy_card:"Acheter par CARTE", need_pol:"POL requis pour le gas.",
-        tok_title:"Tokenomics", tok_total:"Offre totale", tok_game:"Pool jeu", tok_stake:"Pool staking",
-        tok_nomint:"Pas d’airdrop automatique ni de mint futur.",
-        tok_roles:"Rôles sécurisés pour récompenses & APR.",
+        amm_note:"Le prix réel est fixé par l’AMM.",
+        tok_title:"Tokenomics", tok_nomint:"Pas d’airdrop auto, pas de mint futur.",
+        tok_roles:"Rôles sécurisés : récompenses, vente fiat, APR.",
         tok_modes:"Staking flexible et verrouillé (30/90/180 j).",
-        game_note:"Le Game Pool s’active au lancement Android.",
-        stake_title:"Staking expliqué", stake_flex:"Staking flexible sans verrouillage.",
-        stake_examples:"Exemples avec 1000 MoWo", stake_fund:"Récompenses depuis le pool 500M.",
-        src_title:"Code du contrat (transparence)", src_hint:"Afficher/Masquer le code",
-        verify_warn:"Toujours vérifier l’adresse sur Polygonscan."},
+        stake_title:"Staking expliqué", stake_flex:"Staking flexible; claim à tout moment.",
+        stake_examples:"Exemples avec 1000 MoWo", stake_fund:"Récompenses du pool 1,000M.",
+        src_title:"Code contrat (résumé)", src_hint:"Afficher/Masquer", verify_warn:"Vérifiez l’adresse sur Polygonscan."
+    },
     it:{header_sub:"Token ERC-20 su Polygon • Staking flessibile e bloccato",
         hero_title:"Potrai usare questo token sulla Luna 🌙",
-        hero_desc:"Supply fisso 1.000.000.000.000 MoWo. Nessun mint futuro. Pool <b>gioco (30M)</b> e <b>staking (500M)</b>.",
+        hero_desc:"Supply fisso 1.000.000.000.000 MoWo. Pool <b>gioco (100M)</b> e <b>staking (1,000M)</b>.",
         btn_scan:"Vedi su Polygonscan", btn_uniswap:"Compra su Uniswap", btn_add:"Aggiungi a MetaMask", btn_connect:"Connetti wallet",
         ribbon:"Presale limitato — prezzo preferenziale fino alla fine.",
         presale_until:"La presale termina tra: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"Supply", k_chain:"Rete", k_addr:"Contratto",
-        ref_price:"Prezzo di riferimento", amm_note:"Il prezzo lo decide l’AMM.",
-        buy_crypto:"Compra con CRYPTO", buy_card:"Compra con CARTA", need_pol:"Serve POL per il gas.",
-        tok_title:"Tokenomics", tok_total:"Supply totale", tok_game:"Pool gioco", tok_stake:"Pool staking",
-        tok_nomint:"Nessun airdrop automatico né mint futuro.", tok_roles:"Ruoli sicuri per premi & APR.",
+        amm_note:"Il prezzo lo decide l’AMM.",
+        tok_title:"Tokenomics", tok_nomint:"Niente airdrop automatico, niente mint.",
+        tok_roles:"Ruoli sicuri: ricompense, vendita fiat, APR.",
         tok_modes:"Flessibile e bloccato (30/90/180 gg).",
-        game_note:"Il Game Pool si sblocca al lancio del gioco Android.",
-        stake_title:"Staking: spiegazione", stake_flex:"Staking flessibile: claim quando vuoi.",
-        stake_examples:"Esempi con 1000 MoWo", stake_fund:"Reward dal pool 500M.",
-        src_title:"Codice del contratto", src_hint:"Mostra/Nascondi sorgente",
-        verify_warn:"Verifica sempre l’indirizzo su Polygonscan."},
+        stake_title:"Staking: spiegazione", stake_flex:"Staking flessibile; claim quando vuoi.",
+        stake_examples:"Esempi con 1000 MoWo", stake_fund:"Reward dal pool 1,000M.",
+        src_title:"Codice (sintesi)", src_hint:"Mostra/Nascondi", verify_warn:"Verifica su Polygonscan."
+    },
     zh:{header_sub:"基于 Polygon 的 ERC-20 • 灵活/锁仓质押",
         hero_title:"此代币将在月球世界中使用 🌙",
-        hero_desc:"固定总量 1,000,000,000,000 MoWo。无后续增发。内置 <b>游戏池（30M）</b> 与 <b>质押池（500M）</b>。",
+        hero_desc:"固定总量 1,000,000,000,000 MoWo。内置 <b>游戏池（100M）</b> 与 <b>质押池（1,000M）</b>。",
         btn_scan:"在 Polygonscan 查看", btn_uniswap:"在 Uniswap 购买", btn_add:"添加到 MetaMask", btn_connect:"连接钱包",
-        ribbon:"限时预售 — 计时结束前享受优惠价格。",
+        ribbon:"限时预售 — 计时结束前享优惠价格。",
         presale_until:"预售结束倒计时：<strong id='countdown'>--d --:--:--</strong>",
         k_supply:"总量", k_chain:"网络", k_addr:"合约",
-        ref_price:"参考初始价格", amm_note:"实际价格由 AMM 决定。",
-        buy_crypto:"用加密货币购买", buy_card:"用银行卡购买", need_pol:"需要 POL 作为 Gas。",
-        tok_title:"代币经济", tok_total:"总代币量", tok_game:"游戏池", tok_stake:"质押池",
-        tok_nomint:"无自动空投、无再次增发。", tok_roles:"安全角色用于奖励与年化调整。",
-        tok_modes:"灵活质押与锁仓（30/90/180 天）。",
-        game_note:"游戏池将随 Android 游戏上线启用。",
-        stake_title:"质押说明", stake_flex:"灵活质押：可随时领取累计奖励。",
-        stake_examples:"1000 MoWo 示例", stake_fund:"奖励来自 5 亿池；用尽则受限。",
-        src_title:"合约源码（透明）", src_hint:"展开/折叠源码",
-        verify_warn:"务必在 Polygonscan 核对合约地址。"}
+        amm_note:"实际价格由 AMM 决定。",
+        tok_title:"代币经济", tok_nomint:"无自动空投、无二次增发。",
+        tok_roles:"安全角色：游戏奖励、法币销售、APR。",
+        tok_modes:"灵活/锁仓质押（30/90/180 天）。",
+        stake_title:"质押说明", stake_flex:"灵活质押；可随时领取累计奖励。",
+        stake_examples:"1000 MoWo 示例", stake_fund:"奖励来自 1,000M 池。",
+        src_title:"合约源码（摘要）", src_hint:"展开/折叠", verify_warn:"务必在 Polygonscan 核对合约地址。"}
   };
   const sel = document.getElementById('langSel');
   const dirMap = { ar:'rtl' };
@@ -535,7 +405,7 @@ contract MoonWordToken is ERC20, ERC20Permit, AccessControl, ReentrancyGuard {
     }catch(e){ console.error(e); alert('No se pudo añadir el token.'); }
   });
 
-  // ===== Wallet Connect (Injected / WC) =====
+  // ===== Wallet connect (injected/WC) =====
   const connectBtn = document.getElementById('connectWallet');
   const walletInfo = document.getElementById('walletInfo');
   function short(a){ return a ? `${a.slice(0,6)}...${a.slice(-4)}` : ''; }
@@ -595,12 +465,12 @@ contract MoonWordToken is ERC20, ERC20Permit, AccessControl, ReentrancyGuard {
   }
   connectBtn.addEventListener('click', chooseAndConnect);
 
-  // ===== Buy with Card (Transak) =====
-  document.getElementById('buyCard').addEventListener('click', async ()=>{
+  // ===== Buy with Card (Transak opcional) =====
+  document.getElementById('buyCard')?.addEventListener('click', async ()=>{
     let addr = '';
     try{ if (window.mowoSigner) addr = await window.mowoSigner.getAddress(); }catch(e){}
     const t = new TransakSDK({
-      apiKey: 'TU_API_KEY_DE_TRANSAK', // <- pon tu API key
+      apiKey: 'TU_API_KEY_DE_TRANSAK', // si lo usas
       environment: 'PRODUCTION',
       defaultCryptoCurrency: 'POL',
       network: 'polygon',
@@ -608,6 +478,44 @@ contract MoonWordToken is ERC20, ERC20Permit, AccessControl, ReentrancyGuard {
     });
     t.init();
   });
+
+  // ===== Starfield Canvas =====
+  (function(){
+    const c = document.getElementById('stars'), ctx = c.getContext('2d');
+    let w,h,stars=[];
+    function resize(){ w= c.width = innerWidth; h = c.height = innerHeight; make(); }
+    function make(){
+      stars = [];
+      const n = Math.min(350, Math.floor((w*h)/6000));
+      for(let i=0;i<n;i++){
+        stars.push({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          r: Math.random()*1.2+0.3,
+          a: Math.random()*0.5+0.5,
+          s: Math.random()*0.02+0.005
+        });
+      }
+    }
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      for(const st of stars){
+        st.a += st.s;
+        const alpha = 0.4 + 0.6*Math.abs(Math.sin(st.a));
+        ctx.beginPath();
+        ctx.arc(st.x,st.y,st.r,0,Math.PI*2);
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.shadowBlur = 6; ctx.shadowColor = '#7dd3fc';
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    addEventListener('resize', resize);
+    resize(); draw();
+  })();
+
+  // ===== init lang =====
+  applyLang('es');
 </script>
 </body>
 </html>
