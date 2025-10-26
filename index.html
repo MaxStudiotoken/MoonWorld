@@ -28,6 +28,7 @@
     background:linear-gradient(180deg,var(--bg),var(--bg2));
     overflow-x:hidden;
   }
+  /* Nebulosas */
   .neon-bg{
     position:fixed; inset:-10%; z-index:-3; pointer-events:none;
     background:
@@ -36,7 +37,8 @@
       radial-gradient(700px 400px at 50% 20%, rgba(255,0,255,.10) 0%, transparent 55%);
     filter:saturate(120%);
   }
-  #stars{position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.9; mix-blend-mode:screen}
+  /* Estrellas (canvas) */
+  #stars{position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.95; mix-blend-mode:screen}
 
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1180px;margin:0 auto;padding:26px}
@@ -44,6 +46,7 @@
   .brand h1{margin:0;font-size:28px;letter-spacing:.3px;color:var(--neon1);text-shadow:0 0 12px var(--neon1)}
   .brand small{display:block;color:var(--muted)}
 
+  /* Idiomas */
   .lang{margin-left:auto; position:relative}
   .langBtn{background:#0f1630;border:1px solid rgba(255,255,255,.15);color:#cfe9ff;border-radius:10px;padding:8px 12px;cursor:pointer;}
   .langMenu{position:absolute; right:0; top:42px; background:#0f1630;border:1px solid rgba(255,255,255,.12);border-radius:12px; padding:6px; display:none; min-width:160px; z-index:10;}
@@ -75,12 +78,16 @@
   .ribbon{background:linear-gradient(90deg, rgba(0,255,163,.16), rgba(125,211,252,.16));border:1px dashed rgba(0,255,163,.5); color:#afffdf;padding:10px 12px; border-radius:12px; font-weight:900; text-align:center; margin:10px 0}
   .footer{text-align:center;color:#98a2b3;font-size:13px;margin:40px 0 10px}
 
+  /* LOGO CUADRADO (no círculo) */
   .heroLogo{display:flex;align-items:center;justify-content:center;padding:26px 10px;border-left:1px solid rgba(255,255,255,.08)}
-  .logoBig{width:480px;height:480px;max-width:min(92vw, 520px);max-height:min(92vw, 520px);border-radius:50%;
-    background:radial-gradient(circle at 45% 35%, #ffffff 0%, #c2e9ff 10%, #7dd3fc 25%, #2b3a7a 55%, #0b1028 75%);
-    box-shadow:0 0 70px rgba(125,211,252,.55), 0 0 160px rgba(255,0,255,.28);display:flex;align-items:center;justify-content:center;overflow:hidden;border:5px solid rgba(255,255,255,.12)}
-  .logoBig img{width:94%;height:94%;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 0 22px rgba(255,255,255,.38))}
-  .logoCaption{margin-top:10px;text-align:center;color:#bfe5ff;font-weight:900;letter-spacing:.4px}
+  .logoBig{
+    width:480px;height:480px;max-width:min(92vw, 520px);max-height:min(92vw, 520px);
+    border-radius:16px; /* cuadrado suavizado */
+    background:linear-gradient(180deg,#0b1028,#0b0f1a);
+    box-shadow:0 0 40px rgba(125,211,252,.45), 0 0 120px rgba(255,0,255,.20);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;border:5px solid rgba(255,255,255,.12)
+  }
+  .logoBig img{width:100%;height:100%;object-fit:contain;image-rendering:auto}
 
   .donutWrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
   .donut{ --p1: 9.09; --p2: 90.91; width:180px;height:180px;border-radius:50%;
@@ -96,10 +103,12 @@
   .goldBanner img{width:100%;height:auto;display:block}
   .hash{font-family:ui-monospace, Menlo, Consolas, monospace; font-size:12px; word-break:break-all;background:#0b1229;border:1px solid rgba(255,255,255,.08); padding:10px;border-radius:10px}
 
+  /* Intro features */
   .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:12px}
   .feat{padding:16px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:#0f1630}
   .feat h3{margin:0 0 4px;font-size:16px}
   .feat p{margin:0;color:var(--muted);font-size:13px}
+
   @media(max-width:1000px){.hero{grid-template-columns:1fr}.heroLogo{border-left:none;border-top:1px solid rgba(255,255,255,.08)}.heroLeft{padding:20px}}
   @media(max-width:560px){.title{font-size:30px}.metric{grid-template-columns:1fr}.cta{justify-content:center}header{justify-content:space-between}.wrap{padding:18px}.features{grid-template-columns:1fr}}
 </style>
@@ -130,12 +139,23 @@
     </div>
   </header>
 
-  <!-- ===== NUEVA SECCIÓN: INTRO APP/METAVERSO ===== -->
+  <!-- ===== BIENVENIDA ===== -->
+  <section class="card box" id="welcome">
+    <h2 class="title" data-i="welcome_t">Bienvenido al Ecosistema del Metaverso Lunar</h2>
+    <p class="subtitle" data-i="welcome_p1">
+      Tres fuerzas mueven MoonWorld: <b>MoWo (Polygon)</b> para la economía central,
+      <b>MoWo (GOLD) en Solana</b> para el lujo y el acceso VIP, y <b>Imperio Zhao</b> —el token de los valientes—
+      para el <b>Club Zombi</b>, donde se comercian armas y equipo prohibido.
+    </p>
+    <p class="subtitle" data-i="welcome_p2">Compra parcelas, construye casas, colecciona vehículos y compite en minijuegos dentro de una ciudad ciberpunk en la Luna. Gana recompensas reales en MoWo.</p>
+  </section>
+
+  <!-- ===== INTRO APP/METAVERSO ===== -->
   <section class="card box" id="app">
     <h2 class="title" style="text-shadow:none" data-i="app_title">MoonWorld: Metaverso Lunar con Utilidad Real</h2>
     <p class="subtitle" data-i="app_p1">Explora una ciudad ciberpunk en la Luna. Compra parcelas, construye casas, colecciona vehículos y participa en minijuegos con recompensas en MoWo.</p>
-    <p class="subtitle" data-i="app_p2">El token MoWo es la moneda del mundo: se usa para terrenos, mejoras, crafteo de ítems, movimiento entre distritos y tasas del mercado.</p>
-    <p class="subtitle" data-i="app_p3">Disponible inicialmente como juego Android y panel web. Todo lo importante —tierra, objetos premium, pases de temporada— está respaldado por contratos y pools on-chain.</p>
+    <p class="subtitle" data-i="app_p2">El token MoWo es la moneda del mundo: terrenos, mejoras, crafteo de ítems, viajes entre distritos y tasas del mercado.</p>
+    <p class="subtitle" data-i="app_p3">Disponible inicialmente como juego Android y panel web. Los activos clave —tierra, premium y pases— están respaldados por contratos on-chain.</p>
     <div class="features">
       <div class="feat">
         <h3 data-i="app_f1_t">Parcelas & Distritos</h3>
@@ -163,9 +183,8 @@
       </div>
     </div>
   </section>
-  <!-- ===== /INTRO ===== -->
 
-  <!-- ===== BLOQUE MoWo (GOLD) ===== -->
+  <!-- ===== MoWo (GOLD) — SOLANA ===== -->
   <section class="card" id="gold">
     <div class="goldBanner">
       <img src="mowo_gold_banner_1500x500.png" alt="" data-i="gold_banner_alt">
@@ -177,26 +196,37 @@
         <p class="subtitle" data-i="gold_p2"></p>
         <p class="subtitle" data-i="gold_p3"></p>
         <div class="cta" style="margin-top:12px">
-          <a class="btn primary" id="pumpLink" target="_blank" href="https://pump.fun/coin/GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL" data-i="gold_buy">Comprar en Pump.fun</a>
+          <a class="btn primary" target="_blank" href="https://pump.fun/coin/GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL" data-i="gold_buy">Comprar en Pump.fun</a>
           <button class="btn ghost" id="copyGold" data-i="gold_copy">Copiar contrato</button>
-          <span class="pill">MoWoGOLD</span><span class="pill">MoWoOro</span>
+          <span class="pill">GOLD</span><span class="pill">Solana</span>
         </div>
-        <div style="margin-top:10px">
-          <strong data-i="gold_contract_label">Contrato:</strong>
-          <span class="hash" id="goldAddr">GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL</span>
-        </div>
+        <div style="margin-top:10px"><strong data-i="gold_contract_label">Contrato:</strong> <span class="hash" id="goldAddr">GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL</span></div>
       </div>
-      <div style="text-align:center">
-        <div class="logoBig" style="background:radial-gradient(circle at 45% 35%, #fff6d6 0%, #ffe8a3 12%, #f3c969 28%, #3a2b0a 70%, #0b0f1a 85%); box-shadow:0 0 70px rgba(243,201,105,.55), 0 0 160px rgba(243,201,105,.28);">
-          <img alt="Logo MoWo GOLD" src="mowo_gold_logo.png">
-        </div>
-        <div class="logoCaption">MoonWorld • MoWo (GOLD)</div>
-      </div>
+      <div class="heroLogo"><div class="logoBig"><img alt="Logo MoWo GOLD" src="mowo_gold_logo.png"></div></div>
     </div>
   </section>
 
-  <!-- HERO ORIGINAL -->
-  <section class="hero card">
+  <!-- ===== IMPERIO ZHAO — SOLANA ===== -->
+  <section class="card" id="zhao" style="margin-top:16px;">
+    <div class="goldBanner"><img src="imperiozhaobaner.png" alt="" data-i="zhao_banner_alt"></div>
+    <div class="box" style="display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center">
+      <div>
+        <h2 class="title" style="color:#a78bfa" data-i="zhao_title">Imperio Zhao — El pase al <span style="color:#00ffa3">Club Zombi</span> 🧟‍♂️</h2>
+        <p class="subtitle" data-i="zhao_p1">Este es el <b>meme-token oficial</b> del subsuelo lunar. Si quieres entrar al Club Zombi y <b>comprar armas, munición y artefactos prohibidos</b>, pagas con <b>Zhao</b>.</p>
+        <p class="subtitle" data-i="zhao_p2">Irreverente, ruidoso y <b>100% comunidad</b>. Cuantos más Zhao tengas, más profundo accedes: mercaderes raros, contratos clandestinos y desafíos solo para zombis.</p>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn primary" target="_blank" href="https://pump.fun/coin/GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz" data-i="zhao_buy">Entrar al Club Zombi</a>
+          <button class="btn ghost" id="copyZhao" data-i="zhao_copy">Copiar contrato</button>
+          <span class="pill">Imperio Zhao</span><span class="pill">Solana</span>
+        </div>
+        <div style="margin-top:10px"><strong data-i="zhao_contract_label">Contrato:</strong> <span class="hash" id="zhaoAddr">GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz</span></div>
+      </div>
+      <div class="heroLogo"><div class="logoBig"><img alt="Logo Imperio Zhao" src="imperiozhao.png"></div></div>
+    </div>
+  </section>
+
+  <!-- ===== HERO MoWo (POLYGON) ===== -->
+  <section class="hero card" style="margin-top:16px">
     <div class="heroLeft">
       <h2 class="title" data-i="hero_title">Este token lo podrás utilizar en la Luna 🌙</h2>
       <p class="subtitle" data-i="hero_desc">
@@ -225,9 +255,7 @@
 
     <div class="heroLogo">
       <div style="text-align:center">
-        <div class="logoBig">
-          <img alt="MoonWorld Logo" src="moonworld_logo.png"/>
-        </div>
+        <div class="logoBig"><img alt="MoonWorld Logo" src="moonworld_logo.png"/></div>
         <div class="logoCaption">MoonWorld • MoWo</div>
         <div style="margin-top:16px;text-align:center">
           <div class="pill">1 POL = <b>100,000 MoWo</b></div>
@@ -293,287 +321,351 @@
 <script src="https://global.transak.com/sdk/v1.1/widget.js"></script>
 
 <script>
+  // ===== Config =====
   const TOKEN_ADDRESS = '0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121';
   const POLYGON_HEX = '0x89';
   const presaleEnd = new Date(Date.now() + 120*24*60*60*1000);
   const WC_PROJECT_ID = 'REEMPLAZA_CON_TU_PROJECT_ID';
   const GOLD_ADDR = 'GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL';
+  const ZHAO_ADDR = 'GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz';
   document.getElementById('y').textContent = new Date().getFullYear();
 
+  // ===== i18n COMPLETO =====
   const i18n = {
-    es:{
-      /* EXISTENTES */
-      header_sub:"Token ERC-20 en Polygon • Staking flexible y bloqueado",
-      hero_title:"Este token lo podrás utilizar en la Luna 🌙",
-      hero_desc:"Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para <b>juego (100M)</b> y <b>staking (1,000M)</b>.",
-      btn_scan:"Ver en Polygonscan", btn_uniswap:"Comprar en Uniswap", btn_add:"Añadir a MetaMask", btn_connect:"Conectar wallet",
-      buy_card:"Comprar con tarjeta (GPay/Apple Pay)",
-      ribbon:"Preventa limitada — precio preferente hasta que termine el contador.",
-      presale_until:"Preventa termina en: <strong id='countdown'>--d --:--:--</strong>",
-      k_supply:"Suministro", k_chain:"Red", k_addr:"Contrato",
-      amm_note:"El precio real lo decide el AMM según liquidez y operaciones.",
-      tok_title:"Tokenomics", tok_nomint:"Sin airdrop automático, sin mint posterior.",
-      tok_roles:"Roles seguros para recompensas de juego, ventas fiat y ajustes de APR.",
-      tok_modes:"Staking flexible (salida libre) y bloqueado (30/90/180 días).",
-      stake_title:"Explicación de staking", stake_flex:"El contrato tiene <b>staking flexible</b> sin obligación de bloquear. Puedes entrar/salir cuando quieras y reclamar recompensas acumuladas (<code>claimFlexible()</code>).",
-      stake_examples:"Ejemplos con 1000 MoWo", stake_fund:"Recompensas desde el pool de 1,000M (limitado si se agota). APR ajustable (tope 50%).",
-      src_title:"Código del contrato (resumen)", src_hint:"Ver/ocultar fragmento", verify_warn:"Siempre verifica la dirección del contrato en Polygonscan.",
-      gold_title:"🪙 MoonWorld MoWo (GOLD) – El Oro del Metaverso Lunar 🌕",
-      gold_p1:"Bienvenido a la versión dorada y exclusiva del metaverso lunar. MoWo (GOLD) no es solo un token, es el símbolo del poder y la rareza dentro de MoonWorld.",
-      gold_p2:"Solo los usuarios más astutos y visionarios podrán acceder a objetos premium: parcelas de lujo, viviendas futuristas, vehículos únicos y más.",
-      gold_p3:"💎 Poseer MoWo GOLD es poseer el futuro del metaverso. 🔥 Solo unos pocos lo tendrán. ¿Serás uno de ellos?",
-      gold_buy:"🚀 Comprar en Pump.fun",
-      gold_copy:"📋 Copiar contrato",
-      gold_contract_label:"Contrato:",
-      gold_banner_alt:"Banner oficial MoWo (GOLD) 1500×500",
-      /* NUEVOS (APP) */
-      app_title:"MoonWorld: Metaverso Lunar con Utilidad Real",
-      app_p1:"Explora una ciudad ciberpunk en la Luna. Compra parcelas, construye casas, colecciona vehículos y participa en minijuegos con recompensas en MoWo.",
-      app_p2:"El token MoWo es la moneda del mundo: se usa para terrenos, mejoras, crafteo de ítems, movimiento entre distritos y tasas del mercado.",
-      app_p3:"Disponible inicialmente como juego Android y panel web. Todo lo importante —tierra, objetos premium, pases de temporada— está respaldado por contratos y pools on-chain.",
-      app_f1_t:"Parcelas & Distritos", app_f1_d:"Terrenos tokenizados con rarezas; zonas residenciales, comerciales e industriales.",
-      app_f2_t:"Casas & Talleres", app_f2_d:"Construye, mejora módulos, alquila espacios y genera ingresos en MoWo.",
-      app_f3_t:"Vehículos Únicos", app_f3_d:"Motos lunares y rovers personalizables. Combustible y piezas se pagan en MoWo.",
-      app_f4_t:"Minijuegos con Recompensa", app_f4_d:"Carreras, entregas, hacking y PVE. Gana MoWo desde el pool de juego (100M).",
-      app_f5_t:"Mercado & Crafteo", app_f5_d:"Intercambia planos y materiales; cocina ítems premium con tasas en MoWo.",
-      app_f6_t:"Pases & Eventos", app_f6_d:"Temporadas, torneos y loterías semanales con quema parcial de tarifas."
+    es:{header_sub:"Token ERC-20 en Polygon • Staking flexible y bloqueado",
+        hero_title:"Este token lo podrás utilizar en la Luna 🌙",
+        hero_desc:"Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para <b>juego (100M)</b> y <b>staking (1,000M)</b>.",
+        btn_scan:"Ver en Polygonscan", btn_uniswap:"Comprar en Uniswap", btn_add:"Añadir a MetaMask", btn_connect:"Conectar wallet",
+        buy_card:"Comprar con tarjeta (GPay/Apple Pay)",
+        ribbon:"Preventa limitada — precio preferente hasta que termine el contador.",
+        presale_until:"Preventa termina en: <strong id='countdown'>--d --:--:--</strong>",
+        k_supply:"Suministro", k_chain:"Red", k_addr:"Contrato",
+        amm_note:"El precio real lo decide el AMM según liquidez y operaciones.",
+        tok_title:"Tokenomics", tok_nomint:"Sin airdrop automático, sin mint posterior.",
+        tok_roles:"Roles seguros para recompensas de juego, ventas fiat y ajustes de APR.",
+        tok_modes:"Staking flexible (salida libre) y bloqueado (30/90/180 días).",
+        stake_title:"Explicación de staking", stake_flex:"El contrato tiene <b>staking flexible</b> sin obligación de bloquear. Puedes entrar/salir cuando quieras y reclamar recompensas acumuladas (<code>claimFlexible()</code>).",
+        stake_examples:"Ejemplos con 1000 MoWo", stake_fund:"Recompensas desde el pool de 1,000M (limitado si se agota). APR ajustable (tope 50%).",
+        src_title:"Código del contrato (resumen)", src_hint:"Ver/ocultar fragmento", verify_warn:"Siempre verifica la dirección del contrato en Polygonscan.",
+        /* APP */
+        app_title:"MoonWorld: Metaverso Lunar con Utilidad Real",
+        app_p1:"Explora una ciudad ciberpunk en la Luna. Compra parcelas, construye casas, colecciona vehículos y participa en minijuegos con recompensas en MoWo.",
+        app_p2:"El token MoWo es la moneda del mundo: terrenos, mejoras, crafteo de ítems, viajes entre distritos y tasas del mercado.",
+        app_p3:"Disponible inicialmente como juego Android y panel web. Los activos clave —tierra, premium y pases— están respaldados por contratos on-chain.",
+        app_f1_t:"Parcelas & Distritos", app_f1_d:"Terrenos tokenizados con rarezas; zonas residenciales, comerciales e industriales.",
+        app_f2_t:"Casas & Talleres", app_f2_d:"Construye, mejora módulos, alquila espacios y genera ingresos en MoWo.",
+        app_f3_t:"Vehículos Únicos", app_f3_d:"Motos lunares y rovers personalizables. Combustible y piezas se pagan en MoWo.",
+        app_f4_t:"Minijuegos con Recompensa", app_f4_d:"Carreras, entregas, hacking y PVE. Gana MoWo desde el pool de juego (100M).",
+        app_f5_t:"Mercado & Crafteo", app_f5_d:"Intercambia planos y materiales; cocina ítems premium con tasas en MoWo.",
+        app_f6_t:"Pases & Eventos", app_f6_d:"Temporadas, torneos y loterías semanales con quema parcial de tarifas.",
+        /* WELCOME */
+        welcome_t:"Bienvenido al Ecosistema del Metaverso Lunar",
+        welcome_p1:"Tres fuerzas mueven MoonWorld: MoWo (Polygon), MoWo (GOLD) en Solana y el meme-token Imperio Zhao para el Club Zombi.",
+        welcome_p2:"Compra parcelas, construye casas, colecciona vehículos y compite en minijuegos. Recompensas reales en MoWo.",
+        /* GOLD */
+        gold_title:"🪙 MoonWorld MoWo (GOLD) – El Oro del Metaverso Lunar 🌕",
+        gold_p1:"Edición dorada y exclusiva — símbolo del poder y la rareza dentro de MoonWorld.",
+        gold_p2:"Acceso a objetos premium: parcelas de lujo, viviendas futuristas, vehículos únicos y más.",
+        gold_p3:"💎 Poseer MoWo GOLD es poseer el futuro del metaverso.",
+        gold_buy:"🚀 Comprar en Pump.fun",
+        gold_copy:"📋 Copiar contrato",
+        gold_contract_label:"Contrato:",
+        gold_banner_alt:"Banner oficial MoWo (GOLD) 1500×500",
+        /* ZHAO */
+        zhao_title:"Imperio Zhao — El pase al Club Zombi 🧟‍♂️",
+        zhao_p1:"Meme-token oficial del subsuelo lunar. Para entrar al Club Zombi y comprar armas, munición y artefactos prohibidos, pagas con Zhao.",
+        zhao_p2:"Irreverente, ruidoso y 100% comunidad. Cuantos más Zhao tengas, más profundo accedes: mercaderes raros, contratos clandestinos y desafíos especiales.",
+        zhao_buy:"Entrar al Club Zombi",
+        zhao_copy:"Copiar contrato",
+        zhao_contract_label:"Contrato:",
+        zhao_banner_alt:"Banner Imperio Zhao"
     },
-    en:{
-      header_sub:"ERC-20 on Polygon • Flexible & locked staking",
-      hero_title:"You will be able to use this token on the Moon 🌙",
-      hero_desc:"Fixed supply 1,000,000,000,000 MoWo. Internal pools: <b>game (100M)</b> & <b>staking (1,000M)</b>.",
-      btn_scan:"View on Polygonscan", btn_uniswap:"Buy on Uniswap", btn_add:"Add to MetaMask", btn_connect:"Connect wallet",
-      buy_card:"Buy with card (GPay/Apple Pay)",
-      ribbon:"Limited presale — preferred price until timer ends.",
-      presale_until:"Presale ends in: <strong id='countdown'>--d --:--:--</strong>",
-      k_supply:"Supply", k_chain:"Network", k_addr:"Contract",
-      amm_note:"Actual price is defined by AMMs.",
-      tok_title:"Tokenomics", tok_nomint:"No automatic airdrop, no future mint.",
-      tok_roles:"Secure roles for game rewards, fiat sales and APR updates.",
-      tok_modes:"Flexible & locked staking (30/90/180 days).",
-      stake_title:"Staking explained", stake_flex:"Flexible staking; claim accrued rewards anytime.",
-      stake_examples:"Examples with 1000 MoWo", stake_fund:"Rewards paid from the 1,000M pool.",
-      src_title:"Contract source (summary)", src_hint:"Show/Hide snippet", verify_warn:"Always verify the contract on Polygonscan.",
-      gold_title:"🪙 MoonWorld MoWo (GOLD) – The Gold of the Lunar Metaverse 🌕",
-      gold_p1:"Welcome to the golden, exclusive edition of the lunar metaverse. MoWo (GOLD) isn’t just a token — it’s the symbol of power and rarity inside MoonWorld.",
-      gold_p2:"Only the smartest, boldest users gain access to premium items: luxury plots, futuristic homes, unique vehicles, and more.",
-      gold_p3:"💎 Owning MoWo GOLD means owning the future of the metaverse. 🔥 Only a few will hold it. Will you?",
-      gold_buy:"🚀 Buy on Pump.fun",
-      gold_copy:"📋 Copy contract",
-      gold_contract_label:"Contract:",
-      gold_banner_alt:"Official MoWo (GOLD) banner 1500×500",
-      app_title:"MoonWorld: Lunar Metaverse with Real Utility",
-      app_p1:"Explore a cyberpunk city on the Moon. Buy plots, build houses, collect vehicles and play mini-games to earn MoWo.",
-      app_p2:"MoWo is the world currency: land, upgrades, item crafting, district travel and market fees.",
-      app_p3:"Launching on Android and web panel first. Land, premium items and season passes are backed by on-chain contracts and pools.",
-      app_f1_t:"Plots & Districts", app_f1_d:"Tokenized land with rarities; residential, commercial and industrial zones.",
-      app_f2_t:"Houses & Workshops", app_f2_d:"Build, upgrade modules, rent spaces and generate MoWo income.",
-      app_f3_t:"Unique Vehicles", app_f3_d:"Custom moon bikes and rovers. Fuel and parts paid in MoWo.",
-      app_f4_t:"Rewarded Mini-games", app_f4_d:"Races, deliveries, hacking and PvE. Earn from the 100M game pool.",
-      app_f5_t:"Market & Crafting", app_f5_d:"Trade blueprints and materials; craft premium items with MoWo fees.",
-      app_f6_t:"Passes & Events", app_f6_d:"Seasons, tournaments and weekly raffles with partial fee burns."
+    en:{header_sub:"ERC-20 on Polygon • Flexible & locked staking",
+        hero_title:"You will be able to use this token on the Moon 🌙",
+        hero_desc:"Fixed supply 1,000,000,000,000 MoWo. Internal pools: <b>game (100M)</b> & <b>staking (1,000M)</b>.",
+        btn_scan:"View on Polygonscan", btn_uniswap:"Buy on Uniswap", btn_add:"Add to MetaMask", btn_connect:"Connect wallet",
+        buy_card:"Buy with card (GPay/Apple Pay)",
+        ribbon:"Limited presale — preferred price until timer ends.",
+        presale_until:"Presale ends in: <strong id='countdown'>--d --:--:--</strong>",
+        k_supply:"Supply", k_chain:"Network", k_addr:"Contract",
+        amm_note:"Actual price is defined by AMMs.",
+        tok_title:"Tokenomics", tok_nomint:"No automatic airdrop, no future mint.",
+        tok_roles:"Secure roles for game rewards, fiat sales and APR updates.",
+        tok_modes:"Flexible & locked staking (30/90/180 days).",
+        stake_title:"Staking explained", stake_flex:"Flexible staking; claim accrued rewards anytime.",
+        stake_examples:"Examples with 1000 MoWo", stake_fund:"Rewards paid from the 1,000M pool.",
+        src_title:"Contract source (summary)", src_hint:"Show/Hide snippet", verify_warn:"Always verify the contract on Polygonscan.",
+        /* APP */
+        app_title:"MoonWorld: Lunar Metaverse with Real Utility",
+        app_p1:"Explore a cyberpunk city on the Moon. Buy plots, build houses, collect vehicles and play mini-games to earn MoWo.",
+        app_p2:"MoWo is the world currency: land, upgrades, item crafting, district travel and market fees.",
+        app_p3:"Launching on Android and web first. Land, premium items and season passes are backed by on-chain contracts.",
+        app_f1_t:"Plots & Districts", app_f1_d:"Tokenized land with rarities; residential, commercial and industrial zones.",
+        app_f2_t:"Houses & Workshops", app_f2_d:"Build, upgrade modules, rent spaces and generate MoWo income.",
+        app_f3_t:"Unique Vehicles", app_f3_d:"Moon bikes and rovers with customization. Fuel & parts paid in MoWo.",
+        app_f4_t:"Rewarded Mini-games", app_f4_d:"Races, deliveries, hacking and PvE. Rewards from the 100M game pool.",
+        app_f5_t:"Market & Crafting", app_f5_d:"Trade blueprints and materials; craft premium items with MoWo fees.",
+        app_f6_t:"Passes & Events", app_f6_d:"Seasons, tournaments and weekly raffles with partial burns.",
+        /* WELCOME */
+        welcome_t:"Welcome to the Lunar Metaverse Ecosystem",
+        welcome_p1:"Three forces drive MoonWorld: MoWo (Polygon), MoWo (GOLD) on Solana, and the Imperio Zhao meme token for the Zombie Club.",
+        welcome_p2:"Buy plots, build houses, collect vehicles and play mini-games. Real rewards in MoWo.",
+        /* GOLD */
+        gold_title:"🪙 MoonWorld MoWo (GOLD) – The Gold of the Lunar Metaverse 🌕",
+        gold_p1:"Golden, exclusive edition — a symbol of power and rarity inside MoonWorld.",
+        gold_p2:"Access premium items: luxury plots, futuristic homes, unique vehicles and more.",
+        gold_p3:"💎 Owning MoWo GOLD means owning the future of the metaverse.",
+        gold_buy:"🚀 Buy on Pump.fun",
+        gold_copy:"📋 Copy contract",
+        gold_contract_label:"Contract:",
+        gold_banner_alt:"Official MoWo (GOLD) banner 1500×500",
+        /* ZHAO */
+        zhao_title:"Imperio Zhao — Your pass to the Zombie Club 🧟‍♂️",
+        zhao_p1:"The official underground meme-token. To enter the Zombie Club and buy weapons, ammo and forbidden gadgets, you pay with Zhao.",
+        zhao_p2:"Loud, irreverent and 100% community. The more Zhao you hold, the deeper you go: rare merchants, clandestine deals and zombie-only challenges.",
+        zhao_buy:"Enter the Zombie Club",
+        zhao_copy:"Copy contract",
+        zhao_contract_label:"Contract:",
+        zhao_banner_alt:"Imperio Zhao banner"
     },
-    ru:{
-      header_sub:"Токен ERC-20 на Polygon • Гибкий и фиксированный стейкинг",
-      hero_title:"Этот токен вы сможете использовать на Луне 🌙",
-      hero_desc:"Фиксированный объём 1 000 000 000 000 MoWo. Внутренние пулы: <b>игра (100M)</b> и <b>стейкинг (1,000M)</b>.",
-      btn_scan:"Открыть в Polygonscan", btn_uniswap:"Купить на Uniswap", btn_add:"Добавить в MetaMask", btn_connect:"Подключить кошелёк",
-      buy_card:"Покупка картой (GPay/Apple Pay)",
-      ribbon:"Ограниченная предпродажа — льготная цена до конца таймера.",
-      presale_until:"Предпродажа заканчивается через: <strong id='countdown'>--d --:--:--</strong>",
-      k_supply:"Эмиссия", k_chain:"Сеть", k_addr:"Контракт",
-      amm_note:"Рыночную цену задаёт AMM.",
-      tok_title:"Токеномика", tok_nomint:"Без автодропа и доп. эмиссии.",
-      tok_roles:"Безопасные роли: награды, фиат-продажи, APR.",
-      tok_modes:"Гибкий/фиксированный стейкинг (30/90/180 дн).",
-      stake_title:"О стейкинге", stake_flex:"Гибкий стейкинг: claim в любое время.",
-      stake_examples:"Примеры для 1000 MoWo", stake_fund:"Выплаты из пула 1,000M.",
-      src_title:"Исходный код (кратко)", src_hint:"Показать/скрыть", verify_warn:"Проверяйте адрес в Polygonscan.",
-      gold_title:"🪙 MoonWorld MoWo (GOLD) – Золото лунного метавселенной 🌕",
-      gold_p1:"Золотая эксклюзивная версия. Символ силы и редкости в MoonWorld.",
-      gold_p2:"Доступ к премиум-объектам: элитные участки, футур-дома, уникальный транспорт.",
-      gold_p3:"💎 Владеть GOLD — значит владеть будущим метавселенной.",
-      gold_buy:"🚀 Купить на Pump.fun", gold_copy:"📋 Скопировать контракт",
-      gold_contract_label:"Контракт:", gold_banner_alt:"Официальный баннер MoWo (GOLD) 1500×500",
-      app_title:"MoonWorld: Лунный метавселенная с реальной утилитой",
-      app_p1:"Исследуйте киберпанк-город на Луне. Покупайте участки, стройте дома, коллекционируйте транспорт и играйте в мини-игры, зарабатывая MoWo.",
-      app_p2:"MoWo — валюта мира: земля, апгрейды, крафт, перемещения и сборы рынка.",
-      app_p3:"Старт на Android и веб-панели. Ключевые активы поддержаны ончейн-контрактами и пулами.",
-      app_f1_t:"Участки и районы", app_f1_d:"Токенизированная земля с редкостями; жилые, коммерческие и промышленные зоны.",
-      app_f2_t:"Дома и мастерские", app_f2_d:"Стройте, улучшайте модули, сдавайте площади и получайте MoWo.",
-      app_f3_t:"Уникальный транспорт", app_f3_d:"Лунные байки и роверы. Топливо и детали — за MoWo.",
-      app_f4_t:"Мини-игры с наградами", app_f4_d:"Гонки, доставки, взлом и PvE. Выплаты из игрового пула 100M.",
-      app_f5_t:"Маркет и крафт", app_f5_d:"Покупка чертежей и материалов; создание премиум-предметов со сбором в MoWo.",
-      app_f6_t:"Пассы и ивенты", app_f6_d:"Сезоны, турниры и еженедельные розыгрыши с частичным сжигом комиссий."
+    ru:{header_sub:"Токен ERC-20 на Polygon • Гибкий и фиксированный стейкинг",
+        hero_title:"Этот токен вы сможете использовать на Луне 🌙",
+        hero_desc:"Фиксированная эмиссия 1 000 000 000 000 MoWo. Пулы: <b>игра (100M)</b> и <b>стейкинг (1,000M)</b>.",
+        btn_scan:"Открыть в Polygonscan", btn_uniswap:"Купить на Uniswap", btn_add:"Добавить в MetaMask", btn_connect:"Подключить кошелёк",
+        buy_card:"Покупка картой (GPay/Apple Pay)",
+        ribbon:"Ограниченная предпродажа — льготная цена до конца таймера.",
+        presale_until:"Предпродажа заканчивается через: <strong id='countdown'>--d --:--:--</strong>",
+        k_supply:"Эмиссия", k_chain:"Сеть", k_addr:"Контракт",
+        amm_note:"Рыночную цену задаёт AMM.",
+        tok_title:"Токеномика", tok_nomint:"Без автодропа и допэмиссии.",
+        tok_roles:"Безопасные роли: награды, фиат-продажи и APR.",
+        tok_modes:"Гибкий/фиксированный стейкинг (30/90/180 дн).",
+        stake_title:"О стейкинге", stake_flex:"Гибкий стейкинг: claim в любое время.",
+        stake_examples:"Примеры для 1000 MoWo", stake_fund:"Выплаты из пула 1,000M.",
+        src_title:"Исходный код (кратко)", src_hint:"Показать/скрыть", verify_warn:"Проверяйте адрес в Polygonscan.",
+        app_title:"MoonWorld: лунный метавселенная с реальной утилитой",
+        app_p1:"Исследуйте киберпанк-город на Луне. Покупайте участки, стройте дома, коллекционируйте транспорт и играйте в мини-игры, зарабатывая MoWo.",
+        app_p2:"MoWo — валюта мира: земля, апгрейды, крафт, перемещения и сборы рынка.",
+        app_p3:"Старт на Android и веб. Активы поддержаны ончейн-контрактами.",
+        app_f1_t:"Участки и районы", app_f1_d:"Токенизированная земля; жилые, коммерческие, промышленные зоны.",
+        app_f2_t:"Дома и мастерские", app_f2_d:"Стройте, улучшайте модули, сдавайте площади.",
+        app_f3_t:"Уникальный транспорт", app_f3_d:"Лунные байки и роверы. Топливо и детали — за MoWo.",
+        app_f4_t:"Мини-игры с наградами", app_f4_d:"Гонки, доставки, взлом и PvE. Пул 100M.",
+        app_f5_t:"Маркет и крафт", app_f5_d:"Чертежи и материалы; премиум-предметы.",
+        app_f6_t:"Пассы и ивенты", app_f6_d:"Сезоны и еженедельные розыгрыши с частичным сжиганием.",
+        gold_title:"🪙 MoWo (GOLD) – золото лунного метавселенной 🌕",
+        gold_p1:"Золотая эксклюзивная версия — символ силы и редкости.",
+        gold_p2:"Доступ к премиум-объектам: элитные участки, футур-дома, уникальный транспорт.",
+        gold_p3:"💎 Владеть GOLD — владеть будущим метавселенной.",
+        gold_buy:"🚀 Купить на Pump.fun", gold_copy:"📋 Скопировать контракт",
+        gold_contract_label:"Контракт:", gold_banner_alt:"Официальный баннер MoWo (GOLD) 1500×500",
+        zhao_title:"Imperio Zhao — пропуск в Клуб Зомби 🧟‍♂️",
+        zhao_p1:"Официальный мем-токен подполья. Вход в Клуб Зомби и покупка оружия/приборов — только за Zhao.",
+        zhao_p2:"Дерзкий и полностью коммунити. Больше Zhao — глубже доступ: редкие торговцы, подпольные сделки, ивенты для зомби.",
+        zhao_buy:"Войти в Клуб Зомби",
+        zhao_copy:"Скопировать контракт",
+        zhao_contract_label:"Контракт:",
+        zhao_banner_alt:"Баннер Imperio Zhao"
     },
-    ar:{
-      header_sub:"رمز ERC-20 على بوليجون • رهن مرن ومقفل",
-      hero_title:"ستستخدم هذا الرمز على القمر 🌙",
-      hero_desc:"عرض ثابت 1 تريليون MoWo. خزانات: <b>اللعبة (100M)</b> و<b>الرهن (1,000M)</b>.",
-      btn_scan:"عرض على Polygonscan", btn_uniswap:"الشراء عبر Uniswap", btn_add:"إضافة إلى MetaMask", btn_connect:"اتصال المحفظة",
-      buy_card:"الشراء بالبطاقة (Google/Apple Pay)",
-      ribbon:"بيع مسبق محدود — سعر مميز حتى انتهاء المؤقت.",
-      presale_until:"ينتهي البيع المسبق خلال: <strong id='countdown'>--d --:--:--</strong>",
-      k_supply:"الإجمالي", k_chain:"الشبكة", k_addr:"العقد",
-      amm_note:"السعر يحدده AMM حسب السيولة.",
-      tok_title:"اقتصاد الرمز", tok_nomint:"لا ايردروب تلقائي ولا سك لاحق.",
-      tok_roles:"أدوار آمنة للمكافآت والبيع بالبطاقات وتعديل APR.",
-      tok_modes:"رهن مرن ومقفل (30/90/180 يوماً).",
-      stake_title:"شرح الرهن", stake_flex:"رهن مرن مع سحب المكافآت.",
-      stake_examples:"أمثلة لـ 1000 MoWo", stake_fund:"المكافآت من خزان 1,000M.",
-      src_title:"كود العقد (مختصر)", src_hint:"إظهار/إخفاء", verify_warn:"تحقق من العنوان على Polygonscan.",
-      gold_title:"🪙 MoWo (GOLD) — ذهب الميتافيرس القمري 🌕",
-      gold_p1:"نسخة ذهبية حصرية ترمز للقوة والندرة.",
-      gold_p2:"وصول لعناصر مميزة: قطع فاخرة، منازل مستقبلية، مركبات فريدة.",
-      gold_p3:"💎 امتلاك GOLD يعني امتلاك المستقبل.",
-      gold_buy:"🚀 اشترِ عبر Pump.fun", gold_copy:"📋 نسخ العقد",
-      gold_contract_label:"العقد:", gold_banner_alt:"لافتة MoWo (GOLD) الرسمية 1500×500",
-      app_title:"MoonWorld: ميتافيرس قمري بفائدة فعلية",
-      app_p1:"استكشف مدينة سايبربانك على القمر. اشترِ قطعاً، ابنِ منازل، اقنِ مركبات والعب ألعاباً قصيرة لتحصل على MoWo.",
-      app_p2:"MoWo هي عملة العالم: الأراضي، الترقيات، التصنيع، التنقل بين المناطق ورسوم السوق.",
-      app_p3:"الإطلاق على أندرويد ولوحة ويب أولاً. الأصول الأساسية مدعومة بعقود وخزانات على السلسلة.",
-      app_f1_t:"القطع والمناطق", app_f1_d:"أراضٍ مرمّزة بندرات؛ سكنية وتجارية وصناعية.",
-      app_f2_t:"المنازل والورش", app_f2_d:"ابنِ وطور الوحدات وأجر المساحات لتحصل على MoWo.",
-      app_f3_t:"مركبات فريدة", app_f3_d:"دراجات قمرية وروفرات قابلة للتخصيص. الوقود والقطع تُدفع بـ MoWo.",
-      app_f4_t:"ألعاب بمكافآت", app_f4_d:"سباقات، توصيلات، هاكنغ وPvE. مكافآت من خزان اللعبة (100M).",
-      app_f5_t:"سوق وتصنيع", app_f5_d:"بيع وشراء المخططات والمواد؛ تصنيع عناصر مميزة برسوم MoWo.",
-      app_f6_t:"باس ومناسبات", app_f6_d:"مواسم وبطولات وسحوبات أسبوعية مع حرق جزئي للرسوم."
+    ar:{header_sub:"رمز ERC-20 على شبكة بوليجون • رهن مرن ومقفل",
+        hero_title:"ستستخدم هذا الرمز على القمر 🌙",
+        hero_desc:"معروض ثابت 1 تريليون MoWo. خزانات: <b>اللعبة (100M)</b> و<b>الرهن (1,000M)</b>.",
+        btn_scan:"عرض على Polygonscan", btn_uniswap:"الشراء عبر Uniswap", btn_add:"إضافة إلى MetaMask", btn_connect:"اتصال المحفظة",
+        buy_card:"الشراء بالبطاقة (Google/Apple Pay)",
+        ribbon:"بيع مسبق محدود — سعر مميز حتى انتهاء المؤقّت.",
+        presale_until:"ينتهي البيع المسبق خلال: <strong id='countdown'>--d --:--:--</strong>",
+        k_supply:"الإجمالي", k_chain:"الشبكة", k_addr:"العقد",
+        amm_note:"السعر يحدده AMM حسب السيولة.",
+        tok_title:"اقتصاد الرمز", tok_nomint:"لا ايردروب تلقائي ولا سك لاحق.",
+        tok_roles:"أدوار آمنة للمكافآت والبيع بالبطاقات وAPR.",
+        tok_modes:"رهن مرن ومقفل (30/90/180 يوماً).",
+        stake_title:"شرح الرهن", stake_flex:"رهن مرن مع سحب المكافآت.",
+        stake_examples:"أمثلة لـ 1000 MoWo", stake_fund:"المكافآت من خزان 1,000M.",
+        src_title:"كود العقد (مختصر)", src_hint:"إظهار/إخفاء", verify_warn:"تحقق من العنوان على Polygonscan.",
+        app_title:"MoonWorld: ميتافيرس قمري بفائدة فعلية",
+        app_p1:"استكشف مدينة سايبربانك على القمر. اشترِ قطعاً، ابنِ منازل، واقتنِ مركبات والعب ألعاباً قصيرة لتحصل على MoWo.",
+        app_p2:"MoWo هي عملة العالم: الأراضي، الترقيات، التصنيع، التنقل بين المناطق ورسوم السوق.",
+        app_p3:"الإطلاق على أندرويد ولوحة ويب أولاً. الأصول الأساسية مدعومة بعقود على السلسلة.",
+        app_f1_t:"القطع والمناطق", app_f1_d:"أراضٍ مرمّزة بندرات؛ سكنية وتجارية وصناعية.",
+        app_f2_t:"المنازل والورش", app_f2_d:"ابنِ وطور الوحدات وأجرِ المساحات.",
+        app_f3_t:"مركبات فريدة", app_f3_d:"دراجات قمرية وروفرات قابلة للتخصيص.",
+        app_f4_t:"ألعاب بمكافآت", app_f4_d:"سباقات وتوصيلات وهاكنغ وPvE.",
+        app_f5_t:"سوق وتصنيع", app_f5_d:"خطط ومواد وعناصر مميزة.",
+        app_f6_t:"باس ومناسبات", app_f6_d:"مواسم وسحوبات أسبوعية مع حرق جزئي.",
+        gold_title:"🪙 MoWo (GOLD) — ذهب الميتافيرس القمري 🌕",
+        gold_p1:"نسخة ذهبية حصرية ترمز للقوة والندرة.",
+        gold_p2:"وصول لعناصر مميزة: قطع فاخرة، منازل مستقبلية، مركبات فريدة.",
+        gold_p3:"💎 امتلاك GOLD يعني امتلاك المستقبل.",
+        gold_buy:"🚀 اشترِ عبر Pump.fun", gold_copy:"📋 نسخ العقد",
+        gold_contract_label:"العقد:", gold_banner_alt:"لافتة MoWo (GOLD) الرسمية",
+        zhao_title:"Imperio Zhao — تذكرتك لنادي الزومبي 🧟‍♂️",
+        zhao_p1:"ميم-توكن رسمي لعالم الظل. دخول النادي وشراء الأسلحة والمعدات المحظورة يتم بـ Zhao.",
+        zhao_p2:"جريء ومجتمعي 100٪. كلما زادت حيازتك زاد وصولك: تجار نادرون وصفقات سرّية وتحديات خاصة.",
+        zhao_buy:"ادخل نادي الزومبي",
+        zhao_copy:"انسخ العقد",
+        zhao_contract_label:"العقد:",
+        zhao_banner_alt:"لافتة Imperio Zhao"
     },
-    de:{
-      header_sub:"ERC-20-Token auf Polygon • Flexibles & gesperrtes Staking",
-      hero_title:"Diesen Token kannst du auf dem Mond nutzen 🌙",
-      hero_desc:"Feste Menge 1 Billion MoWo. Interne Pools: <b>Game (100M)</b> & <b>Staking (1,000M)</b>.",
-      btn_scan:"Auf Polygonscan ansehen", btn_uniswap:"Auf Uniswap kaufen", btn_add:"Zu MetaMask hinzufügen", btn_connect:"Wallet verbinden",
-      buy_card:"Mit Karte kaufen (GPay/Apple Pay)",
-      ribbon:"Limitierte Presale-Phase — Vorteilspreis bis Timerende.",
-      presale_until:"Presale endet in: <strong id='countdown'>--d --:--:--</strong>",
-      k_supply:"Angebot", k_chain:"Netzwerk", k_addr:"Vertrag",
-      amm_note:"Preis durch AMM bestimmt.",
-      tok_title:"Tokenomics", tok_nomint:"Kein Auto-Airdrop, kein Minting.",
-      tok_roles:"Sichere Rollen: Rewards, Fiat-Verkauf, APR.",
-      tok_modes:"Flex & Lock (30/90/180 Tage).",
-      stake_title:"Staking erklärt", stake_flex:"Flex-Staking; Rewards jederzeit claimen.",
-      stake_examples:"Beispiele mit 1000 MoWo", stake_fund:"Rewards aus 1,000M-Pool.",
-      src_title:"Vertrag (Kurz)", src_hint:"Anzeigen/Verbergen", verify_warn:"Adresse in Polygonscan prüfen.",
-      gold_title:"🪙 MoonWorld MoWo (GOLD) – Das Gold des Mond-Metaverse 🌕",
-      gold_p1:"Goldene, exklusive Edition – Symbol für Macht und Seltenheit.",
-      gold_p2:"Zugang zu Premium-Items: Luxusgrundstücke, futuristische Häuser, exklusive Fahrzeuge.",
-      gold_p3:"💎 GOLD besitzen = Zukunft besitzen.",
-      gold_buy:"🚀 Auf Pump.fun kaufen", gold_copy:"📋 Vertrag kopieren",
-      gold_contract_label:"Vertrag:", gold_banner_alt:"Offizielles MoWo (GOLD) Banner 1500×500",
-      app_title:"MoonWorld: Mond-Metaverse mit echter Utility",
-      app_p1:"Erkunde eine Cyberpunk-Stadt auf dem Mond. Plots kaufen, Häuser bauen, Fahrzeuge sammeln und Mini-Games spielen, um MoWo zu verdienen.",
-      app_p2:"MoWo ist die Weltwährung: Land, Upgrades, Crafting, Reisen zwischen Distrikten und Marktplatz-Gebühren.",
-      app_p3:"Start auf Android und Webpanel. Wichtige Assets sind on-chain abgesichert.",
-      app_f1_t:"Plots & Distrikte", app_f1_d:"Tokenisiertes Land mit Seltenheiten; Wohn-, Geschäfts- und Industrie-Zonen.",
-      app_f2_t:"Häuser & Werkstätten", app_f2_d:"Baue, upgrade Module, vermiete Flächen und verdiene MoWo.",
-      app_f3_t:"Einzigartige Fahrzeuge", app_f3_d:"Monobikes & Rover mit Anpassungen. Treibstoff & Teile in MoWo.",
-      app_f4_t:"Mini-Games mit Rewards", app_f4_d:"Rennen, Lieferungen, Hacking & PvE. Aus dem 100M Game-Pool.",
-      app_f5_t:"Markt & Crafting", app_f5_d:"Blueprints & Materialien handeln; Premium-Items craften.",
-      app_f6_t:"Pässe & Events", app_f6_d:"Seasons, Turniere, wöchentliche Raffles mit Teil-Burn."
+    de:{header_sub:"ERC-20-Token auf Polygon • Flexibles & gesperrtes Staking",
+        hero_title:"Diesen Token kannst du auf dem Mond nutzen 🌙",
+        hero_desc:"Feste Menge 1 Billion MoWo. Interne Pools: <b>Game (100M)</b> & <b>Staking (1,000M)</b>.",
+        btn_scan:"Auf Polygonscan ansehen", btn_uniswap:"Auf Uniswap kaufen", btn_add:"Zu MetaMask hinzufügen", btn_connect:"Wallet verbinden",
+        buy_card:"Mit Karte kaufen (GPay/Apple Pay)",
+        ribbon:"Limitierte Presale-Phase — Vorteilspreis bis Timerende.",
+        presale_until:"Presale endet in: <strong id='countdown'>--d --:--:--</strong>",
+        k_supply:"Angebot", k_chain:"Netzwerk", k_addr:"Vertrag",
+        amm_note:"Preis durch AMM bestimmt.",
+        tok_title:"Tokenomics", tok_nomint:"Kein Auto-Airdrop, kein Minting.",
+        tok_roles:"Sichere Rollen: Rewards, Fiat-Verkauf, APR.",
+        tok_modes:"Flex & Lock (30/90/180 Tage).",
+        stake_title:"Staking erklärt", stake_flex:"Flex-Staking; Rewards jederzeit claimen.",
+        stake_examples:"Beispiele mit 1000 MoWo", stake_fund:"Rewards aus dem 1,000M-Pool.",
+        src_title:"Vertrag (Kurz)", src_hint:"Anzeigen/Verbergen", verify_warn:"Adresse in Polygonscan prüfen.",
+        app_title:"MoonWorld: Mond-Metaverse mit echter Utility",
+        app_p1:"Erkunde eine Cyberpunk-Stadt auf dem Mond. Plots kaufen, Häuser bauen, Fahrzeuge sammeln und Mini-Games spielen.",
+        app_p2:"MoWo ist die Weltwährung: Land, Upgrades, Crafting, Distrikt-Reisen und Marktplatz-Gebühren.",
+        app_p3:"Start auf Android & Web. Wichtige Assets sind on-chain abgesichert.",
+        app_f1_t:"Plots & Distrikte", app_f1_d:"Tokenisiertes Land mit Seltenheiten.",
+        app_f2_t:"Häuser & Werkstätten", app_f2_d:"Baue, upgrade und vermiete.",
+        app_f3_t:"Einzigartige Fahrzeuge", app_f3_d:"Monobikes & Rover; Treibstoff/Teile in MoWo.",
+        app_f4_t:"Mini-Games mit Rewards", app_f4_d:"Rennen, Lieferungen, Hacking, PvE.",
+        app_f5_t:"Markt & Crafting", app_f5_d:"Blueprints & Materialien.",
+        app_f6_t:"Pässe & Events", app_f6_d:"Seasons & wöchentliche Raffles.",
+        gold_title:"🪙 MoWo (GOLD) – Das Gold des Mond-Metaverse 🌕",
+        gold_p1:"Goldene, exklusive Edition – Symbol für Macht und Seltenheit.",
+        gold_p2:"Zugang zu Premium-Items: Luxusgrundstücke, futuristische Häuser, exklusive Fahrzeuge.",
+        gold_p3:"💎 GOLD besitzen = Zukunft besitzen.",
+        gold_buy:"🚀 Auf Pump.fun kaufen", gold_copy:"📋 Vertrag kopieren",
+        gold_contract_label:"Vertrag:", gold_banner_alt:"Offizielles MoWo (GOLD) Banner",
+        zhao_title:"Imperio Zhao — Dein Pass zum Zombie-Club 🧟‍♂️",
+        zhao_p1:"Offizieller Underground-Meme-Token. Zugang & Waffenkauf nur mit Zhao.",
+        zhao_p2:"Laut, frech, 100% Community. Mehr Zhao = tieferer Zugang.",
+        zhao_buy:"Zum Zombie-Club",
+        zhao_copy:"Vertrag kopieren",
+        zhao_contract_label:"Vertrag:",
+        zhao_banner_alt:"Imperio Zhao Banner"
     },
-    fr:{
-      header_sub:"Token ERC-20 sur Polygon • Staking flexible et verrouillé",
-      hero_title:"Ce token sera utilisable sur la Lune 🌙",
-      hero_desc:"Offre fixe 1 000 000 000 000 MoWo. Pools internes : <b>jeu (100M)</b> & <b>staking (1,000M)</b>.",
-      btn_scan:"Voir sur Polygonscan", btn_uniswap:"Acheter sur Uniswap", btn_add:"Ajouter à MetaMask", btn_connect:"Connecter le wallet",
-      buy_card:"Acheter par carte (GPay/Apple Pay)",
-      ribbon:"Prévente limitée — prix préférentiel jusqu’à la fin.",
-      presale_until:"La prévente se termine dans : <strong id='countdown'>--d --:--:--</strong>",
-      k_supply:"Offre", k_chain:"Réseau", k_addr:"Contrat",
-      amm_note:"Le prix réel est fixé par l’AMM.",
-      tok_title:"Tokenomics", tok_nomint:"Pas d’airdrop auto, pas de mint futur.",
-      tok_roles:"Rôles sécurisés : récompenses, vente fiat et APR.",
-      tok_modes:"Staking flexible et verrouillé (30/90/180 j).",
-      stake_title:"Staking expliqué", stake_flex:"Staking flexible; claim à tout moment.",
-      stake_examples:"Exemples avec 1000 MoWo", stake_fund:"Récompenses depuis le pool 1,000M.",
-      src_title:"Code contrat (résumé)", src_hint:"Afficher/Masquer", verify_warn:"Vérifiez l’adresse sur Polygonscan.",
-      gold_title:"🪙 MoonWorld MoWo (GOLD) – L’or du métavers lunaire 🌕",
-      gold_p1:"Édition dorée exclusive — symbole de puissance et de rareté.",
-      gold_p2:"Accès aux objets premium : parcelles de luxe, maisons futuristes, véhicules uniques.",
-      gold_p3:"💎 Détenir GOLD, c’est détenir l’avenir.",
-      gold_buy:"🚀 Acheter sur Pump.fun", gold_copy:"📋 Copier le contrat",
-      gold_contract_label:"Contrat :", gold_banner_alt:"Bannière officielle MoWo (GOLD) 1500×500",
-      app_title:"MoonWorld : métavers lunaire à utilité réelle",
-      app_p1:"Explore une ville cyberpunk sur la Lune. Achète des parcelles, construis des maisons, collectionne des véhicules et joue à des mini-jeux pour gagner du MoWo.",
-      app_p2:"MoWo est la monnaie du monde : terrains, améliorations, craft, déplacements et frais du marché.",
-      app_p3:"Lancement sur Android et panneau web. Les actifs clés sont sécurisés on-chain.",
-      app_f1_t:"Parcelles & Districts", app_f1_d:"Terres tokenisées avec raretés ; zones résidentielles, commerciales et industrielles.",
-      app_f2_t:"Maisons & Ateliers", app_f2_d:"Construis, améliore des modules, loue des espaces et gagne du MoWo.",
-      app_f3_t:"Véhicules uniques", app_f3_d:"Motos lunaires et rovers personnalisables. Carburant et pièces en MoWo.",
-      app_f4_t:"Mini-jeux rémunérés", app_f4_d:"Courses, livraisons, hacking et PvE. Depuis le pool jeu (100M).",
-      app_f5_t:"Marché & Craft", app_f5_d:"Échange de plans et matériaux ; fabrication d’items premium.",
-      app_f6_t:"Pass & Événements", app_f6_d:"Saisons, tournois et loteries hebdo avec burn partiel."
+    fr:{header_sub:"Token ERC-20 sur Polygon • Staking flexible et verrouillé",
+        hero_title:"Ce token sera utilisable sur la Lune 🌙",
+        hero_desc:"Offre fixe 1 000 000 000 000 MoWo. Pools internes : <b>jeu (100M)</b> & <b>staking (1,000M)</b>.",
+        btn_scan:"Voir sur Polygonscan", btn_uniswap:"Acheter sur Uniswap", btn_add:"Ajouter à MetaMask", btn_connect:"Connecter le wallet",
+        buy_card:"Acheter par carte (GPay/Apple Pay)",
+        ribbon:"Prévente limitée — prix préférentiel jusqu’à la fin.",
+        presale_until:"La prévente se termine dans : <strong id='countdown'>--d --:--:--</strong>",
+        k_supply:"Offre", k_chain:"Réseau", k_addr:"Contrat",
+        amm_note:"Le prix réel est fixé par l’AMM.",
+        tok_title:"Tokenomics", tok_nomint:"Pas d’airdrop auto, pas de mint futur.",
+        tok_roles:"Rôles sécurisés : récompenses, vente fiat et APR.",
+        tok_modes:"Staking flexible et verrouillé (30/90/180 j).",
+        stake_title:"Staking expliqué", stake_flex:"Staking flexible; claim à tout moment.",
+        stake_examples:"Exemples avec 1000 MoWo", stake_fund:"Récompenses depuis le pool 1,000M.",
+        src_title:"Code contrat (résumé)", src_hint:"Afficher/Masquer", verify_warn:"Vérifiez l’adresse sur Polygonscan.",
+        app_title:"MoonWorld : métavers lunaire à utilité réelle",
+        app_p1:"Explore une ville cyberpunk sur la Lune. Achète des parcelles, construis des maisons, collectionne des véhicules et joue à des mini-jeux.",
+        app_p2:"MoWo est la monnaie du monde : terrains, améliorations, craft, déplacements et frais du marché.",
+        app_p3:"Lancement Android et web. Actifs clés sécurisés on-chain.",
+        app_f1_t:"Parcelles & Districts", app_f1_d:"Terres tokenisées avec raretés.",
+        app_f2_t:"Maisons & Ateliers", app_f2_d:"Construis, améliore, loue.",
+        app_f3_t:"Véhicules uniques", app_f3_d:"Motos lunaires, rovers; carburant & pièces en MoWo.",
+        app_f4_t:"Mini-jeux rémunérés", app_f4_d:"Courses, livraisons, hacking, PvE.",
+        app_f5_t:"Marché & Craft", app_f5_d:"Plans et matériaux.",
+        app_f6_t:"Pass & Événements", app_f6_d:"Saisons & loteries hebdo.",
+        gold_title:"🪙 MoWo (GOLD) – L’or du métavers lunaire 🌕",
+        gold_p1:"Édition dorée exclusive — symbole de puissance et de rareté.",
+        gold_p2:"Accès aux items premium : parcelles de luxe, maisons futuristes, véhicules uniques.",
+        gold_p3:"💎 Détenir GOLD, c’est détenir l’avenir.",
+        gold_buy:"🚀 Acheter sur Pump.fun", gold_copy:"📋 Copier le contrat",
+        gold_contract_label:"Contrat :", gold_banner_alt:"Bannière officielle MoWo (GOLD)",
+        zhao_title:"Imperio Zhao — Ton passe pour le Club Zombie 🧟‍♂️",
+        zhao_p1:"Meme-token officiel de l’underground lunaire. Entrée & armes seulement en Zhao.",
+        zhao_p2:"Impertinent et 100% communautaire. Plus de Zhao = plus d’accès.",
+        zhao_buy:"Entrer au Club Zombie",
+        zhao_copy:"Copier le contrat",
+        zhao_contract_label:"Contrat :",
+        zhao_banner_alt:"Bannière Imperio Zhao"
     },
-    it:{
-      header_sub:"Token ERC-20 su Polygon • Staking flessibile e bloccato",
-      hero_title:"Potrai usare questo token sulla Luna 🌙",
-      hero_desc:"Supply fisso 1.000.000.000.000 MoWo. Pool interni: <b>gioco (100M)</b> e <b>staking (1,000M)</b>.",
-      btn_scan:"Vedi su Polygonscan", btn_uniswap:"Compra su Uniswap", btn_add:"Aggiungi a MetaMask", btn_connect:"Connetti wallet",
-      buy_card:"Compra con carta (GPay/Apple Pay)",
-      ribbon:"Presale limitata — prezzo preferenziale fino alla fine.",
-      presale_until:"La presale termina tra: <strong id='countdown'>--d --:--:--</strong>",
-      k_supply:"Supply", k_chain:"Rete", k_addr:"Contratto",
-      amm_note:"Il prezzo lo decide l’AMM.",
-      tok_title:"Tokenomics", tok_nomint:"Niente airdrop automatico, niente mint.",
-      tok_roles:"Ruoli sicuri: ricompense, vendite fiat e APR.",
-      tok_modes:"Flessibile e bloccato (30/90/180 gg).",
-      stake_title:"Staking: spiegazione", stake_flex:"Staking flessibile; claim quando vuoi.",
-      stake_examples:"Esempi con 1000 MoWo", stake_fund:"Reward dal pool 1,000M.",
-      src_title:"Codice (sintesi)", src_hint:"Mostra/Nascondi", verify_warn:"Verifica su Polygonscan.",
-      gold_title:"🪙 MoonWorld MoWo (GOLD) – L’oro del metaverso lunare 🌕",
-      gold_p1:"Edizione dorata esclusiva, simbolo di potere e rarità.",
-      gold_p2:"Accesso a oggetti premium: lotti di lusso, case futuristiche, veicoli unici.",
-      gold_p3:"💎 Avere GOLD = avere il futuro.",
-      gold_buy:"🚀 Compra su Pump.fun", gold_copy:"📋 Copia contratto",
-      gold_contract_label:"Contratto:", gold_banner_alt:"Banner ufficiale MoWo (GOLD) 1500×500",
-      app_title:"MoonWorld: metaverso lunare con vera utilità",
-      app_p1:"Esplora una città cyberpunk sulla Luna. Compra plot, costruisci case, colleziona veicoli e gioca a mini-giochi per guadagnare MoWo.",
-      app_p2:"MoWo è la valuta del mondo: terreni, upgrade, crafting, spostamenti tra distretti e fee di mercato.",
-      app_p3:"Partenza su Android e pannello web. Asset chiave garantiti on-chain.",
-      app_f1_t:"Plot & Distretti", app_f1_d:"Terre tokenizzate con rarità; zone residenziali, commerciali e industriali.",
-      app_f2_t:"Case & Officine", app_f2_d:"Costruisci, potenzia moduli, affitta spazi e genera MoWo.",
-      app_f3_t:"Veicoli unici", app_f3_d:"Moto lunari e rover personalizzabili. Carburante e parti in MoWo.",
-      app_f4_t:"Mini-giochi premiati", app_f4_d:"Gare, consegne, hacking e PvE. Dal pool gioco (100M).",
-      app_f5_t:"Mercato & Crafting", app_f5_d:"Scambia blueprint e materiali; crea item premium con fee MoWo.",
-      app_f6_t:"Pass & Eventi", app_f6_d:"Stagioni, tornei e lotterie settimanali con burn parziale."
+    it:{header_sub:"Token ERC-20 su Polygon • Staking flessibile e bloccato",
+        hero_title:"Potrai usare questo token sulla Luna 🌙",
+        hero_desc:"Supply fisso 1.000.000.000.000 MoWo. Pool interni: <b>gioco (100M)</b> e <b>staking (1,000M)</b>.",
+        btn_scan:"Vedi su Polygonscan", btn_uniswap:"Compra su Uniswap", btn_add:"Aggiungi a MetaMask", btn_connect:"Connetti wallet",
+        buy_card:"Compra con carta (GPay/Apple Pay)",
+        ribbon:"Presale limitata — prezzo preferenziale fino alla fine.",
+        presale_until:"La presale termina tra: <strong id='countdown'>--d --:--:--</strong>",
+        k_supply:"Supply", k_chain:"Rete", k_addr:"Contratto",
+        amm_note:"Il prezzo lo decide l’AMM.",
+        tok_title:"Tokenomics", tok_nomint:"Niente airdrop automatico, niente mint.",
+        tok_roles:"Ruoli sicuri: ricompense, vendite fiat e APR.",
+        tok_modes:"Flessibile e bloccato (30/90/180 gg).",
+        stake_title:"Staking: spiegazione", stake_flex:"Staking flessibile; claim quando vuoi.",
+        stake_examples:"Esempi con 1000 MoWo", stake_fund:"Reward dal pool 1,000M.",
+        src_title:"Codice (sintesi)", src_hint:"Mostra/Nascondi", verify_warn:"Verifica su Polygonscan.",
+        app_title:"MoonWorld: metaverso lunare con vera utilità",
+        app_p1:"Esplora una città cyberpunk lunare. Compra plot, costruisci case, colleziona veicoli e gioca mini-giochi.",
+        app_p2:"MoWo è la valuta: terreni, upgrade, crafting, spostamenti e fee mercato.",
+        app_p3:"Avvio su Android e web. Asset chiave on-chain.",
+        app_f1_t:"Plot & Distretti", app_f1_d:"Terre tokenizzate con rarità.",
+        app_f2_t:"Case & Officine", app_f2_d:"Costruisci, potenzia, affitta.",
+        app_f3_t:"Veicoli unici", app_f3_d:"Moto lunari e rover; carburante/parti in MoWo.",
+        app_f4_t:"Mini-giochi premiati", app_f4_d:"Gare, consegne, hacking, PvE.",
+        app_f5_t:"Mercato & Crafting", app_f5_d:"Blueprint e materiali.",
+        app_f6_t:"Pass & Eventi", app_f6_d:"Stagioni e lotterie settimanali.",
+        gold_title:"🪙 MoWo (GOLD) – L’oro del metaverso lunare 🌕",
+        gold_p1:"Edizione dorata esclusiva, simbolo di potere e rarità.",
+        gold_p2:"Accesso a oggetti premium: lotti di lusso, case futuristiche, veicoli unici.",
+        gold_p3:"💎 Avere GOLD = avere il futuro.",
+        gold_buy:"🚀 Compra su Pump.fun", gold_copy:"📋 Copia contratto",
+        gold_contract_label:"Contratto:", gold_banner_alt:"Banner ufficiale MoWo (GOLD)",
+        zhao_title:"Imperio Zhao — Il pass per il Club Zombie 🧟‍♂️",
+        zhao_p1:"Meme-token ufficiale dell’underground lunare. Ingresso e armi solo con Zhao.",
+        zhao_p2:"Irriverente e 100% community. Più Zhao = più accesso.",
+        zhao_buy:"Entra nel Club Zombie",
+        zhao_copy:"Copia contratto",
+        zhao_contract_label:"Contratto:",
+        zhao_banner_alt:"Banner Imperio Zhao"
     },
-    zh:{
-      header_sub:"基于 Polygon 的 ERC-20 • 灵活/锁仓质押",
-      hero_title:"此代币将在月球世界中使用 🌙",
-      hero_desc:"固定总量 1,000,000,000,000 MoWo。内置 <b>游戏池(100M)</b> 与 <b>质押池(1,000M)</b>。",
-      btn_scan:"在 Polygonscan 查看", btn_uniswap:"在 Uniswap 购买", btn_add:"添加到 MetaMask", btn_connect:"连接钱包",
-      buy_card:"银行卡购买（GPay/Apple Pay）",
-      ribbon:"限时预售 — 计时结束前享优惠价格。",
-      presale_until:"预售结束倒计时：<strong id='countdown'>--d --:--:--</strong>",
-      k_supply:"总量", k_chain:"网络", k_addr:"合约",
-      amm_note:"实际价格由 AMM 决定。",
-      tok_title:"代币经济", tok_nomint:"无自动空投、无二次增发。",
-      tok_roles:"安全角色：游戏奖励、法币销售、APR。",
-      tok_modes:"灵活/锁仓质押（30/90/180 天）。",
-      stake_title:"质押说明", stake_flex:"灵活质押；可随时领取累计奖励。",
-      stake_examples:"1000 MoWo 示例", stake_fund:"奖励来自 1,000M 池。",
-      src_title:"合约源码（摘要）", src_hint:"展开/折叠", verify_warn:"务必在 Polygonscan 核对合约地址。",
-      gold_title:"🪙 MoonWorld MoWo (GOLD) – 月球元宇宙的黄金 🌕",
-      gold_p1:"黄金独享版本，象征力量与稀缺。",
-      gold_p2:"解锁高级物品：豪华地块、未来住宅、独特载具等。",
-      gold_p3:"💎 拥有 GOLD = 拥有未来。",
-      gold_buy:"🚀 在 Pump.fun 购买", gold_copy:"📋 复制合约",
-      gold_contract_label:"合约：", gold_banner_alt:"MoWo (GOLD) 官方横幅 1500×500",
-      app_title:"MoonWorld：具备真实效用的月球元宇宙",
-      app_p1:"探索月球赛博城市。买地、建房、收集载具并通过小游戏赚取 MoWo。",
-      app_p2:"MoWo 是世界货币：土地、升级、合成、跨区移动和市场手续费。",
-      app_p3:"首先登陆 Android 与网页面板。核心资产由链上合约与资金池支撑。",
-      app_f1_t:"地块与城区", app_f1_d:"代币化土地，含稀有度；居住/商业/工业分区。",
-      app_f2_t:"房屋与工坊", app_f2_d:"建造并升级模块，出租空间获取 MoWo 收益。",
-      app_f3_t:"独特载具", app_f3_d:"月球摩托与探测车可自定义。燃料与零件以 MoWo 支付。",
-      app_f4_t:"奖励小游戏", app_f4_d:"竞速、配送、破解与 PvE。奖励来自 100M 游戏池。",
-      app_f5_t:"市场与合成", app_f5_d:"交易蓝图与材料；合成高级物品并收取 MoWo 手续费。",
-      app_f6_t:"通行证与活动", app_f6_d:"赛季、锦标赛与每周抽奖，部分费用销毁。"
+    zh:{header_sub:"基于 Polygon 的 ERC-20 • 灵活/锁仓质押",
+        hero_title:"此代币将在月球世界中使用 🌙",
+        hero_desc:"固定总量 1,000,000,000,000 MoWo。内置 <b>游戏池(100M)</b> 与 <b>质押池(1,000M)</b>。",
+        btn_scan:"在 Polygonscan 查看", btn_uniswap:"在 Uniswap 购买", btn_add:"添加到 MetaMask", btn_connect:"连接钱包",
+        buy_card:"银行卡购买（GPay/Apple Pay）",
+        ribbon:"限时预售 — 计时结束前享优惠价格。",
+        presale_until:"预售结束倒计时：<strong id='countdown'>--d --:--:--</strong>",
+        k_supply:"总量", k_chain:"网络", k_addr:"合约",
+        amm_note:"实际价格由 AMM 决定。",
+        tok_title:"代币经济", tok_nomint:"无自动空投、无二次增发。",
+        tok_roles:"安全角色：游戏奖励、法币销售、APR。",
+        tok_modes:"灵活/锁仓质押（30/90/180 天）。",
+        stake_title:"质押说明", stake_flex:"灵活质押；可随时领取累计奖励。",
+        stake_examples:"1000 MoWo 示例", stake_fund:"奖励来自 1,000M 池。",
+        src_title:"合约源码（摘要）", src_hint:"展开/折叠", verify_warn:"务必在 Polygonscan 核对合约地址。",
+        app_title:"MoonWorld：具备真实效用的月球元宇宙",
+        app_p1:"探索月球赛博城市。买地、建房、收集载具并通过小游戏赚取 MoWo。",
+        app_p2:"MoWo 是世界货币：土地、升级、合成、跨区移动和市场手续费。",
+        app_p3:"首先登陆 Android 与网页面板。核心资产由链上合约与资金池支撑。",
+        app_f1_t:"地块与城区", app_f1_d:"代币化土地，含稀有度；居住/商业/工业分区。",
+        app_f2_t:"房屋与工坊", app_f2_d:"建造并升级模块，出租空间获取收益。",
+        app_f3_t:"独特载具", app_f3_d:"月球摩托与探测车可自定义。",
+        app_f4_t:"奖励小游戏", app_f4_d:"竞速、配送、破解与 PvE。",
+        app_f5_t:"市场与合成", app_f5_d:"交易蓝图与材料；合成高级物品。",
+        app_f6_t:"通行证与活动", app_f6_d:"赛季/锦标赛/每周抽奖，部分费用销毁。",
+        gold_title:"🪙 MoWo (GOLD) – 月球元宇宙的黄金 🌕",
+        gold_p1:"黄金独享版本，象征力量与稀缺。",
+        gold_p2:"解锁高级物品：豪华地块、未来住宅、独特载具等。",
+        gold_p3:"💎 拥有 GOLD = 拥有未来。",
+        gold_buy:"🚀 在 Pump.fun 购买", gold_copy:"📋 复制合约",
+        gold_contract_label:"合约：", gold_banner_alt:"MoWo (GOLD) 官方横幅",
+        zhao_title:"Imperio Zhao — 僵尸俱乐部通行证 🧟‍♂️",
+        zhao_p1:"月球地下官方表情包代币。进入僵尸俱乐部、购买武器与禁品需使用 Zhao。",
+        zhao_p2:"放肆、喧闹、100% 社区。持有越多，权限越深：稀有商人、秘密交易、僵尸限定挑战。",
+        zhao_buy:"进入僵尸俱乐部",
+        zhao_copy:"复制合约",
+        zhao_contract_label:"合约：",
+        zhao_banner_alt:"Imperio Zhao 横幅"
     }
   };
   const dirMap = { ar:'rtl' };
 
+  // Flags menu
   const langBtn = document.getElementById('langBtn');
   const langMenu = document.getElementById('langMenu');
   langBtn.addEventListener('click', ()=> langMenu.style.display = langMenu.style.display==='block' ? 'none':'block');
@@ -595,6 +687,7 @@
     el.addEventListener('click', ()=>{ applyLang(el.dataset.lang); langMenu.style.display='none'; });
   });
 
+  // ===== Countdown =====
   const cdEl = document.getElementById('countdown');
   function tick(){
     const now = Date.now();
@@ -607,6 +700,7 @@
   }
   tick(); setInterval(tick,1000);
 
+  // ===== Add MoWo to MetaMask =====
   document.getElementById('addMetaMask')?.addEventListener('click', async ()=>{
     if (!window.ethereum) return alert('Instala MetaMask para continuar.');
     try{
@@ -617,14 +711,13 @@
     }catch(e){ console.error(e); alert('No se pudo añadir el token.'); }
   });
 
+  // ===== Wallet connect =====
   const connectBtn = document.getElementById('connectWallet');
   const walletInfo = document.getElementById('walletInfo');
   function short(a){ return a ? `${a.slice(0,6)}...${a.slice(-4)}` : ''; }
-
   async function ensurePolygon(provider){
-    try{
-      await provider.request({ method:'wallet_switchEthereumChain', params:[{ chainId: POLYGON_HEX }] });
-    }catch(e){
+    try{ await provider.request({ method:'wallet_switchEthereumChain', params:[{ chainId: POLYGON_HEX }] }); }
+    catch(e){
       if (e.code===4902){
         await provider.request({ method:'wallet_addEthereumChain', params:[{
           chainId: POLYGON_HEX, chainName:'Polygon Mainnet',
@@ -634,14 +727,12 @@
       } else { throw e; }
     }
   }
-
   async function connectInjected(){
     if (!window.ethereum) { alert('Instala MetaMask o usa un navegador con wallet.'); return null; }
     await ensurePolygon(window.ethereum);
     const acc = await window.ethereum.request({ method:'eth_requestAccounts' });
     return { provider: window.ethereum, account: acc[0] };
   }
-
   async function connectWalletConnect(){
     const WC = window.WalletConnectEthereumProvider;
     if (!WC){ alert('No se pudo cargar WalletConnect'); return null; }
@@ -649,7 +740,6 @@
     const acc = await wcProv.enable();
     return { provider: wcProv, account: acc[0] };
   }
-
   async function chooseAndConnect(){
     const choice = await new Promise(res=>{
       const modal = document.createElement('div');
@@ -676,6 +766,7 @@
   }
   connectBtn?.addEventListener('click', chooseAndConnect);
 
+  // ===== Buy with card (Transak) =====
   document.getElementById('buyCard')?.addEventListener('click', async ()=>{
     let addr = '';
     try{ if (window.mowoSigner) addr = await window.mowoSigner.getAddress(); }catch(e){}
@@ -692,28 +783,37 @@
     t.init();
   });
 
-  document.getElementById('copyGold')?.addEventListener('click', async ()=>{
-    try{ await navigator.clipboard.writeText(GOLD_ADDR); alert('Contrato copiado: ' + GOLD_ADDR); }
-    catch(e){
-      const ta=document.createElement('textarea'); ta.value=GOLD_ADDR; document.body.appendChild(ta); ta.select();
-      try{ document.execCommand('copy'); alert('Contrato copiado: ' + GOLD_ADDR); } finally { document.body.removeChild(ta); }
-    }
-  });
+  // ===== Copy buttons (GOLD & ZHAO) =====
+  function copyTxt(txt){ return navigator.clipboard.writeText(txt).catch(async ()=>{
+      const ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); } finally { document.body.removeChild(ta); }
+    });
+  }
+  document.getElementById('copyGold')?.addEventListener('click', async ()=>{ await copyTxt(GOLD_ADDR); alert('Contrato copiado: '+GOLD_ADDR); });
+  document.getElementById('copyZhao')?.addEventListener('click', async ()=>{ await copyTxt(ZHAO_ADDR); alert('Contrato copiado: '+ZHAO_ADDR); });
 
+  // ===== Starfield + Estrellas fugaces cada 10s =====
   (function(){
     const c = document.getElementById('stars'), ctx = c.getContext('2d');
-    let w,h,stars=[];
+    let w,h,stars=[],meteors=[];
     function resize(){ w = c.width = innerWidth; h = c.height = innerHeight; make(); }
     function rnd(a,b){ return a + Math.random()*(b-a); }
     function make(){
       stars = [];
-      const n = Math.min(500, Math.floor((w*h)/5000));
+      const n = Math.min(600, Math.floor((w*h)/4500));
       for(let i=0;i<n;i++){
         stars.push({ x: Math.random()*w, y: Math.random()*h, r: rnd(0.3,1.6), a: Math.random()*Math.PI*2, tw: rnd(0.003,0.02), vx: rnd(-0.03,0.03), vy: rnd(-0.02,0.02) });
       }
     }
+    function spawnMeteor(){
+      const side = Math.random()<0.5 ? 'left':'top';
+      const x = side==='left' ? -50 : rnd(0,w);
+      const y = side==='left' ? rnd(0,h*0.6) : -50;
+      meteors.push({ x, y, vx: rnd(6,9), vy: rnd(3,5), life: 60, len: rnd(120,200) });
+    }
     function draw(){
       ctx.clearRect(0,0,w,h);
+      // estrellas
       for(const st of stars){
         st.a += st.tw; st.x += st.vx; st.y += st.vy;
         if (st.x < -2) st.x = w+2; if (st.x > w+2) st.x = -2;
@@ -724,14 +824,27 @@
         ctx.shadowBlur = 8; ctx.shadowColor = '#7dd3fc';
         ctx.fill();
       }
+      // meteoros
+      for(const m of meteors){
+        ctx.beginPath();
+        const grd = ctx.createLinearGradient(m.x, m.y, m.x - m.len, m.y - m.len*0.5);
+        grd.addColorStop(0,'rgba(255,255,255,1)');
+        grd.addColorStop(1,'rgba(125,211,252,0)');
+        ctx.strokeStyle = grd; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+        ctx.moveTo(m.x, m.y); ctx.lineTo(m.x - m.len, m.y - m.len*0.5);
+        ctx.stroke();
+        m.x += m.vx; m.y += m.vy; m.life--;
+      }
+      meteors = meteors.filter(m=> m.life>0 && m.x < w+100 && m.y < h+100);
       requestAnimationFrame(draw);
     }
     addEventListener('resize', resize, {passive:true});
     resize(); draw();
+    setInterval(spawnMeteor, 10000); // cada 10s
   })();
 
+  // init ES
   applyLang('es');
 </script>
 </body>
 </html>
-
