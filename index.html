@@ -8,7 +8,14 @@
 <meta property="og:title" content="MoonWorld (MoWo) — Token oficial">
 <meta property="og:description" content="Staking flexible y bloqueado. Supply fijo. En Polygon. Transparencia y utilidad real en juego.">
 <meta property="og:type" content="website">
+<!-- OG/Twitter image usando TU banner del repo (gh-pages) -->
+<meta property="og:image" content="https://maxstudiotoken.github.io/MoonWorld/mowo_gold_banner_1500x500.png">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Favicon e iconos usando TU logo dorado local -->
+<link rel="icon" type="image/png" href="mowo_gold_logo.png">
+<link rel="apple-touch-icon" href="mowo_gold_logo.png">
 <meta name="theme-color" content="#0b0f1a">
+
 <style>
   :root{
     --bg:#070812; --bg2:#0d1022; --card:#0e1533; --muted:#9aa3b2; --text:#e8ecf7;
@@ -83,14 +90,14 @@
           border:1px dashed rgba(0,255,163,.5); color:#afffdf;padding:10px 12px; border-radius:12px; font-weight:900; text-align:center; margin:10px 0}
   .footer{text-align:center;color:#98a2b3;font-size:13px;margin:40px 0 10px}
 
-  /* Logo central grande (más grande y responsivo sin overflow) */
+  /* Logo central grande */
   .heroLogo{
     display:flex;align-items:center;justify-content:center;padding:26px 10px;
     border-left:1px solid rgba(255,255,255,.08)
   }
   .logoBig{
-    width:480px;height:480px; /* ↑ más grande en desktop */
-    max-width:min(92vw, 520px); /* cap para móviles/tablets */
+    width:480px;height:480px;
+    max-width:min(92vw, 520px);
     max-height:min(92vw, 520px);
     border-radius:50%;
     background:radial-gradient(circle at 45% 35%, #ffffff 0%, #c2e9ff 10%, #7dd3fc 25%, #2b3a7a 55%, #0b1028 75%);
@@ -100,7 +107,7 @@
   .logoBig img{width:94%;height:94%;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 0 22px rgba(255,255,255,.38))}
   .logoCaption{margin-top:10px;text-align:center;color:#bfe5ff;font-weight:900;letter-spacing:.4px}
 
-  /* Donut pie cyberpunk */
+  /* Donut pie */
   .donutWrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
   .donut{ --p1: 9.09; --p2: 90.91; width:180px;height:180px;border-radius:50%;
     background:conic-gradient(var(--pink) 0 calc(var(--p1)*1%), var(--neon3) 0 100%);
@@ -112,7 +119,7 @@
   .legend .dot{width:12px;height:12px;border-radius:2px}
   .dot.pink{background:var(--pink)} .dot.green{background:var(--neon3)}
 
-  /* GOLD styling añadido */
+  /* GOLD */
   .goldTitle{color:#f3c969;text-shadow:0 0 14px rgba(243,201,105,.55)}
   .goldBanner{margin:16px 0 6px;border-radius:16px;overflow:hidden;border:1px solid rgba(243,201,105,.25)}
   .goldBanner img{width:100%;height:auto;display:block}
@@ -165,7 +172,7 @@
   <section class="card" id="gold">
     <!-- Banner 1500x500 (3:1) -->
     <div class="goldBanner">
-      <!-- Reemplaza la ruta por tu imagen final -->
+      <!-- Usa tu banner local -->
       <img src="mowo_gold_banner_1500x500.png" alt="" data-i="gold_banner_alt">
     </div>
 
@@ -188,10 +195,9 @@
         </div>
       </div>
 
-      <!-- Logo dorado (opcional) -->
+      <!-- Logo dorado local (como lo tenías) -->
       <div style="text-align:center">
         <div class="logoBig" style="background:radial-gradient(circle at 45% 35%, #fff6d6 0%, #ffe8a3 12%, #f3c969 28%, #3a2b0a 70%, #0b0f1a 85%); box-shadow:0 0 70px rgba(243,201,105,.55), 0 0 160px rgba(243,201,105,.28);">
-          <!-- Reemplaza por tu logo dorado -->
           <img alt="Logo MoWo GOLD" src="mowo_gold_logo.png">
         </div>
         <div class="logoCaption">MoonWorld • MoWo (GOLD)</div>
@@ -235,7 +241,8 @@
     <div class="heroLogo">
       <div style="text-align:center">
         <div class="logoBig">
-          <img alt="MoonWorld Logo" src="https://raw.githubusercontent.com/MaxStudiotoken/MoonWorld/main/moonworld_logo.png"/>
+          <!-- Logo principal LOCAL como lo tenías en el repo -->
+          <img alt="MoonWorld Logo" src="moonworld_logo.png"/>
         </div>
         <div class="logoCaption">MoonWorld • MoWo</div>
 
@@ -311,7 +318,7 @@
   const GOLD_ADDR = 'GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL'; // Pump.fun (Solana)
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // ===== i18n (añadidas claves GOLD) =====
+  // ===== i18n (incluye GOLD) =====
   const i18n = {
     es:{header_sub:"Token ERC-20 en Polygon • Staking flexible y bloqueado",
         hero_title:"Este token lo podrás utilizar en la Luna 🌙",
@@ -559,7 +566,7 @@
         method:'wallet_watchAsset',
         params:{ type:'ERC20', options:{
           address:TOKEN_ADDRESS, symbol:'MoWo', decimals:18,
-          image:'https://raw.githubusercontent.com/MaxStudiotoken/MoonWorld/main/moonworld_logo.png'
+          image:'moonworld_logo.png' // tu logo local
         }}
       });
     }catch(e){ console.error(e); alert('No se pudo añadir el token.'); }
@@ -653,7 +660,7 @@
     }
   });
 
-  // ===== Starfield Canvas (parpadeo + desplazamiento suave + wrap) =====
+  // ===== Starfield Canvas =====
   (function(){
     const c = document.getElementById('stars'), ctx = c.getContext('2d');
     let w,h,stars=[];
@@ -668,8 +675,8 @@
           y: Math.random()*h,
           r: rnd(0.3,1.6),
           a: Math.random()*Math.PI*2,
-          tw: rnd(0.003,0.02),     // velocidad de parpadeo
-          vx: rnd(-0.03,0.03),     // desplazamiento suave
+          tw: rnd(0.003,0.02),
+          vx: rnd(-0.03,0.03),
           vy: rnd(-0.02,0.02)
         });
       }
@@ -698,3 +705,4 @@
 </script>
 </body>
 </html>
+
