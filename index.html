@@ -112,6 +112,13 @@
   .legend .dot{width:12px;height:12px;border-radius:2px}
   .dot.pink{background:var(--pink)} .dot.green{background:var(--neon3)}
 
+  /* GOLD styling añadido */
+  .goldTitle{color:#f3c969;text-shadow:0 0 14px rgba(243,201,105,.55)}
+  .goldBanner{margin:16px 0 6px;border-radius:16px;overflow:hidden;border:1px solid rgba(243,201,105,.25)}
+  .goldBanner img{width:100%;height:auto;display:block}
+  .hash{font-family:ui-monospace, Menlo, Consolas, monospace; font-size:12px; word-break:break-all;
+        background:#0b1229;border:1px solid rgba(255,255,255,.08); padding:10px;border-radius:10px}
+
   /* Responsivo móvil */
   @media(max-width:1000px){
     .hero{grid-template-columns:1fr}
@@ -154,7 +161,46 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- ===== BLOQUE MoWo (GOLD) ===== -->
+  <section class="card" id="gold">
+    <!-- Banner 1500x500 (3:1) -->
+    <div class="goldBanner">
+      <!-- Reemplaza la ruta por tu imagen final -->
+      <img src="mowo_gold_banner_1500x500.png" alt="" data-i="gold_banner_alt">
+    </div>
+
+    <div class="box" style="display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center">
+      <div>
+        <h2 class="goldTitle" data-i="gold_title">MoWo (GOLD) – El Oro del Metaverso Lunar</h2>
+        <p class="subtitle" data-i="gold_p1"></p>
+        <p class="subtitle" data-i="gold_p2"></p>
+        <p class="subtitle" data-i="gold_p3"></p>
+
+        <div class="cta" style="margin-top:12px">
+          <a class="btn primary" id="pumpLink" target="_blank" href="https://pump.fun/coin/GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL" data-i="gold_buy">Comprar en Pump.fun</a>
+          <button class="btn ghost" id="copyGold" data-i="gold_copy">Copiar contrato</button>
+          <span class="pill">MoWoGOLD</span><span class="pill">MoWoOro</span>
+        </div>
+
+        <div style="margin-top:10px">
+          <strong data-i="gold_contract_label">Contrato:</strong>
+          <span class="hash" id="goldAddr">GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL</span>
+        </div>
+      </div>
+
+      <!-- Logo dorado (opcional) -->
+      <div style="text-align:center">
+        <div class="logoBig" style="background:radial-gradient(circle at 45% 35%, #fff6d6 0%, #ffe8a3 12%, #f3c969 28%, #3a2b0a 70%, #0b0f1a 85%); box-shadow:0 0 70px rgba(243,201,105,.55), 0 0 160px rgba(243,201,105,.28);">
+          <!-- Reemplaza por tu logo dorado -->
+          <img alt="Logo MoWo GOLD" src="mowo_gold_logo.png">
+        </div>
+        <div class="logoCaption">MoonWorld • MoWo (GOLD)</div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== /GOLD ===== -->
+
+  <!-- HERO ORIGINAL -->
   <section class="hero card">
     <div class="heroLeft">
       <h2 class="title" data-i="hero_title">Este token lo podrás utilizar en la Luna 🌙</h2>
@@ -262,9 +308,10 @@
   const POLYGON_HEX = '0x89';
   const presaleEnd = new Date(Date.now() + 120*24*60*60*1000); // ~4 meses
   const WC_PROJECT_ID = 'REEMPLAZA_CON_TU_PROJECT_ID'; // WalletConnect
+  const GOLD_ADDR = 'GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL'; // Pump.fun (Solana)
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // ===== i18n =====
+  // ===== i18n (añadidas claves GOLD) =====
   const i18n = {
     es:{header_sub:"Token ERC-20 en Polygon • Staking flexible y bloqueado",
         hero_title:"Este token lo podrás utilizar en la Luna 🌙",
@@ -280,7 +327,16 @@
         tok_modes:"Staking flexible (salida libre) y bloqueado (30/90/180 días).",
         stake_title:"Explicación de staking", stake_flex:"El contrato tiene <b>staking flexible</b> sin obligación de bloquear. Puedes entrar/salir cuando quieras y reclamar recompensas acumuladas (<code>claimFlexible()</code>).",
         stake_examples:"Ejemplos con 1000 MoWo", stake_fund:"Recompensas desde el pool de 1,000M (limitado si se agota). APR ajustable (tope 50%).",
-        src_title:"Código del contrato (resumen)", src_hint:"Ver/ocultar fragmento", verify_warn:"Siempre verifica la dirección del contrato en Polygonscan."
+        src_title:"Código del contrato (resumen)", src_hint:"Ver/ocultar fragmento", verify_warn:"Siempre verifica la dirección del contrato en Polygonscan.",
+        /* GOLD */
+        gold_title:"🪙 MoonWorld MoWo (GOLD) – El Oro del Metaverso Lunar 🌕",
+        gold_p1:"Bienvenido a la versión dorada y exclusiva del metaverso lunar. MoWo (GOLD) no es solo un token, es el símbolo del poder y la rareza dentro de MoonWorld.",
+        gold_p2:"Solo los usuarios más astutos y visionarios podrán acceder a objetos premium: parcelas de lujo, viviendas futuristas, vehículos únicos y más.",
+        gold_p3:"💎 Poseer MoWo GOLD es poseer el futuro del metaverso. 🔥 Solo unos pocos lo tendrán. ¿Serás uno de ellos?",
+        gold_buy:"🚀 Comprar en Pump.fun",
+        gold_copy:"📋 Copiar contrato",
+        gold_contract_label:"Contrato:",
+        gold_banner_alt:"Banner oficial MoWo (GOLD) 1500×500"
     },
     en:{header_sub:"ERC-20 on Polygon • Flexible & locked staking",
         hero_title:"You will be able to use this token on the Moon 🌙",
@@ -296,7 +352,16 @@
         tok_modes:"Flexible & locked staking (30/90/180 days).",
         stake_title:"Staking explained", stake_flex:"Flexible staking; claim accrued rewards anytime.",
         stake_examples:"Examples with 1000 MoWo", stake_fund:"Rewards paid from the 1,000M pool.",
-        src_title:"Contract source (summary)", src_hint:"Show/Hide snippet", verify_warn:"Always verify the contract on Polygonscan."
+        src_title:"Contract source (summary)", src_hint:"Show/Hide snippet", verify_warn:"Always verify the contract on Polygonscan.",
+        /* GOLD */
+        gold_title:"🪙 MoonWorld MoWo (GOLD) – The Gold of the Lunar Metaverse 🌕",
+        gold_p1:"Welcome to the golden, exclusive edition of the lunar metaverse. MoWo (GOLD) isn’t just a token — it’s the symbol of power and rarity inside MoonWorld.",
+        gold_p2:"Only the smartest, boldest users gain access to premium items: luxury plots, futuristic homes, unique vehicles, and more.",
+        gold_p3:"💎 Owning MoWo GOLD means owning the future of the metaverse. 🔥 Only a few will hold it. Will you?",
+        gold_buy:"🚀 Buy on Pump.fun",
+        gold_copy:"📋 Copy contract",
+        gold_contract_label:"Contract:",
+        gold_banner_alt:"Official MoWo (GOLD) banner 1500×500"
     },
     ru:{header_sub:"Токен ERC-20 на Polygon • Гибкий и фиксированный стейкинг",
         hero_title:"Этот токен вы сможете использовать на Луне 🌙",
@@ -312,7 +377,16 @@
         tok_modes:"Гибкий/фиксированный стейкинг (30/90/180 дн).",
         stake_title:"О стейкинге", stake_flex:"Гибкий стейкинг: claim в любое время.",
         stake_examples:"Примеры для 1000 MoWo", stake_fund:"Выплаты из пула 1,000M.",
-        src_title:"Исходный код (кратко)", src_hint:"Показать/скрыть", verify_warn:"Проверяйте адрес в Polygonscan."
+        src_title:"Исходный код (кратко)", src_hint:"Показать/скрыть", verify_warn:"Проверяйте адрес в Polygonscan.",
+        /* GOLD */
+        gold_title:"🪙 MoonWorld MoWo (GOLD) – Золото лунного метавселенной 🌕",
+        gold_p1:"Добро пожаловать в золотую и эксклюзивную версию. MoWo (GOLD) — символ силы и редкости в MoonWorld.",
+        gold_p2:"Доступ к премиум-объектам: элитные участки, футуристические дома, уникальные автомобили и др. — для самых дальновидных.",
+        gold_p3:"💎 Владеть MoWo GOLD — значит владеть будущим метавселенной. 🔥 Лишь немногие успеют.",
+        gold_buy:"🚀 Купить на Pump.fun",
+        gold_copy:"📋 Скопировать контракт",
+        gold_contract_label:"Контракт:",
+        gold_banner_alt:"Официальный баннер MoWo (GOLD) 1500×500"
     },
     ar:{header_sub:"رمز ERC-20 على شبكة بوليجون • رهن مرن ومقفل",
         hero_title:"ستستخدم هذا الرمز على القمر 🌙",
@@ -328,7 +402,16 @@
         tok_modes:"رهن مرن ومقفل (30/90/180 يوماً).",
         stake_title:"شرح الرهن", stake_flex:"رهن مرن مع سحب المكافآت.",
         stake_examples:"أمثلة لـ 1000 MoWo", stake_fund:"المكافآت من خزان 1,000M.",
-        src_title:"كود العقد (مختصر)", src_hint:"إظهار/إخفاء", verify_warn:"تحقق من العنوان على Polygonscan."
+        src_title:"كود العقد (مختصر)", src_hint:"إظهار/إخفاء", verify_warn:"تحقق من العنوان على Polygonscan.",
+        /* GOLD */
+        gold_title:"🪙 MoWo (GOLD) — ذهب عالم القمر الافتراضي 🌕",
+        gold_p1:"مرحباً بك في النسخة الذهبية والحصرية. MoWo (GOLD) هو رمز القوة والندرة داخل MoonWorld.",
+        gold_p2:"وصول لعناصر مميزة: قطع فاخرة، منازل مستقبلية، مركبات فريدة والمزيد — للأذكى فقط.",
+        gold_p3:"💎 امتلاك MoWo GOLD يعني امتلاك مستقبل الميتافيرس. 🔥 القليل فقط سيحصلون عليه.",
+        gold_buy:"🚀 اشترِ عبر Pump.fun",
+        gold_copy:"📋 نسخ العقد",
+        gold_contract_label:"العقد:",
+        gold_banner_alt:"لافتة MoWo (GOLD) الرسمية 1500×500"
     },
     de:{header_sub:"ERC-20-Token auf Polygon • Flexibles & gesperrtes Staking",
         hero_title:"Diesen Token kannst du auf dem Mond nutzen 🌙",
@@ -344,7 +427,16 @@
         tok_modes:"Flex & Lock (30/90/180 Tage).",
         stake_title:"Staking erklärt", stake_flex:"Flex-Staking; Rewards jederzeit claimen.",
         stake_examples:"Beispiele mit 1000 MoWo", stake_fund:"Rewards aus 1,000M-Pool.",
-        src_title:"Vertrag (Kurz)", src_hint:"Anzeigen/Verbergen", verify_warn:"Adresse in Polygonscan prüfen."
+        src_title:"Vertrag (Kurz)", src_hint:"Anzeigen/Verbergen", verify_warn:"Adresse in Polygonscan prüfen.",
+        /* GOLD */
+        gold_title:"🪙 MoonWorld MoWo (GOLD) – Das Gold des Mond-Metaverse 🌕",
+        gold_p1:"Willkommen in der goldenen, exklusiven Edition. MoWo (GOLD) ist das Symbol für Macht und Seltenheit in MoonWorld.",
+        gold_p2:"Zugang zu Premium-Items: Luxusgrundstücke, futuristische Häuser, exklusive Fahrzeuge u.v.m. — nur für die Cleversten.",
+        gold_p3:"💎 MoWo GOLD besitzen heißt, die Zukunft des Metaverse zu besitzen. 🔥 Nur wenige werden es halten.",
+        gold_buy:"🚀 Auf Pump.fun kaufen",
+        gold_copy:"📋 Vertrag kopieren",
+        gold_contract_label:"Vertrag:",
+        gold_banner_alt:"Offizielles MoWo (GOLD) Banner 1500×500"
     },
     fr:{header_sub:"Token ERC-20 sur Polygon • Staking flexible et verrouillé",
         hero_title:"Ce token sera utilisable sur la Lune 🌙",
@@ -360,7 +452,16 @@
         tok_modes:"Staking flexible et verrouillé (30/90/180 j).",
         stake_title:"Staking expliqué", stake_flex:"Staking flexible; claim à tout moment.",
         stake_examples:"Exemples avec 1000 MoWo", stake_fund:"Récompenses du pool 1,000M.",
-        src_title:"Code contrat (résumé)", src_hint:"Afficher/Masquer", verify_warn:"Vérifiez l’adresse sur Polygonscan."
+        src_title:"Code contrat (résumé)", src_hint:"Afficher/Masquer", verify_warn:"Vérifiez l’adresse sur Polygonscan.",
+        /* GOLD */
+        gold_title:"🪙 MoonWorld MoWo (GOLD) – L’or du métavers lunaire 🌕",
+        gold_p1:"Bienvenue dans l’édition dorée et exclusive. MoWo (GOLD) est le symbole de puissance et de rareté dans MoonWorld.",
+        gold_p2:"Accès aux objets premium : parcelles de luxe, maisons futuristes, véhicules uniques, etc. — réservé aux plus avisés.",
+        gold_p3:"💎 Posséder MoWo GOLD, c’est posséder l’avenir du métavers. 🔥 Seuls quelques-uns l’auront.",
+        gold_buy:"🚀 Acheter sur Pump.fun",
+        gold_copy:"📋 Copier le contrat",
+        gold_contract_label:"Contrat :",
+        gold_banner_alt:"Bannière officielle MoWo (GOLD) 1500×500"
     },
     it:{header_sub:"Token ERC-20 su Polygon • Staking flessibile e bloccato",
         hero_title:"Potrai usare questo token sulla Luna 🌙",
@@ -376,7 +477,16 @@
         tok_modes:"Flessibile e bloccato (30/90/180 gg).",
         stake_title:"Staking: spiegazione", stake_flex:"Staking flessibile; claim quando vuoi.",
         stake_examples:"Esempi con 1000 MoWo", stake_fund:"Reward dal pool 1,000M.",
-        src_title:"Codice (sintesi)", src_hint:"Mostra/Nascondi", verify_warn:"Verifica su Polygonscan."
+        src_title:"Codice (sintesi)", src_hint:"Mostra/Nascondi", verify_warn:"Verifica su Polygonscan.",
+        /* GOLD */
+        gold_title:"🪙 MoonWorld MoWo (GOLD) – L’oro del metaverso lunare 🌕",
+        gold_p1:"Benvenuto nell’edizione dorata ed esclusiva. MoWo (GOLD) è simbolo di potere e rarità dentro MoonWorld.",
+        gold_p2:"Accesso a oggetti premium: lotti di lusso, case futuristiche, veicoli unici e altro — solo per i più astuti.",
+        gold_p3:"💎 Possedere MoWo GOLD significa possedere il futuro del metaverso. 🔥 Pochi lo avranno.",
+        gold_buy:"🚀 Compra su Pump.fun",
+        gold_copy:"📋 Copia contratto",
+        gold_contract_label:"Contratto:",
+        gold_banner_alt:"Banner ufficiale MoWo (GOLD) 1500×500"
     },
     zh:{header_sub:"基于 Polygon 的 ERC-20 • 灵活/锁仓质押",
         hero_title:"此代币将在月球世界中使用 🌙",
@@ -392,7 +502,17 @@
         tok_modes:"灵活/锁仓质押（30/90/180 天）。",
         stake_title:"质押说明", stake_flex:"灵活质押；可随时领取累计奖励。",
         stake_examples:"1000 MoWo 示例", stake_fund:"奖励来自 1,000M 池。",
-        src_title:"合约源码（摘要）", src_hint:"展开/折叠", verify_warn:"务必在 Polygonscan 核对合约地址。"}
+        src_title:"合约源码（摘要）", src_hint:"展开/折叠", verify_warn:"务必在 Polygonscan 核对合约地址。",
+        /* GOLD */
+        gold_title:"🪙 MoonWorld MoWo (GOLD) – 月球元宇宙的黄金 🌕",
+        gold_p1:"欢迎来到黄金且独享的版本。MoWo (GOLD) 是 MoonWorld 中力量与稀缺的象征。",
+        gold_p2:"仅最聪明果敢的用户可获得高级物品：豪华地块、未来住宅、独特载具等。",
+        gold_p3:"💎 拥有 MoWo GOLD = 拥有元宇宙的未来。🔥 仅少数人可持有。",
+        gold_buy:"🚀 在 Pump.fun 购买",
+        gold_copy:"📋 复制合约",
+        gold_contract_label:"合约：",
+        gold_banner_alt:"MoWo (GOLD) 官方横幅 1500×500"
+    }
   };
   const dirMap = { ar:'rtl' };
 
@@ -417,7 +537,6 @@
   document.querySelectorAll('.langItem').forEach(el=>{
     el.addEventListener('click', ()=>{ applyLang(el.dataset.lang); langMenu.style.display='none'; });
   });
-  applyLang('es');
 
   // ===== CountDown =====
   const cdEl = document.getElementById('countdown');
@@ -428,12 +547,12 @@
     const h = String(Math.floor(s/3600)).padStart(2,'0'); s%=3600;
     const m = String(Math.floor(s/60)).padStart(2,'0');
     const sec = String(s%60).padStart(2,'0');
-    cdEl.textContent = `${d}d ${h}:${m}:${sec}`;
+    if (cdEl) cdEl.textContent = `${d}d ${h}:${m}:${sec}`;
   }
   tick(); setInterval(tick,1000);
 
   // ===== Add to MetaMask =====
-  document.getElementById('addMetaMask').addEventListener('click', async ()=>{
+  document.getElementById('addMetaMask')?.addEventListener('click', async ()=>{
     if (!window.ethereum) return alert('Instala MetaMask para continuar.');
     try{
       await window.ethereum.request({
@@ -499,15 +618,15 @@
       const session = choice==='injected' ? await connectInjected() : await connectWalletConnect();
       if (!session) return;
       walletInfo.textContent = `✅ ${short(session.account)} · Polygon`;
-      connectBtn.innerHTML = `✅ ${short(session.account)}`;
+      if (connectBtn) connectBtn.innerHTML = `✅ ${short(session.account)}`;
       window.mowoProvider = new ethers.providers.Web3Provider(session.provider,'any');
       window.mowoSigner = mowoProvider.getSigner();
     }catch(e){ console.error(e); alert('No se pudo conectar la wallet.'); }
   }
-  connectBtn.addEventListener('click', chooseAndConnect);
+  connectBtn?.addEventListener('click', chooseAndConnect);
 
   // ===== Buy with Card (Transak) =====
-  document.getElementById('buyCard').addEventListener('click', async ()=>{
+  document.getElementById('buyCard')?.addEventListener('click', async ()=>{
     let addr = '';
     try{ if (window.mowoSigner) addr = await window.mowoSigner.getAddress(); }catch(e){}
     const t = new TransakSDK({
@@ -521,6 +640,17 @@
       fiatCurrency: 'EUR'
     });
     t.init();
+  });
+
+  // Copiar contrato GOLD
+  document.getElementById('copyGold')?.addEventListener('click', async ()=>{
+    try{
+      await navigator.clipboard.writeText(GOLD_ADDR);
+      alert('Contrato copiado: ' + GOLD_ADDR);
+    }catch(e){
+      const ta=document.createElement('textarea'); ta.value=GOLD_ADDR; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); alert('Contrato copiado: ' + GOLD_ADDR); } finally { document.body.removeChild(ta); }
+    }
   });
 
   // ===== Starfield Canvas (parpadeo + desplazamiento suave + wrap) =====
