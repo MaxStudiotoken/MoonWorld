@@ -101,6 +101,16 @@
   .goldTitle{color:#f3c969;text-shadow:0 0 14px rgba(243,201,105,.55)}
   .goldBanner{margin:16px 0 6px;border-radius:16px;overflow:hidden;border:1px solid rgba(243,201,105,.25)}
   .goldBanner img{width:100%;height:auto;display:block}
+
+  /* Welcome banner (similar a goldBanner, con borde azulado) */
+  .welcomeBanner{
+    margin:16px 0 6px;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid rgba(125,211,252,.25);
+  }
+  .welcomeBanner img{width:100%;height:auto;display:block}
+
   .hash{font-family:ui-monospace, Menlo, Consolas, monospace; font-size:12px; word-break:break-all;background:#0b1229;border:1px solid rgba(255,255,255,.08); padding:10px;border-radius:10px}
 
   /* Intro features */
@@ -139,15 +149,20 @@
     </div>
   </header>
 
-  <!-- ===== BIENVENIDA ===== -->
-  <section class="card box" id="welcome">
-    <h2 class="title" data-i="welcome_t">Bienvenido al Ecosistema del Metaverso Lunar</h2>
-    <p class="subtitle" data-i="welcome_p1">
-      Tres fuerzas mueven MoonWorld: <b>MoWo (Polygon)</b> para la economía central,
-      <b>MoWo (GOLD) en Solana</b> para el lujo y el acceso VIP, y <b>Imperio Zhao</b> —el token de los valientes—
-      para el <b>Club Zombi</b>, donde se comercian armas y equipo prohibido.
-    </p>
-    <p class="subtitle" data-i="welcome_p2">Compra parcelas, construye casas, colecciona vehículos y compite en minijuegos dentro de una ciudad ciberpunk en la Luna. Gana recompensas reales en MoWo.</p>
+  <!-- ===== BIENVENIDA (BANNER) ===== -->
+  <section class="card" id="welcome">
+    <div class="welcomeBanner">
+      <img src="fondoluna.png" alt="" data-i="welcome_banner_alt">
+    </div>
+    <div class="box">
+      <h2 class="title" data-i="welcome_t">Bienvenido al Ecosistema del Metaverso Lunar</h2>
+      <p class="subtitle" data-i="welcome_p1">
+        Tres fuerzas mueven MoonWorld: <b>MoWo (Polygon)</b> para la economía central,
+        <b>MoWo (GOLD) en Solana</b> para el lujo y el acceso VIP, y <b>Imperio Zhao</b> —el token de los valientes—
+        para el <b>Club Zombi</b>, donde se comercian armas y equipo prohibido.
+      </p>
+      <p class="subtitle" data-i="welcome_p2">Compra parcelas, construye casas, colecciona vehículos y compite en minijuegos dentro de una ciudad ciberpunk en la Luna. Gana recompensas reales en MoWo.</p>
+    </div>
   </section>
 
   <!-- ===== INTRO APP/METAVERSO ===== -->
@@ -362,6 +377,7 @@
         welcome_t:"Bienvenido al Ecosistema del Metaverso Lunar",
         welcome_p1:"Tres fuerzas mueven MoonWorld: MoWo (Polygon), MoWo (GOLD) en Solana y el meme-token Imperio Zhao para el Club Zombi.",
         welcome_p2:"Compra parcelas, construye casas, colecciona vehículos y compite en minijuegos. Recompensas reales en MoWo.",
+        welcome_banner_alt:"Banner del ecosistema MoonWorld (ciudad ciberpunk lunar)",
         /* GOLD */
         gold_title:"🪙 MoonWorld MoWo (GOLD) – El Oro del Metaverso Lunar 🌕",
         gold_p1:"Edición dorada y exclusiva — símbolo del poder y la rareza dentro de MoonWorld.",
@@ -410,6 +426,7 @@
         welcome_t:"Welcome to the Lunar Metaverse Ecosystem",
         welcome_p1:"Three forces drive MoonWorld: MoWo (Polygon), MoWo (GOLD) on Solana, and the Imperio Zhao meme token for the Zombie Club.",
         welcome_p2:"Buy plots, build houses, collect vehicles and play mini-games. Real rewards in MoWo.",
+        welcome_banner_alt:"MoonWorld ecosystem banner (cyberpunk lunar city)",
         /* GOLD */
         gold_title:"🪙 MoonWorld MoWo (GOLD) – The Gold of the Lunar Metaverse 🌕",
         gold_p1:"Golden, exclusive edition — a symbol of power and rarity inside MoonWorld.",
@@ -453,6 +470,12 @@
         app_f4_t:"Мини-игры с наградами", app_f4_d:"Гонки, доставки, взлом и PvE. Пул 100M.",
         app_f5_t:"Маркет и крафт", app_f5_d:"Чертежи и материалы; премиум-предметы.",
         app_f6_t:"Пассы и ивенты", app_f6_d:"Сезоны и еженедельные розыгрыши с частичным сжиганием.",
+        /* WELCOME */
+        welcome_t:"Добро пожаловать в лунный метавселенную",
+        welcome_p1:"Три силы двигают MoonWorld: MoWo (Polygon), MoWo (GOLD) в Solana и мем-токен Imperio Zhao для Клуба Зомби.",
+        welcome_p2:"Покупайте участки, стройте дома, коллекционируйте транспорт и играйте в мини-игры. Реальные награды в MoWo.",
+        welcome_banner_alt:"Баннер экосистемы MoonWorld (киберпанк-город на Луне)",
+        /* GOLD */
         gold_title:"🪙 MoWo (GOLD) – золото лунного метавселенной 🌕",
         gold_p1:"Золотая эксклюзивная версия — символ силы и редкости.",
         gold_p2:"Доступ к премиум-объектам: элитные участки, футур-дома, уникальный транспорт.",
@@ -460,8 +483,8 @@
         gold_buy:"🚀 Купить на Pump.fun", gold_copy:"📋 Скопировать контракт",
         gold_contract_label:"Контракт:", gold_banner_alt:"Официальный баннер MoWo (GOLD) 1500×500",
         zhao_title:"Imperio Zhao — пропуск в Клуб Зомби 🧟‍♂️",
-        zhao_p1:"Официальный мем-токен подполья. Вход в Клуб Зомби и покупка оружия/приборов — только за Zhao.",
-        zhao_p2:"Дерзкий и полностью коммунити. Больше Zhao — глубже доступ: редкие торговцы, подпольные сделки, ивенты для зомби.",
+        zhao_p1:"Официальный мем-токен подполья. Вход и покупки оружия/гаджетов — только за Zhao.",
+        zhao_p2:"Дерзкий и 100% комьюнити. Больше Zhao — глубже доступ.",
         zhao_buy:"Войти в Клуб Зомби",
         zhao_copy:"Скопировать контракт",
         zhao_contract_label:"Контракт:",
@@ -475,7 +498,7 @@
         ribbon:"بيع مسبق محدود — سعر مميز حتى انتهاء المؤقّت.",
         presale_until:"ينتهي البيع المسبق خلال: <strong id='countdown'>--d --:--:--</strong>",
         k_supply:"الإجمالي", k_chain:"الشبكة", k_addr:"العقد",
-        amm_note:"السعر يحدده AMM حسب السيولة.",
+        amm_note:"السعر تحدده مجمّعات السيولة.",
         tok_title:"اقتصاد الرمز", tok_nomint:"لا ايردروب تلقائي ولا سك لاحق.",
         tok_roles:"أدوار آمنة للمكافآت والبيع بالبطاقات وAPR.",
         tok_modes:"رهن مرن ومقفل (30/90/180 يوماً).",
@@ -492,6 +515,12 @@
         app_f4_t:"ألعاب بمكافآت", app_f4_d:"سباقات وتوصيلات وهاكنغ وPvE.",
         app_f5_t:"سوق وتصنيع", app_f5_d:"خطط ومواد وعناصر مميزة.",
         app_f6_t:"باس ومناسبات", app_f6_d:"مواسم وسحوبات أسبوعية مع حرق جزئي.",
+        /* WELCOME */
+        welcome_t:"مرحباً بك في نظام الميتافيرس القمري",
+        welcome_p1:"تحرّك MoonWorld ثلاث قوى: MoWo على بوليجون، MoWo (GOLD) على سولانا، وImperio Zhao لنادي الزومبي.",
+        welcome_p2:"اشترِ قطعاً، ابنِ منازل، اجمع مركبات والعب ألعاباً قصيرة في مدينة سايبربانك قمرية لتحصل على مكافآت MoWo.",
+        welcome_banner_alt:"لافتة نظام MoonWorld (مدينة سايبربانك قمرية)",
+        /* GOLD */
         gold_title:"🪙 MoWo (GOLD) — ذهب الميتافيرس القمري 🌕",
         gold_p1:"نسخة ذهبية حصرية ترمز للقوة والندرة.",
         gold_p2:"وصول لعناصر مميزة: قطع فاخرة، منازل مستقبلية، مركبات فريدة.",
@@ -500,7 +529,7 @@
         gold_contract_label:"العقد:", gold_banner_alt:"لافتة MoWo (GOLD) الرسمية",
         zhao_title:"Imperio Zhao — تذكرتك لنادي الزومبي 🧟‍♂️",
         zhao_p1:"ميم-توكن رسمي لعالم الظل. دخول النادي وشراء الأسلحة والمعدات المحظورة يتم بـ Zhao.",
-        zhao_p2:"جريء ومجتمعي 100٪. كلما زادت حيازتك زاد وصولك: تجار نادرون وصفقات سرّية وتحديات خاصة.",
+        zhao_p2:"جريء ومجتمعي 100٪. كلما زادت حيازتك زاد وصولك.",
         zhao_buy:"ادخل نادي الزومبي",
         zhao_copy:"انسخ العقد",
         zhao_contract_label:"العقد:",
@@ -531,6 +560,12 @@
         app_f4_t:"Mini-Games mit Rewards", app_f4_d:"Rennen, Lieferungen, Hacking, PvE.",
         app_f5_t:"Markt & Crafting", app_f5_d:"Blueprints & Materialien.",
         app_f6_t:"Pässe & Events", app_f6_d:"Seasons & wöchentliche Raffles.",
+        /* WELCOME */
+        welcome_t:"Willkommen im Lunar-Metaverse-Ökosystem",
+        welcome_p1:"Drei Kräfte treiben MoonWorld: MoWo (Polygon), MoWo (GOLD) auf Solana und der Meme-Token Imperio Zhao für den Zombie-Club.",
+        welcome_p2:"Kaufe Plots, baue Häuser, sammle Fahrzeuge und spiele Mini-Games. Echte Rewards in MoWo.",
+        welcome_banner_alt:"MoonWorld-Ecosystem-Banner (Cyberpunk-Mondstadt)",
+        /* GOLD */
         gold_title:"🪙 MoWo (GOLD) – Das Gold des Mond-Metaverse 🌕",
         gold_p1:"Goldene, exklusive Edition – Symbol für Macht und Seltenheit.",
         gold_p2:"Zugang zu Premium-Items: Luxusgrundstücke, futuristische Häuser, exklusive Fahrzeuge.",
@@ -559,7 +594,7 @@
         tok_modes:"Staking flexible et verrouillé (30/90/180 j).",
         stake_title:"Staking expliqué", stake_flex:"Staking flexible; claim à tout moment.",
         stake_examples:"Exemples avec 1000 MoWo", stake_fund:"Récompenses depuis le pool 1,000M.",
-        src_title:"Code contrat (résumé)", src_hint:"Afficher/Masquer", verify_warn:"Vérifiez l’adresse sur Polygonscan.",
+        src_title:"Code du contrat (résumé)", src_hint:"Afficher/Masquer", verify_warn:"Vérifiez l’adresse sur Polygonscan.",
         app_title:"MoonWorld : métavers lunaire à utilité réelle",
         app_p1:"Explore une ville cyberpunk sur la Lune. Achète des parcelles, construis des maisons, collectionne des véhicules et joue à des mini-jeux.",
         app_p2:"MoWo est la monnaie du monde : terrains, améliorations, craft, déplacements et frais du marché.",
@@ -570,6 +605,12 @@
         app_f4_t:"Mini-jeux rémunérés", app_f4_d:"Courses, livraisons, hacking, PvE.",
         app_f5_t:"Marché & Craft", app_f5_d:"Plans et matériaux.",
         app_f6_t:"Pass & Événements", app_f6_d:"Saisons & loteries hebdo.",
+        /* WELCOME */
+        welcome_t:"Bienvenue dans l’écosystème du métavers lunaire",
+        welcome_p1:"Trois forces animent MoonWorld : MoWo (Polygon), MoWo (GOLD) sur Solana, et le meme-token Imperio Zhao pour le Zombie Club.",
+        welcome_p2:"Achète des parcelles, construis des maisons, collectionne des véhicules et joue à des mini-jeux. Récompenses réelles en MoWo.",
+        welcome_banner_alt:"Bannière de l’écosystème MoonWorld (ville lunaire cyberpunk)",
+        /* GOLD */
         gold_title:"🪙 MoWo (GOLD) – L’or du métavers lunaire 🌕",
         gold_p1:"Édition dorée exclusive — symbole de puissance et de rareté.",
         gold_p2:"Accès aux items premium : parcelles de luxe, maisons futuristes, véhicules uniques.",
@@ -577,7 +618,7 @@
         gold_buy:"🚀 Acheter sur Pump.fun", gold_copy:"📋 Copier le contrat",
         gold_contract_label:"Contrat :", gold_banner_alt:"Bannière officielle MoWo (GOLD)",
         zhao_title:"Imperio Zhao — Ton passe pour le Club Zombie 🧟‍♂️",
-        zhao_p1:"Meme-token officiel de l’underground lunaire. Entrée & armes seulement en Zhao.",
+        zhao_p1:"Meme-token officiel de l’underground lunaire. Entrée & achats d’armes uniquement en Zhao.",
         zhao_p2:"Impertinent et 100% communautaire. Plus de Zhao = plus d’accès.",
         zhao_buy:"Entrer au Club Zombie",
         zhao_copy:"Copier le contrat",
@@ -601,7 +642,7 @@
         src_title:"Codice (sintesi)", src_hint:"Mostra/Nascondi", verify_warn:"Verifica su Polygonscan.",
         app_title:"MoonWorld: metaverso lunare con vera utilità",
         app_p1:"Esplora una città cyberpunk lunare. Compra plot, costruisci case, colleziona veicoli e gioca mini-giochi.",
-        app_p2:"MoWo è la valuta: terreni, upgrade, crafting, spostamenti e fee mercato.",
+        app_p2:"MoWo è la valuta del mondo: terreni, upgrade, crafting, spostamenti e fee mercato.",
         app_p3:"Avvio su Android e web. Asset chiave on-chain.",
         app_f1_t:"Plot & Distretti", app_f1_d:"Terre tokenizzate con rarità.",
         app_f2_t:"Case & Officine", app_f2_d:"Costruisci, potenzia, affitta.",
@@ -609,6 +650,12 @@
         app_f4_t:"Mini-giochi premiati", app_f4_d:"Gare, consegne, hacking, PvE.",
         app_f5_t:"Mercato & Crafting", app_f5_d:"Blueprint e materiali.",
         app_f6_t:"Pass & Eventi", app_f6_d:"Stagioni e lotterie settimanali.",
+        /* WELCOME */
+        welcome_t:"Benvenuto nell’ecosistema del Metaverso Lunare",
+        welcome_p1:"Tre forze muovono MoonWorld: MoWo (Polygon), MoWo (GOLD) su Solana e il meme-token Imperio Zhao per lo Zombie Club.",
+        welcome_p2:"Compra lotti, costruisci case, colleziona veicoli e gioca mini-giochi. Ricompense reali in MoWo.",
+        welcome_banner_alt:"Banner dell’ecosistema MoonWorld (città lunare cyberpunk)",
+        /* GOLD */
         gold_title:"🪙 MoWo (GOLD) – L’oro del metaverso lunare 🌕",
         gold_p1:"Edizione dorata esclusiva, simbolo di potere e rarità.",
         gold_p2:"Accesso a oggetti premium: lotti di lusso, case futuristiche, veicoli unici.",
@@ -641,13 +688,19 @@
         app_title:"MoonWorld：具备真实效用的月球元宇宙",
         app_p1:"探索月球赛博城市。买地、建房、收集载具并通过小游戏赚取 MoWo。",
         app_p2:"MoWo 是世界货币：土地、升级、合成、跨区移动和市场手续费。",
-        app_p3:"首先登陆 Android 与网页面板。核心资产由链上合约与资金池支撑。",
+        app_p3:"首先登陆 Android 与网页面板。核心资产由链上合约支撑。",
         app_f1_t:"地块与城区", app_f1_d:"代币化土地，含稀有度；居住/商业/工业分区。",
         app_f2_t:"房屋与工坊", app_f2_d:"建造并升级模块，出租空间获取收益。",
         app_f3_t:"独特载具", app_f3_d:"月球摩托与探测车可自定义。",
         app_f4_t:"奖励小游戏", app_f4_d:"竞速、配送、破解与 PvE。",
         app_f5_t:"市场与合成", app_f5_d:"交易蓝图与材料；合成高级物品。",
-        app_f6_t:"通行证与活动", app_f6_d:"赛季/锦标赛/每周抽奖，部分费用销毁。",
+        app_f6_t:"通行证与活动", app_f6_d:"赛季、锦标赛与每周抽奖，部分费用销毁。",
+        /* WELCOME */
+        welcome_t:"欢迎来到月球元宇宙生态",
+        welcome_p1:"MoonWorld 由三股力量驱动：Polygon 上的 MoWo、Solana 上的 MoWo (GOLD)，以及僵尸俱乐部的表情包代币 Imperio Zhao。",
+        welcome_p2:"购买地块、建房、收集载具并参与小游戏，在赛博朋克月城赢取 MoWo 奖励。",
+        welcome_banner_alt:"MoonWorld 生态横幅（赛博朋克月球城市）",
+        /* GOLD */
         gold_title:"🪙 MoWo (GOLD) – 月球元宇宙的黄金 🌕",
         gold_p1:"黄金独享版本，象征力量与稀缺。",
         gold_p2:"解锁高级物品：豪华地块、未来住宅、独特载具等。",
@@ -655,8 +708,8 @@
         gold_buy:"🚀 在 Pump.fun 购买", gold_copy:"📋 复制合约",
         gold_contract_label:"合约：", gold_banner_alt:"MoWo (GOLD) 官方横幅",
         zhao_title:"Imperio Zhao — 僵尸俱乐部通行证 🧟‍♂️",
-        zhao_p1:"月球地下官方表情包代币。进入僵尸俱乐部、购买武器与禁品需使用 Zhao。",
-        zhao_p2:"放肆、喧闹、100% 社区。持有越多，权限越深：稀有商人、秘密交易、僵尸限定挑战。",
+        zhao_p1:"月球地下官方 meme 代币。进入俱乐部与购买武器/禁品需使用 Zhao。",
+        zhao_p2:"张扬、叛逆、100% 社区。持有越多，权限越深。",
         zhao_buy:"进入僵尸俱乐部",
         zhao_copy:"复制合约",
         zhao_contract_label:"合约：",
