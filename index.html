@@ -78,11 +78,11 @@
   .ribbon{background:linear-gradient(90deg, rgba(0,255,163,.16), rgba(125,211,252,.16));border:1px dashed rgba(0,255,163,.5); color:#afffdf;padding:10px 12px; border-radius:12px; font-weight:900; text-align:center; margin:10px 0}
   .footer{text-align:center;color:#98a2b3;font-size:13px;margin:40px 0 10px}
 
-  /* LOGO CUADRADO (no círculo) */
+  /* LOGO CUADRADO */
   .heroLogo{display:flex;align-items:center;justify-content:center;padding:26px 10px;border-left:1px solid rgba(255,255,255,.08)}
   .logoBig{
     width:480px;height:480px;max-width:min(92vw, 520px);max-height:min(92vw, 520px);
-    border-radius:16px; /* cuadrado suavizado */
+    border-radius:16px;
     background:linear-gradient(180deg,#0b1028,#0b0f1a);
     box-shadow:0 0 40px rgba(125,211,252,.45), 0 0 120px rgba(255,0,255,.20);
     display:flex;align-items:center;justify-content:center;overflow:hidden;border:5px solid rgba(255,255,255,.12)
@@ -102,18 +102,11 @@
   .goldBanner{margin:16px 0 6px;border-radius:16px;overflow:hidden;border:1px solid rgba(243,201,105,.25)}
   .goldBanner img{width:100%;height:auto;display:block}
 
-  /* Welcome banner (similar a goldBanner, con borde azulado) */
-  .welcomeBanner{
-    margin:16px 0 6px;
-    border-radius:16px;
-    overflow:hidden;
-    border:1px solid rgba(125,211,252,.25);
-  }
+  .welcomeBanner{margin:16px 0 6px;border-radius:16px;overflow:hidden;border:1px solid rgba(125,211,252,.25)}
   .welcomeBanner img{width:100%;height:auto;display:block}
 
   .hash{font-family:ui-monospace, Menlo, Consolas, monospace; font-size:12px; word-break:break-all;background:#0b1229;border:1px solid rgba(255,255,255,.08); padding:10px;border-radius:10px}
 
-  /* Intro features */
   .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:12px}
   .feat{padding:16px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:#0f1630}
   .feat h3{margin:0 0 4px;font-size:16px}
@@ -213,6 +206,7 @@
         <div class="cta" style="margin-top:12px">
           <a class="btn primary" target="_blank" href="https://pump.fun/coin/GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL" data-i="gold_buy">Comprar en Pump.fun</a>
           <button class="btn ghost" id="copyGold" data-i="gold_copy">Copiar contrato</button>
+          <button class="btn ghost" id="addGoldPhantom">➕ Añadir a Phantom</button>
           <span class="pill">GOLD</span><span class="pill">Solana</span>
         </div>
         <div style="margin-top:10px"><strong data-i="gold_contract_label">Contrato:</strong> <span class="hash" id="goldAddr">GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL</span></div>
@@ -232,6 +226,7 @@
         <div class="cta" style="margin-top:12px">
           <a class="btn primary" target="_blank" href="https://pump.fun/coin/GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz" data-i="zhao_buy">Entrar al Club Zombi</a>
           <button class="btn ghost" id="copyZhao" data-i="zhao_copy">Copiar contrato</button>
+          <button class="btn ghost" id="addZhaoPhantom">➕ Añadir a Phantom</button>
           <span class="pill">Imperio Zhao</span><span class="pill">Solana</span>
         </div>
         <div style="margin-top:10px"><strong data-i="zhao_contract_label">Contrato:</strong> <span class="hash" id="zhaoAddr">GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz</span></div>
@@ -330,19 +325,22 @@
   <p class="footer">© <span id="y"></span> MoonWorld • <span class="warn" data-i="verify_warn">Siempre verifica la dirección del contrato en Polygonscan.</span></p>
 </div>
 
-<!-- Libs -->
+<!-- Libs EVM -->
 <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 <script src="https://unpkg.com/@walletconnect/ethereum-provider@2.11.1/dist/index.umd.min.js"></script>
 <script src="https://global.transak.com/sdk/v1.1/widget.js"></script>
+<!-- Libs Solana (UMD/IIFE) -->
+<script src="https://unpkg.com/@solana/web3.js@1.95.3/lib/index.iife.min.js"></script>
+<script src="https://unpkg.com/@solana/spl-token@0.4.7/lib/index.iife.min.js"></script>
 
 <script>
   // ===== Config =====
-  const TOKEN_ADDRESS = '0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121';
+  const TOKEN_ADDRESS = '0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121'; // MoWo ERC-20 (Polygon)
   const POLYGON_HEX = '0x89';
   const presaleEnd = new Date(Date.now() + 120*24*60*60*1000);
   const WC_PROJECT_ID = 'REEMPLAZA_CON_TU_PROJECT_ID';
-  const GOLD_ADDR = 'GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL';
-  const ZHAO_ADDR = 'GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz';
+  const GOLD_ADDR = 'GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL'; // SPL mint
+  const ZHAO_ADDR = 'GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz'; // SPL mint
   document.getElementById('y').textContent = new Date().getFullYear();
 
   // ===== i18n COMPLETO =====
@@ -658,7 +656,7 @@
         /* GOLD */
         gold_title:"🪙 MoWo (GOLD) – L’oro del metaverso lunare 🌕",
         gold_p1:"Edizione dorata esclusiva, simbolo di potere e rarità.",
-        gold_p2:"Accesso a oggetti premium: lotti di lusso, case futuristiche, veicoli unici.",
+        gold_p2:"Accesso a oggetti premium: lotti di lusso, case futuriste, veicoli unici.",
         gold_p3:"💎 Avere GOLD = avere il futuro.",
         gold_buy:"🚀 Compra su Pump.fun", gold_copy:"📋 Copia contratto",
         gold_contract_label:"Contratto:", gold_banner_alt:"Banner ufficiale MoWo (GOLD)",
@@ -718,6 +716,7 @@
   };
   const dirMap = { ar:'rtl' };
 
+
   // Flags menu
   const langBtn = document.getElementById('langBtn');
   const langMenu = document.getElementById('langMenu');
@@ -753,7 +752,7 @@
   }
   tick(); setInterval(tick,1000);
 
-  // ===== Add MoWo to MetaMask =====
+  // ===== Add MoWo (ERC-20) to MetaMask =====
   document.getElementById('addMetaMask')?.addEventListener('click', async ()=>{
     if (!window.ethereum) return alert('Instala MetaMask para continuar.');
     try{
@@ -764,7 +763,7 @@
     }catch(e){ console.error(e); alert('No se pudo añadir el token.'); }
   });
 
-  // ===== Wallet connect =====
+  // ===== Wallet connect (EVM) =====
   const connectBtn = document.getElementById('connectWallet');
   const walletInfo = document.getElementById('walletInfo');
   function short(a){ return a ? `${a.slice(0,6)}...${a.slice(-4)}` : ''; }
@@ -845,7 +844,7 @@
   document.getElementById('copyGold')?.addEventListener('click', async ()=>{ await copyTxt(GOLD_ADDR); alert('Contrato copiado: '+GOLD_ADDR); });
   document.getElementById('copyZhao')?.addEventListener('click', async ()=>{ await copyTxt(ZHAO_ADDR); alert('Contrato copiado: '+ZHAO_ADDR); });
 
-  // ===== Starfield + Estrellas fugaces cada 10s =====
+  // ===== Starfield + Meteoros =====
   (function(){
     const c = document.getElementById('stars'), ctx = c.getContext('2d');
     let w,h,stars=[],meteors=[];
@@ -866,7 +865,6 @@
     }
     function draw(){
       ctx.clearRect(0,0,w,h);
-      // estrellas
       for(const st of stars){
         st.a += st.tw; st.x += st.vx; st.y += st.vy;
         if (st.x < -2) st.x = w+2; if (st.x > w+2) st.x = -2;
@@ -877,7 +875,6 @@
         ctx.shadowBlur = 8; ctx.shadowColor = '#7dd3fc';
         ctx.fill();
       }
-      // meteoros
       for(const m of meteors){
         ctx.beginPath();
         const grd = ctx.createLinearGradient(m.x, m.y, m.x - m.len, m.y - m.len*0.5);
@@ -893,8 +890,78 @@
     }
     addEventListener('resize', resize, {passive:true});
     resize(); draw();
-    setInterval(spawnMeteor, 10000); // cada 10s
+    setInterval(spawnMeteor, 10000);
   })();
+
+  // ====== SOLANA: Añadir GOLD / ZHAO a Phantom ======
+  // Estrategia:
+  // 1) Intentar "wallet_watchAsset" si la wallet lo soporta (algunos navegadores/wallets pueden implementarlo).
+  // 2) Fallback universal: crear la Associated Token Account (ATA) del usuario para ese mint (no envía tokens),
+  //    así Phantom lo muestra. Requiere firmar tx y pagar una comisión mínima en SOL.
+
+  async function addSplToPhantom(mintStr){
+    try{
+      const provider = window?.phantom?.solana || window?.solana;
+      if (!provider) return alert('Necesitas Phantom (o wallet compatible) instalada.');
+
+      // Conectar si no está conectada
+      if (!provider.isConnected) await provider.connect();
+      const owner = provider.publicKey; // PublicKey
+
+      // 1) Intento opcional: "watchAsset" si existe
+      try{
+        if (provider.request) {
+          await provider.request({
+            method: 'wallet_watchAsset',
+            params: { type: 'spl-token', options: { address: mintStr } }
+          });
+          // Si la wallet soporta esto, ya está.
+          return alert('Solicitud enviada a la wallet para añadir el token.');
+        }
+      }catch(_ignored){ /* seguimos con ATA */ }
+
+      // 2) Crear ATA con una tx sencilla
+      const { Connection, PublicKey, Transaction } = solanaWeb3;
+      const spl = splToken; // UMD global
+      const connection = new Connection('https://api.mainnet-beta.solana.com', 'confirmed');
+      const mint = new PublicKey(mintStr);
+
+      // Direccion ATA destino
+      const ata = await spl.getAssociatedTokenAddress(mint, owner, false, spl.TOKEN_PROGRAM_ID, spl.ASSOCIATED_TOKEN_PROGRAM_ID);
+
+      // ¿Existe ya?
+      const info = await connection.getAccountInfo(ata);
+      if (info) {
+        alert('Tu cuenta asociada ya existe. El token debería mostrarse en Phantom en breve.');
+        return;
+      }
+
+      // Construir instrucción de creación ATA
+      const ix = spl.createAssociatedTokenAccountInstruction(
+        owner, // payer
+        ata,
+        owner, // owner
+        mint,
+        spl.TOKEN_PROGRAM_ID,
+        spl.ASSOCIATED_TOKEN_PROGRAM_ID
+      );
+
+      const tx = new Transaction().add(ix);
+      tx.feePayer = owner;
+      tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+
+      // Firmar y enviar con Phantom
+      const { signature } = await provider.signAndSendTransaction(tx);
+      await connection.confirmTransaction(signature, 'confirmed');
+      alert('✅ Token añadido: se creó tu cuenta asociada. Si no aparece al instante, refresca Phantom.');
+    }catch(err){
+      console.error(err);
+      alert('No se pudo completar la operación. Asegúrate de tener algo de SOL para la comisión.');
+    }
+  }
+
+  document.getElementById('addGoldPhantom')?.addEventListener('click', ()=> addSplToPhantom(GOLD_ADDR));
+  document.getElementById('addZhaoPhantom')?.addEventListener('click', ()=> addSplToPhantom(ZHAO_ADDR));
 
   // init ES
   applyLang('es');
