@@ -2,11 +2,11 @@
 <html lang="es" dir="ltr">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>MoonWorld (MoWo) — Token oficial + Parcelas Lunares NFT</title>
-<meta name="description" content="MoonWorld (MoWo) — token ERC-20 en Polygon. Preventa limitada, staking flexible/bloqueado, transparencia total y parcelas lunares H1-H8 con oxígeno vital, turbo nitrógeno y escritura de domicilio.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover, user-scalable=yes"/>
+<title>MoonWorld (MoWo) — Token oficial | Parcelas Lunares H1-H8</title>
+<meta name="description" content="MoonWorld (MoWo) — token ERC-20 en Polygon. Preventa limitada, staking flexible/bloqueado, transparencia total y un juego Android ciberpunk lunar. Parcelas limitadas H1-H8: oxígeno, vehículos y documentación de propiedad lunar.">
 <meta property="og:title" content="MoonWorld (MoWo) — Token oficial + Parcelas Lunares">
-<meta property="og:description" content="Staking flexible y bloqueado. Supply fijo. Parcelas NFT con oxígeno y nitro. En Polygon.">
+<meta property="og:description" content="Staking flexible y bloqueado. Supply fijo. En Polygon. Parcelas H1-H8 con oxígeno, turbo nitrógeno y título de propiedad.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://maxstudiotoken.github.io/MoonWorld/mowo_gold_banner_1500x500.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -14,119 +14,449 @@
 <link rel="apple-touch-icon" href="mowo_gold_logo.png">
 <meta name="theme-color" content="#0b0f1a">
 <style>
-  :root{
-    --bg:#070812; --bg2:#0d1022; --card:#0e1533; --muted:#9aa3b2; --text:#e8ecf7;
-    --neon1:#7dd3fc; --neon2:#a78bfa; --neon3:#00ffa3; --pink:#ff00ff;
-    --shadow: 0 28px 70px rgba(0,0,0,.55);
-    --radius:20px;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0; color:var(--text);
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
-    background:linear-gradient(180deg,var(--bg),var(--bg2));
-    overflow-x:hidden;
+
+  :root {
+    --bg: #070812;
+    --bg2: #0d1022;
+    --card: #0e1533;
+    --muted: #9aa3b2;
+    --text: #e8ecf7;
+    --neon1: #7dd3fc;
+    --neon2: #a78bfa;
+    --neon3: #00ffa3;
+    --pink: #ff00ff;
+    --gold: #f3c969;
+    --shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+    --radius: 20px;
   }
-  .neon-bg{
-    position:fixed; inset:-10%; z-index:-3; pointer-events:none;
-    background:
-      radial-gradient(1000px 600px at 85% -10%, rgba(167,139,250,.20) 0%, transparent 60%),
-      radial-gradient(900px 500px at 10% 110%, rgba(125,211,252,.18) 0%, transparent 60%),
-      radial-gradient(700px 400px at 50% 20%, rgba(255,0,255,.10) 0%, transparent 55%);
+
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(180deg, var(--bg), var(--bg2));
+    overflow-x: hidden;
+    width: 100%;
   }
-  #stars{position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.95;}
 
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1180px;margin:0 auto;padding:26px}
-  header{display:flex;align-items:center;gap:16px;margin:6px 0 14px;flex-wrap:wrap}
-  .brand h1{margin:0;font-size:28px;letter-spacing:.3px;color:var(--neon1);text-shadow:0 0 12px var(--neon1)}
-  .brand small{display:block;color:var(--muted)}
-
-  .lang{margin-left:auto; position:relative}
-  .langBtn{background:#0f1630;border:1px solid rgba(255,255,255,.15);color:#cfe9ff;border-radius:10px;padding:8px 12px;cursor:pointer;}
-  .langMenu{position:absolute; right:0; top:42px; background:#0f1630;border:1px solid rgba(255,255,255,.12);border-radius:12px; padding:6px; display:none; min-width:160px; z-index:10;}
-  .langItem{display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:8px;cursor:pointer}
-  .langItem:hover{background:#151d43}
-  .flag{font-size:18px; width:22px; text-align:center}
-
-  .card{background:linear-gradient(180deg,rgba(20,24,52,.78),rgba(12,16,38,.78));border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); box-shadow:var(--shadow)}
-  .hero{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;}
-  .heroLeft{padding:26px}
-  .title{font-size:36px;margin:0 0 10px;text-shadow:0 0 14px var(--pink)}
-  .subtitle{color:var(--muted);margin:0 0 14px}
-  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-  .btn{padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:#141c3a;display:inline-flex;gap:8px;align-items:center;cursor:pointer;font-weight:800}
-  .btn.primary{background:linear-gradient(135deg, var(--neon1), var(--pink)); color:#071023; border:none; box-shadow:0 10px 28px rgba(125,211,252,.25)}
-  .btn.ghost{background:#1a2044;color:#e8ecf7}
-  .metric{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
-  .kpi{padding:14px}
-  .kpi h3{margin:0 0 6px;font-size:12px;color:var(--muted);font-weight:900;letter-spacing:.2px}
-  .kpi p{margin:0;font-size:18px;font-weight:900}
-  .pill{display:inline-block;background:#0f1630;border:1px solid rgba(255,255,255,.12);padding:10px 12px;border-radius:12px;margin:6px 6px 0 0}
-  .panel{margin:28px 0;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .box{padding:20px}
-  .note{font-size:12px;color:var(--muted)}
-  .warn{color:#fbbf24;font-weight:800}
-  details{background:#0f1630;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px}
-  details > summary{cursor:pointer;font-weight:800;margin:6px 0}
-  pre{white-space:pre-wrap; word-break:break-word; font-size:12px; line-height:1.35; background:#0b1229;border:1px solid rgba(255,255,255,.08); padding:14px;border-radius:10px; max-height:500px; overflow:auto}
-  .ribbon{background:linear-gradient(90deg, rgba(0,255,163,.16), rgba(125,211,252,.16));border:1px dashed rgba(0,255,163,.5); color:#afffdf;padding:10px 12px; border-radius:12px; font-weight:900; text-align:center; margin:10px 0}
-  .footer{text-align:center;color:#98a2b3;font-size:13px;margin:40px 0 10px}
-
-  .heroLogo{display:flex;align-items:center;justify-content:center;padding:26px 10px;border-left:1px solid rgba(255,255,255,.08)}
-  .logoBig{width:480px;height:480px;max-width:min(92vw, 520px);max-height:min(92vw, 520px);border-radius:16px;background:linear-gradient(180deg,#0b1028,#0b0f1a);box-shadow:0 0 40px rgba(125,211,252,.45), 0 0 120px rgba(255,0,255,.20);display:flex;align-items:center;justify-content:center;overflow:hidden;border:5px solid rgba(255,255,255,.12)}
-  .logoBig img{width:100%;height:100%;object-fit:contain}
-
-  .donutWrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-  .donut{ --p1: 9.09; --p2: 90.91; width:180px;height:180px;border-radius:50%; background:conic-gradient(var(--pink) 0 calc(var(--p1)*1%), var(--neon3) 0 100%);position:relative;}
-  .donut::after{content:""; position:absolute; inset:20px; background:#0b1128; border-radius:50%;}
-  .legend{font-size:13px}
-  .legend .item{display:flex;align-items:center;gap:8px;margin:6px 0}
-  .legend .dot{width:12px;height:12px;border-radius:2px}
-  .dot.pink{background:var(--pink)} .dot.green{background:var(--neon3)}
-
-  .goldTitle{color:#f3c969;text-shadow:0 0 14px rgba(243,201,105,.55)}
-  .goldBanner{margin:16px 0 6px;border-radius:16px;overflow:hidden;border:1px solid rgba(243,201,105,.25)}
-  .goldBanner img{width:100%;height:auto;display:block}
-  .welcomeBanner{margin:16px 0 6px;border-radius:16px;overflow:hidden;border:1px solid rgba(125,211,252,.25)}
-  .welcomeBanner img{width:100%;height:auto;display:block}
-  .hash{font-family:ui-monospace, Menlo, Consolas, monospace; font-size:12px; word-break:break-all;background:#0b1229;border:1px solid rgba(255,255,255,.08); padding:10px;border-radius:10px}
-
-  .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:12px}
-  .feat{padding:16px;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:#0f1630}
-  .feat h3{margin:0 0 4px;font-size:16px}
-  .feat p{margin:0;color:var(--muted);font-size:13px}
-
-  /* NUEVA SECCIÓN PARCELAS - ESTILOS */
-  .plots-section{margin:28px 0;}
-  .plots-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:24px;margin-top:24px;}
-  .nft-card{background:linear-gradient(145deg,#0e1533,#080c22);border-radius:24px;border:1px solid rgba(125,211,252,0.3);overflow:hidden;transition:transform 0.2s;}
-  .nft-card:hover{transform:translateY(-5px);border-color:var(--neon3);}
-  .nft-img{background:#0b0f1f;height:220px;display:flex;align-items:center;justify-content:center;padding:20px;}
-  .nft-img img{max-width:100%;max-height:100%;object-fit:contain;}
-  .nft-info{padding:18px;}
-  .nft-level{font-size:1.3rem;font-weight:800;display:flex;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;}
-  .nft-level span{font-size:0.7rem;background:#2a235a;padding:4px 12px;border-radius:40px;color:var(--neon3);}
-  .oxygen-badge{background:rgba(0,255,163,0.1);border-left:3px solid var(--neon3);padding:10px 12px;border-radius:12px;margin:12px 0;font-size:0.85rem;display:flex;align-items:center;gap:8px;}
-  .doc-badge{background:rgba(167,139,250,0.1);border-left:3px solid var(--neon2);padding:10px 12px;border-radius:12px;margin:12px 0;font-size:0.75rem;}
-  .vehicle-specs{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.1);margin-top:12px;padding-top:12px;font-size:0.75rem;color:var(--neon1);}
-
-  @media(max-width:1000px){
-    .hero{grid-template-columns:1fr}
-    .heroLogo{border-left:none;border-top:1px solid rgba(255,255,255,.08)}
-    .heroLeft{padding:20px}
-    .panel{grid-template-columns:1fr}
-    .features{grid-template-columns:1fr}
-    .plots-grid{grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));}
+  /* fondos */
+  .neon-bg {
+    position: fixed;
+    inset: -10%;
+    z-index: -3;
+    pointer-events: none;
+    background: radial-gradient(1000px 600px at 85% -10%, rgba(167, 139, 250, 0.20) 0%, transparent 60%),
+                radial-gradient(900px 500px at 10% 110%, rgba(125, 211, 252, 0.18) 0%, transparent 60%),
+                radial-gradient(700px 400px at 50% 20%, rgba(255, 0, 255, 0.10) 0%, transparent 55%);
   }
-  @media(max-width:560px){
-    .title{font-size:30px}
-    .metric{grid-template-columns:1fr}
-    .cta{justify-content:center}
-    header{justify-content:space-between}
-    .wrap{padding:18px}
-    .heroLeft{padding:16px}
+
+  #stars {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.95;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 16px;
+    width: 100%;
+  }
+
+  /* Header responsive */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 6px 0 20px;
+    flex-wrap: wrap;
+  }
+
+  .brand h1 {
+    margin: 0;
+    font-size: clamp(22px, 6vw, 28px);
+    letter-spacing: 0.3px;
+    color: var(--neon1);
+    text-shadow: 0 0 12px var(--neon1);
+  }
+
+  .brand small {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .lang {
+    position: relative;
+  }
+
+  .langBtn {
+    background: #0f1630;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #cfe9ff;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .langMenu {
+    position: absolute;
+    right: 0;
+    top: 42px;
+    background: #0f1630;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 6px;
+    display: none;
+    min-width: 160px;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+  }
+
+  .langItem {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .langItem:hover {
+    background: #151d43;
+  }
+
+  /* cards */
+  .card {
+    background: linear-gradient(180deg, rgba(20, 24, 52, 0.78), rgba(12, 16, 38, 0.78));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(2px);
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .box {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: clamp(24px, 5vw, 36px);
+    margin: 0 0 10px;
+    text-shadow: 0 0 14px var(--pink);
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    margin: 0 0 12px;
+    line-height: 1.4;
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+
+  .cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: #141c3a;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .btn.primary {
+    background: linear-gradient(135deg, var(--neon1), var(--pink));
+    color: #071023;
+    border: none;
+    box-shadow: 0 10px 28px rgba(125, 211, 252, 0.25);
+  }
+
+  .btn.ghost {
+    background: #1a2044;
+    color: #e8ecf7;
+  }
+
+  .metric {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .kpi {
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+  }
+
+  .kpi h3 {
+    margin: 0 0 6px;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 900;
+    letter-spacing: 0.2px;
+  }
+
+  .kpi p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 900;
+    word-break: break-word;
+  }
+
+  .pill {
+    display: inline-block;
+    background: #0f1630;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 6px 12px;
+    border-radius: 12px;
+    margin: 6px 6px 0 0;
+    font-size: 12px;
+  }
+
+  .panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 0 0 24px 0;
+  }
+
+  .ribbon {
+    background: linear-gradient(90deg, rgba(0, 255, 163, 0.16), rgba(125, 211, 252, 0.16));
+    border: 1px dashed rgba(0, 255, 163, 0.5);
+    color: #afffdf;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-weight: 900;
+    text-align: center;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  /* hero logo */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .heroLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .logoBig {
+    width: min(280px, 70vw);
+    height: min(280px, 70vw);
+    border-radius: 16px;
+    background: linear-gradient(180deg, #0b1028, #0b0f1a);
+    box-shadow: 0 0 40px rgba(125, 211, 252, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .logoBig img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* donut */
+  .donutWrap {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .donut {
+    --p1: 9.09;
+    --p2: 90.91;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: conic-gradient(var(--pink) 0 calc(var(--p1)*1%), var(--neon3) 0 100%);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .donut::after {
+    content: "";
+    position: absolute;
+    inset: 20px;
+    background: #0b1128;
+    border-radius: 50%;
+  }
+
+  .legend .item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+    font-size: 13px;
+  }
+
+  .goldTitle {
+    color: var(--gold);
+    text-shadow: 0 0 14px rgba(243, 201, 105, 0.55);
+  }
+
+  /* Parcelas section */
+  .plots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 20px 0 10px;
+  }
+
+  .plot-card {
+    background: rgba(15, 22, 48, 0.7);
+    border-radius: 20px;
+    padding: 16px;
+    border: 1px solid rgba(125, 211, 252, 0.3);
+    transition: transform 0.2s;
+  }
+
+  .plot-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--neon3);
+  }
+
+  .plot-card h3 {
+    font-size: 22px;
+    background: linear-gradient(135deg, var(--neon1), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 12px;
+  }
+
+  .badge-oxy {
+    background: #0e3b2e;
+    color: var(--neon3);
+    padding: 4px 10px;
+    border-radius: 40px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 8px 0;
+  }
+
+  .opensea-btn {
+    background: #2081e2;
+    color: white;
+    border: none;
+    width: 100%;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .hash {
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    word-break: break-all;
+    background: #0b1229;
+    padding: 8px;
+    border-radius: 10px;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .feat {
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 14px;
+    background: #0f1630;
+  }
+
+  .footer {
+    text-align: center;
+    color: #98a2b3;
+    font-size: 12px;
+    margin: 20px 0 10px;
+  }
+
+  /* Responsive total */
+  @media (max-width: 860px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+    .heroLogo {
+      order: 2;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 8px;
+    }
+    .panel {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .metric {
+      grid-template-columns: 1fr;
+    }
+    .box {
+      padding: 16px;
+    }
+    .wrap {
+      padding: 16px;
+    }
+    .donut {
+      width: 120px;
+      height: 120px;
+    }
+    .cta .btn {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .plots-grid {
+      grid-template-columns: 1fr;
+    }
+    .brand h1 {
+      font-size: 20px;
+    }
+    .langBtn {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
   }
 </style>
 </head>
@@ -138,7 +468,7 @@
   <header>
     <div class="brand">
       <h1>MoonWorld <span class="sym">($MoWo)</span></h1>
-      <small data-i="header_sub">Token ERC-20 en Polygon • Staking flexible y bloqueado • Parcelas Lunares NFT</small>
+      <small data-i="header_sub">Token ERC-20 en Polygon • Staking flexible y bloqueado</small>
     </div>
     <div class="lang">
       <button class="langBtn" id="langBtn">🇪🇸 Español ▾</button>
@@ -155,142 +485,129 @@
     </div>
   </header>
 
-  <!-- BIENVENIDA BANNER -->
+  <!-- SECCION BIENVENIDA -->
   <section class="card" id="welcome">
-    <div class="welcomeBanner">
-      <img src="fondoluna.png" alt="" data-i="welcome_banner_alt">
+    <div class="welcomeBanner" style="border-radius:20px 20px 0 0; overflow:hidden;">
+      <img src="fondoluna.png" alt="MoonWorld banner" style="width:100%; display:block;">
     </div>
     <div class="box">
       <h2 class="title" data-i="welcome_t">Bienvenido al Ecosistema del Metaverso Lunar</h2>
-      <p class="subtitle" data-i="welcome_p1">
-        Tres fuerzas mueven MoonWorld: <b>MoWo (Polygon)</b> para la economía central,
-        <b>MoWo (GOLD) en Solana</b> para el lujo y el acceso VIP, y <b>Imperio Zhao</b> —el token de los valientes—
-        para el <b>Club Zombi</b>, donde se comercian armas y equipo prohibido.
-      </p>
+      <p class="subtitle" data-i="welcome_p1">Tres fuerzas mueven MoonWorld: <b>MoWo (Polygon)</b> para la economía central,
+        <b>MoWo (GOLD) en Solana</b> para el lujo y acceso VIP, y <b>Imperio Zhao</b> —el token de los valientes— para el <b>Club Zombi</b>.</p>
       <p class="subtitle" data-i="welcome_p2">Compra parcelas, construye casas, colecciona vehículos y compite en minijuegos dentro de una ciudad ciberpunk en la Luna. Gana recompensas reales en MoWo.</p>
     </div>
   </section>
 
-  <!-- ========== NUEVA SECCIÓN PARCELAS LUNARES H1 a H8 ========== -->
-  <section class="card plots-section">
-    <div class="box">
-      <h2 class="title" style="text-shadow:0 0 8px var(--neon3);" data-i="plots_main_title">🌕 Parcelas Lunares: Niveles H1, H2, H3, H4, H5, H6, H7, H8</h2>
-      <p class="subtitle" data-i="plots_desc">
-        Cada parcela es un <strong>NFT único en Polygon</strong>. Poseer una parcela significa tener <strong>derecho a oxígeno vital, documentación oficial de domicilio lunar</strong>, y mejoras para vehículos con <strong>sistema de turbo nitrógeno</strong>. 
-        Las parcelas de nivel superior (H6, H7, H8) otorgan capacidades extremas: mayor flujo de oxígeno, carga máxima para vuelos y nitro mejorado.
-      </p>
-      <div class="ribbon" data-i="plots_ribbon">📢 SOLO 8,888 PARCELAS DISPONIBLES · CADA UNA CON ESCRITURA IRREVOCABLE · VERIFICA TU NFT</div>
-      
-      <!-- GRID DE PARCELAS NFT - H1 a H8 -->
-      <div id="plotsGrid" class="plots-grid"></div>
-      
-      <div class="metric" style="margin-top:20px;">
-        <div class="kpi card"><h3 data-i="oxy_title">🌬️ Oxígeno Vital</h3><p data-i="oxy_value">Recarga con MoWo</p></div>
-        <div class="kpi card"><h3 data-i="nitro_title">🚀 Turbo Nitrógeno</h3><p data-i="nitro_value">+200% en H8</p></div>
-        <div class="kpi card"><h3 data-i="doc_title">📜 Escritura Lunar</h3><p data-i="doc_value">Documento on-chain</p></div>
-      </div>
+  <!-- NUEVA SECCION: PARCELAS H1-H8 (OXÍGENO, VEHÍCULOS, DOCUMENTACIÓN) -->
+  <section class="card box" id="plots-section">
+    <h2 class="title" style="text-shadow:0 0 8px var(--gold);" data-i="plots_title">🌕 Parcelas Lunares H1 · H2 · H3 · H4 · H5 · H6 · H7 · H8</h2>
+    <p class="subtitle" data-i="plots_desc1"><strong>Fundamentales para la vida en la Luna:</strong> Cada parcela genera <span style="color:#00ffa3;">oxígeno vital</span> y es tu base de operaciones. Sin una parcela registrada, no podrás mantener el vehículo a carga máxima ni activar el <strong>turbo nitrógeno</strong> para vuelos inter-distritos.</p>
+    <p class="subtitle" data-i="plots_desc2">Estas parcelas son <strong>limitadas y exclusivas</strong>. Poseer una H1-H8 te otorga un <strong>título de propiedad digital</strong> inmutable en la blockchain, con documentación única de tu domicilio lunar. Solo unos pocos colonos tendrán este estatus.</p>
+    <div class="plots-grid">
+      <div class="plot-card"><h3>H1 · H2</h3><div class="badge-oxy">🫧 Oxígeno +25%</div><p data-i="plot_h12">Zonas residenciales premium, vistas al Mar de la Tranquilidad. Soporte para garaje y taller de vehículos.</p></div>
+      <div class="plot-card"><h3>H3 · H4</h3><div class="badge-oxy">⚡ Turbo Nitrógeno Ready</div><p data-i="plot_h34">Estación de carga rápida para rovers lunares. Permite vuelos cortos con impulso de nitrógeno.</p></div>
+      <div class="plot-card"><h3>H5 · H6</h3><div class="badge-oxy">🏭 Centro industrial</div><p data-i="plot_h56">Zona de crafteo y almacén. Mejora la capacidad de carga del vehículo para expediciones largas.</p></div>
+      <div class="plot-card"><h3>H7 · H8</h3><div class="badge-oxy">📜 Dominio Élite</div><p data-i="plot_h78">Parcelas con escritura notarial digital. Acceso a club privado y gobernanza lunar temprana.</p></div>
     </div>
+    <div class="ribbon" style="margin-top:10px;" data-i="plots_limited">⚠️ SOLO 888 PARCELAS H1-H8 DISPONIBLES EN TOTAL — CADA UNA CON DOCUMENTACIÓN ÚNICA</div>
+    <div class="cta" style="margin-top:16px;">
+      <a class="btn primary" target="_blank" href="https://opensea.io/collection/moonworld-h1-h2-h3-h4-metaverso" data-i="opensea_btn" style="background:#2081e2; color:white;">🌐 Ver Parcelas en OpenSea</a>
+      <button class="btn ghost" id="copyPlotInfo" data-i="copy_plot_btn">📋 Copiar documento de propiedad</button>
+    </div>
+    <p class="note" style="margin-top:12px" data-i="plots_note">*Cada parcela H1-H8 incluye un certificado de domicilio lunar (NFT) que acredita la propiedad, esencial para activar turbo, oxígeno extendido y garaje.</p>
   </section>
 
-  <!-- MoWo GOLD + IMPERIO ZHAO -->
+  <!-- MoWo GOLD -->
   <section class="card" id="gold">
-    <div class="goldBanner">
-      <img src="mowo_gold_banner_1500x500.png" alt="" data-i="gold_banner_alt">
-    </div>
-    <div class="box" style="display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center">
+    <div class="goldBanner"><img src="mowo_gold_banner_1500x500.png" alt="Gold banner" style="width:100%; display:block;"></div>
+    <div class="box" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center">
       <div>
         <h2 class="goldTitle" data-i="gold_title">MoWo (GOLD) – El Oro del Metaverso Lunar</h2>
-        <p class="subtitle" data-i="gold_p1">Edición dorada y exclusiva — símbolo del poder y la rareza dentro de MoonWorld.</p>
-        <p class="subtitle" data-i="gold_p2">Acceso a objetos premium: parcelas de lujo, viviendas futuristas, vehículos únicos y más.</p>
-        <div class="cta" style="margin-top:12px">
+        <p class="subtitle" data-i="gold_p1"></p><p class="subtitle" data-i="gold_p2"></p>
+        <div class="cta">
           <a class="btn primary" target="_blank" href="https://pump.fun/coin/GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL" data-i="gold_buy">Comprar en Pump.fun</a>
-          <button class="btn ghost" id="copyGold" data-i="gold_copy">Copiar contrato</button>
+          <button class="btn ghost" id="copyGold">📋 Copiar contrato</button>
           <button class="btn ghost" id="addGoldPhantom">➕ Añadir a Phantom</button>
-          <span class="pill">GOLD</span><span class="pill">Solana</span>
         </div>
-        <div style="margin-top:10px"><strong data-i="gold_contract_label">Contrato:</strong> <span class="hash" id="goldAddr">GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL</span></div>
+        <div><strong data-i="gold_contract_label">Contrato:</strong> <span class="hash" id="goldAddr">GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL</span></div>
       </div>
-      <div class="heroLogo"><div class="logoBig"><img alt="Logo MoWo GOLD" src="mowo_gold_logo.png"></div></div>
+      <div class="heroLogo"><div class="logoBig"><img alt="MoWo Gold" src="mowo_gold_logo.png"></div></div>
     </div>
   </section>
 
-  <section class="card" id="zhao" style="margin-top:16px;">
-    <div class="goldBanner"><img src="imperiozhaobaner.png" alt="" data-i="zhao_banner_alt"></div>
-    <div class="box" style="display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center">
+  <!-- Imperio Zhao -->
+  <section class="card">
+    <div class="goldBanner"><img src="imperiozhaobaner.png" alt="Zhao" style="width:100%"></div>
+    <div class="box" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center">
       <div>
-        <h2 class="title" style="color:#a78bfa" data-i="zhao_title">Imperio Zhao — El pase al <span style="color:#00ffa3">Club Zombi</span> 🧟‍♂️</h2>
-        <p class="subtitle" data-i="zhao_p1">Este es el <b>meme-token oficial</b> del subsuelo lunar. Si quieres entrar al Club Zombi y <b>comprar armas, munición y artefactos prohibidos</b>, pagas con <b>Zhao</b>.</p>
-        <div class="cta" style="margin-top:12px">
+        <h2 class="title" style="color:#a78bfa" data-i="zhao_title">Imperio Zhao — El pase al Club Zombi 🧟‍♂️</h2>
+        <p class="subtitle" data-i="zhao_p1"></p>
+        <div class="cta">
           <a class="btn primary" target="_blank" href="https://pump.fun/coin/GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz" data-i="zhao_buy">Entrar al Club Zombi</a>
-          <button class="btn ghost" id="copyZhao" data-i="zhao_copy">Copiar contrato</button>
+          <button class="btn ghost" id="copyZhao">📋 Copiar contrato</button>
           <button class="btn ghost" id="addZhaoPhantom">➕ Añadir a Phantom</button>
-          <span class="pill">Imperio Zhao</span><span class="pill">Solana</span>
         </div>
-        <div style="margin-top:10px"><strong data-i="zhao_contract_label">Contrato:</strong> <span class="hash" id="zhaoAddr">GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz</span></div>
+        <div><strong data-i="zhao_contract_label">Contrato:</strong> <span class="hash" id="zhaoAddr">GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz</span></div>
       </div>
-      <div class="heroLogo"><div class="logoBig"><img alt="Logo Imperio Zhao" src="imperiozhao.png"></div></div>
+      <div class="heroLogo"><div class="logoBig"><img alt="Imperio Zhao" src="imperiozhao.png"></div></div>
     </div>
   </section>
 
-  <!-- HERO MoWo POLYGON -->
-  <section class="hero card" style="margin-top:16px">
-    <div class="heroLeft">
+  <!-- HERO MoWo Polygon -->
+  <section class="hero card">
+    <div class="heroLeft box">
       <h2 class="title" data-i="hero_title">Este token lo podrás utilizar en la Luna 🌙</h2>
-      <p class="subtitle" data-i="hero_desc">
-        Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro. Pools internos para
-        <b>juego (100M)</b> y <b>staking (1,000M)</b> retenidos en el contrato.
-      </p>
+      <p class="subtitle" data-i="hero_desc">Supply fijo de 1,000,000,000,000 MoWo. Pools internos para <b>juego (100M)</b> y <b>staking (1,000M)</b>.</p>
       <div class="cta">
         <a class="btn primary" target="_blank" href="https://polygonscan.com/address/0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121" data-i="btn_scan">Ver en Polygonscan</a>
         <a class="btn ghost" target="_blank" id="uniLink" href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121" data-i="btn_uniswap">Comprar en Uniswap</a>
         <button class="btn ghost" id="addMetaMask" data-i="btn_add">Añadir a MetaMask</button>
         <button class="btn ghost" id="connectWallet">🔌 <span data-i="btn_connect">Conectar wallet</span></button>
-        <button class="btn primary" id="buyCard">💳 <span data-i="buy_card">Comprar con tarjeta (GPay/Apple Pay)</span></button>
+        <button class="btn primary" id="buyCard">💳 <span data-i="buy_card">Comprar con tarjeta</span></button>
       </div>
       <div class="ribbon" data-i="ribbon">Preventa limitada — precio preferente hasta que termine el contador.</div>
       <p class="subtitle" data-i="presale_until">Preventa termina en: <strong id="countdown">--d --:--:--</strong></p>
+      <p class="note" id="walletInfo"></p>
       <div class="metric">
-        <div class="kpi card"><h3 data-i="k_supply">Suministro</h3><p>1,000,000,000,000 MoWo</p></div>
-        <div class="kpi card"><h3 data-i="k_chain">Red</h3><p>Polygon (POL)</p></div>
-        <div class="kpi card"><h3 data-i="k_addr">Contrato</h3><p style="font-size:12px;word-break:break-all">0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121</p></div>
+        <div class="kpi"><h3 data-i="k_supply">Suministro</h3><p>1,000,000,000,000 MoWo</p></div>
+        <div class="kpi"><h3 data-i="k_chain">Red</h3><p>Polygon (POL)</p></div>
+        <div class="kpi"><h3 data-i="k_addr">Contrato</h3><p style="font-size:11px" id="ctrAddr">0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121</p></div>
       </div>
     </div>
     <div class="heroLogo">
-      <div style="text-align:center">
-        <div class="logoBig"><img alt="MoonWorld Logo" src="moonworld_logo.png"/></div>
-        <div class="logoCaption">MoonWorld • MoWo</div>
-        <div style="margin-top:16px"><div class="pill">1 POL = <b>100,000 MoWo</b></div></div>
-      </div>
+      <div><div class="logoBig"><img alt="MoonWorld Logo" src="moonworld_logo.png"/></div>
+      <div class="pill" style="margin-top:12px">1 POL = 100,000 MoWo</div>
+      <div class="pill">Fee 0.3% AMM</div>
+    </div>
     </div>
   </section>
 
-  <!-- TOKENOMICS / STAKING -->
-  <section class="panel">
+  <!-- Tokenomics y staking -->
+  <div class="panel">
     <div class="card box">
       <h2 data-i="tok_title">Tokenomics</h2>
       <div class="donutWrap">
         <div class="donut"></div>
-        <div class="legend">
-          <div class="item"><span class="dot pink"></span> <b>Game Pool</b>: 100,000,000 MoWo</div>
-          <div class="item"><span class="dot green"></span> <b>Staking Pool</b>: 1,000,000,000 MoWo</div>
-        </div>
+        <div class="legend"><div class="item"><span class="dot pink" style="background:var(--pink)"></span> <b>Game Pool</b>: 100M MoWo</div>
+        <div class="item"><span class="dot green" style="background:var(--neon3)"></span> <b>Staking Pool</b>: 1,000M MoWo</div>
+        <div class="item"><span class="dot" style="background:linear-gradient(45deg,var(--neon1),var(--pink))"></span> <b>Total Supply</b>: 1T</div></div>
       </div>
       <ul class="note"><li data-i="tok_nomint">Sin airdrop automático, sin mint posterior.</li><li data-i="tok_modes">Staking flexible (salida libre) y bloqueado (30/90/180 días).</li></ul>
     </div>
     <div class="card box">
       <h2 data-i="stake_title">Explicación de staking</h2>
-      <p class="note" data-i="stake_flex">APR: <b>Flexible 8%</b> — <b>30d 12%</b> — <b>90d 20%</b> — <b>180d 30%</b>.</p>
-      <div class="pill">Flexible 30d ≈ 6.58 MoWo • 180d bloqueado ≈ 147.95 MoWo</div>
+      <p class="note" data-i="stake_flex">Flexible APR 8% · 30d 12% · 90d 20% · 180d 30%</p>
+      <div class="pill">Ejemplo 1000 MoWo flexible 30d ≈ 6.58</div>
+      <div class="pill">Bloqueado 30d ≈ 9.86</div>
+      <p class="note" data-i="stake_fund">Recompensas del staking pool (1,000M).</p>
     </div>
-  </section>
+  </div>
 
-  <section class="card box">
+  <div class="card box">
     <h2>🔎 <span data-i="src_title">Código del contrato (resumen)</span></h2>
-    <details><summary data-i="src_hint">Ver/ocultar fragmento</summary><pre>// MoonWorld (MoWo) — pools: 100M juego & 1,000M staking. Dirección: 0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121</pre></details>
-    <p class="note" data-i="verify_warn">Siempre verifica la dirección del contrato en Polygonscan.</p>
-  </section>
-
-  <p class="footer">© <span id="y"></span> MoonWorld • <span class="warn" data-i="verify_warn">Siempre verifica la dirección del contrato en Polygonscan.</span></p>
+    <details><summary data-i="src_hint">Ver fragmento</summary><pre>// MoonWorld (MoWo) — pools juego/staking. Dirección Polygon verificada.</pre></details>
+  </div>
+  <p class="footer">© <span id="y"></span> MoonWorld • <span class="warn" data-i="verify_warn">Siempre verifica la dirección del contrato.</span></p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
@@ -298,81 +615,57 @@
 <script src="https://global.transak.com/sdk/v1.1/widget.js"></script>
 <script src="https://unpkg.com/@solana/web3.js@1.95.3/lib/index.iife.min.js"></script>
 <script src="https://unpkg.com/@solana/spl-token@0.4.7/lib/index.iife.min.js"></script>
-
 <script>
-  // Configuración
   const TOKEN_ADDRESS = '0x774455369E1b96a3E5cCB0Ed96DFDc184eCbb121';
+  const POLYGON_HEX = '0x89';
+  const presaleEnd = new Date(Date.now() + 120*24*60*60*1000);
+  const WC_PROJECT_ID = 'demo_mowo_project';
   const GOLD_ADDR = 'GZYnRDN1zwGEmaQgxxQD27V29Q3qxZVv3LvdZDRBedzL';
   const ZHAO_ADDR = 'GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz';
-  const presaleEnd = new Date(Date.now() + 120*24*60*60*1000);
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // DATOS PARCELAS H1 a H8
-  const plotsData = [
-    { level: "H1", name: "Cráter Esmeralda", oxygen: "42 L/min", nitro: "Turbo +15%", rarity: "Común", docId: "LUN-H1-0001", img: "https://placehold.co/400x400/0f1630/7dd3fc?text=H1+Crater" },
-    { level: "H2", name: "Base Tranquilidad", oxygen: "58 L/min", nitro: "Turbo +25% + Carga rápida", rarity: "Básica", docId: "LUN-H2-0088", img: "https://placehold.co/400x400/0f1630/7dd3fc?text=H2+Tranquility" },
-    { level: "H3", name: "Valle Helado", oxygen: "74 L/min", nitro: "Turbo +38%", rarity: "Intermedia", docId: "LUN-H3-0342", img: "https://placehold.co/400x400/0f1630/7dd3fc?text=H3+IcyValley" },
-    { level: "H4", name: "Cúpula Starlight", oxygen: "92 L/min", nitro: "Turbo +55% + Estabilidad", rarity: "Avanzada", docId: "LUN-H4-0789", img: "https://placehold.co/400x400/0f1630/7dd3fc?text=H4+Starlight" },
-    { level: "H5", name: "Residencia Lunaris", oxygen: "115 L/min", nitro: "Turbo +75% + Doble carga", rarity: "Rara", docId: "LUN-H5-2048", img: "https://placehold.co/400x400/0f1630/7dd3fc?text=H5+Lunaris" },
-    { level: "H6", name: "Dominio Élite", oxygen: "155 L/min", nitro: "Turbo +100% + Nitro extra", rarity: "Épica", docId: "LUN-H6-5150", img: "https://placehold.co/400x400/0f1630/7dd3fc?text=H6+Elite" },
-    { level: "H7", name: "Palacio de Helio-3", oxygen: "210 L/min", nitro: "Turbo +140% + Nitro infinito", rarity: "Legendaria", docId: "LUN-H7-7777", img: "https://placehold.co/400x400/0f1630/7dd3fc?text=H7+Helium" },
-    { level: "H8", name: "Trono del Sol Negro", oxygen: "320 L/min", nitro: "Turbo +200% + Vuelo orbital", rarity: "Mítica", docId: "LUN-H8-8888", img: "https://placehold.co/400x400/0f1630/7dd3fc?text=H8+BlackSun" }
-  ];
-
-  function renderPlots() {
-    const grid = document.getElementById('plotsGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-    plotsData.forEach(plot => {
-      const card = document.createElement('div');
-      card.className = 'nft-card';
-      card.innerHTML = `
-        <div class="nft-img"><img src="${plot.img}" alt="Parcela ${plot.level}" loading="lazy"></div>
-        <div class="nft-info">
-          <div class="nft-level">${plot.level}: ${plot.name} <span>${plot.rarity}</span></div>
-          <div class="oxygen-badge">🫧 <strong>Oxígeno vital:</strong> ${plot.oxygen} · Recarga con MoWo en estaciones orbitales</div>
-          <div class="doc-badge">📜 <strong>Documentación de domicilio lunar</strong><br>Escritura N° ${plot.docId} · Certificado on-chain · Propiedad irrevocable</div>
-          <div class="vehicle-specs"><span>🚀 Turbo Nitrógeno: ${plot.nitro}</span><span>⚡ Carga vehículo: ${plot.level === 'H8' ? 'INFINITA' : plot.level === 'H7' ? 'ULTRA' : 'MEJORABLE'}</span></div>
-          <div style="margin-top:12px"><span class="pill">🔑 NFT ID: ${plot.level.toLowerCase()}-${Math.floor(Math.random()*9000+1000)}</span><span class="pill">🌙 Dominio exclusivo</span></div>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
-  }
-  renderPlots();
-
-  // i18n COMPLETO
+  // i18n completo incluyendo parcelas
   const i18n = {
-    es: { header_sub:"Token ERC-20 en Polygon • Staking flexible • Parcelas Lunares NFT", welcome_t:"Bienvenido al Ecosistema del Metaverso Lunar", welcome_p1:"Tres fuerzas mueven MoonWorld: MoWo (Polygon), MoWo (GOLD) en Solana y Imperio Zhao para el Club Zombi.", welcome_p2:"Compra parcelas, construye casas, colecciona vehículos y compite en minijuegos.", welcome_banner_alt:"Banner ecosistema", plots_main_title:"🌕 Parcelas Lunares: Niveles H1, H2, H3, H4, H5, H6, H7, H8", plots_desc:"Cada parcela es un NFT único. Poseer una parcela significa tener oxígeno vital, documentación oficial de domicilio lunar y mejoras para vehículos con turbo nitrógeno.", plots_ribbon:"📢 SOLO 8,888 PARCELAS · CADA UNA CON ESCRITURA IRREVOCABLE", oxy_title:"🌬️ Oxígeno Vital", oxy_value:"Recarga con MoWo", nitro_title:"🚀 Turbo Nitrógeno", nitro_value:"+200% en H8", doc_title:"📜 Escritura Lunar", doc_value:"Documento on-chain", gold_title:"MoWo (GOLD) – El Oro del Metaverso Lunar", gold_p1:"Edición dorada exclusiva", gold_p2:"Acceso a objetos premium", gold_buy:"Comprar en Pump.fun", gold_copy:"Copiar contrato", gold_contract_label:"Contrato:", gold_banner_alt:"Banner GOLD", zhao_title:"Imperio Zhao — Club Zombi", zhao_p1:"Meme-token oficial del subsuelo lunar", zhao_buy:"Entrar al Club Zombi", zhao_copy:"Copiar contrato", zhao_contract_label:"Contrato:", zhao_banner_alt:"Banner Zhao", hero_title:"Este token lo podrás utilizar en la Luna 🌙", hero_desc:"Supply fijo de 1,000,000,000,000 MoWo", btn_scan:"Ver en Polygonscan", btn_uniswap:"Comprar en Uniswap", btn_add:"Añadir a MetaMask", btn_connect:"Conectar wallet", buy_card:"Comprar con tarjeta", ribbon:"Preventa limitada", presale_until:"Preventa termina en:", k_supply:"Suministro", k_chain:"Red", k_addr:"Contrato", tok_title:"Tokenomics", tok_nomint:"Sin mint posterior", tok_modes:"Staking flexible y bloqueado", stake_title:"Staking", stake_flex:"APR: Flexible 8% • 30d 12% • 90d 20% • 180d 30%", src_title:"Código del contrato", src_hint:"Ver fragmento", verify_warn:"Siempre verifica la dirección" },
-    en: { header_sub:"ERC-20 on Polygon • Flexible Staking • Lunar Plots NFT", welcome_t:"Welcome to the Lunar Metaverse Ecosystem", welcome_p1:"Three forces drive MoonWorld: MoWo (Polygon), MoWo (GOLD) on Solana, and Imperio Zhao for the Zombie Club.", welcome_p2:"Buy plots, build houses, collect vehicles and play mini-games.", welcome_banner_alt:"Ecosystem banner", plots_main_title:"🌕 Lunar Plots: Levels H1, H2, H3, H4, H5, H6, H7, H8", plots_desc:"Each plot is a unique NFT. Owning a plot means vital oxygen, official lunar home deed, and vehicle nitro turbo upgrades.", plots_ribbon:"📢 ONLY 8,888 PLOTS · EACH WITH IRREVOCABLE DEED", oxy_title:"🌬️ Vital Oxygen", oxy_value:"Refill with MoWo", nitro_title:"🚀 Nitro Turbo", nitro_value:"+200% at H8", doc_title:"📜 Lunar Deed", doc_value:"On-chain document", gold_title:"MoWo (GOLD) – Lunar Metaverse Gold", gold_p1:"Exclusive golden edition", gold_p2:"Access premium items", gold_buy:"Buy on Pump.fun", gold_copy:"Copy contract", gold_contract_label:"Contract:", gold_banner_alt:"Gold Banner", zhao_title:"Imperio Zhao — Zombie Club", zhao_p1:"Official underground meme-token", zhao_buy:"Enter Zombie Club", zhao_copy:"Copy contract", zhao_contract_label:"Contract:", zhao_banner_alt:"Zhao Banner", hero_title:"You will be able to use this token on the Moon 🌙", hero_desc:"Fixed supply 1,000,000,000,000 MoWo", btn_scan:"View on Polygonscan", btn_uniswap:"Buy on Uniswap", btn_add:"Add to MetaMask", btn_connect:"Connect wallet", buy_card:"Buy with card", ribbon:"Limited presale", presale_until:"Presale ends:", k_supply:"Supply", k_chain:"Network", k_addr:"Contract", tok_title:"Tokenomics", tok_nomint:"No future mint", tok_modes:"Flexible & locked staking", stake_title:"Staking", stake_flex:"APR: Flexible 8% • 30d 12% • 90d 20% • 180d 30%", src_title:"Contract code", src_hint:"Show snippet", verify_warn:"Always verify contract address" }
-  };
-  for(let l of ['ru','ar','de','fr','it','zh']) i18n[l] = { ...i18n.en };
+    es:{ header_sub:"Token ERC-20 en Polygon • Staking flexible y bloqueado", hero_title:"Este token lo podrás utilizar en la Luna 🌙", hero_desc:"Supply fijo de 1,000,000,000,000 MoWo. Sin mint futuro.", btn_scan:"Ver en Polygonscan", btn_uniswap:"Comprar en Uniswap", btn_add:"Añadir a MetaMask", btn_connect:"Conectar wallet", buy_card:"Comprar con tarjeta", ribbon:"Preventa limitada — precio preferente", presale_until:"Preventa termina en:", k_supply:"Suministro", k_chain:"Red", k_addr:"Contrato", tok_title:"Tokenomics", tok_nomint:"Sin airdrop automático", tok_modes:"Staking flexible/bloqueado", stake_title:"Staking", stake_flex:"Flexible APR 8% · Lock 12-30%", stake_fund:"Pool de recompensas 1,000M", src_title:"Contrato", src_hint:"Ver fragmento", verify_warn:"Verifica dirección.",
+      plots_title:"🌕 Parcelas Lunares H1 · H2 · H3 · H4 · H5 · H6 · H7 · H8", plots_desc1:"Fundamentales para oxígeno, vehículo a carga máxima y turbo nitrógeno.", plots_desc2:"Limitadas y exclusivas. Documentación de domicilio lunar en blockchain.", plot_h12:"Zonas premium + oxígeno extendido", plot_h34:"Turbo nitrógeno para vuelos", plot_h56:"Mayor capacidad de carga", plot_h78:"Escritura notarial digital y gobernanza", plots_limited:"⚠️ SOLO 888 PARCELAS H1-H8 DISPONIBLES", opensea_btn:"🌐 Ver Parcelas en OpenSea", copy_plot_btn:"📋 Copiar documento de propiedad", plots_note:"*Cada parcela incluye certificado de domicilio lunar NFT.",
+      gold_title:"🪙 MoWo (GOLD) – El Oro del Metaverso Lunar", gold_p1:"Edición dorada exclusiva", gold_p2:"Acceso premium", gold_buy:"🚀 Comprar en Pump.fun", gold_copy:"📋 Copiar contrato", gold_contract_label:"Contrato:", zhao_title:"Imperio Zhao — El pase al Club Zombi 🧟‍♂️", zhao_p1:"Meme-token del subsuelo lunar.", zhao_buy:"Entrar al Club Zombi", zhao_copy:"Copiar contrato", zhao_contract_label:"Contrato:",
+      welcome_t:"Bienvenido al Ecosistema del Metaverso Lunar", welcome_p1:"Tres fuerzas mueven MoonWorld: MoWo (Polygon), MoWo (GOLD) en Solana y Imperio Zhao.", welcome_p2:"Compra parcelas H1-H8, construye y gana MoWo." },
+    en:{ header_sub:"ERC-20 on Polygon • Flexible & locked staking", hero_title:"You will use this token on the Moon 🌙", hero_desc:"Fixed supply 1T MoWo. Game & staking pools.", btn_scan:"Polygonscan", btn_uniswap:"Buy on Uniswap", btn_add:"Add to MetaMask", btn_connect:"Connect wallet", buy_card:"Card purchase", ribbon:"Limited presale", presale_until:"Presale ends in:", k_supply:"Supply", k_chain:"Network", k_addr:"Contract", tok_title:"Tokenomics", tok_nomint:"No airdrop", tok_modes:"Flex/Locked staking", stake_title:"Staking", stake_flex:"Flex 8% · Lock up to 30%", stake_fund:"Rewards from 1,000M pool", src_title:"Contract code", src_hint:"Show/Hide", verify_warn:"Verify address.",
+      plots_title:"🌕 Lunar Plots H1 · H2 · H3 · H4 · H5 · H6 · H7 · H8", plots_desc1:"Essential for oxygen, vehicle max load and nitro turbo.", plots_desc2:"Limited & exclusive. Lunar home deed on-chain.", plot_h12:"Premium zones + oxygen boost", plot_h34:"Nitro turbo for flights", plot_h56:"Increased cargo capacity", plot_h78:"Digital notary deed & governance", plots_limited:"⚠️ ONLY 888 H1-H8 PLOTS AVAILABLE", opensea_btn:"🌐 View Plots on OpenSea", copy_plot_btn:"📋 Copy property document", plots_note:"*Each plot includes lunar domicile NFT certificate.",
+      gold_title:"🪙 MoWo (GOLD) – Lunar Metaverse Gold", gold_p1:"Exclusive gold edition", gold_p2:"Premium access", gold_buy:"🚀 Buy on Pump.fun", gold_copy:"📋 Copy contract", gold_contract_label:"Contract:", zhao_title:"Imperio Zhao — Zombie Club Pass", zhao_p1:"Underground meme-token", zhao_buy:"Enter Zombie Club", zhao_copy:"Copy contract", zhao_contract_label:"Contract:",
+      welcome_t:"Welcome to Lunar Metaverse Ecosystem", welcome_p1:"Three forces drive MoonWorld.", welcome_p2:"Buy H1-H8 plots, build & earn MoWo." } };
+  for(let l of ['ru','ar','de','fr','it','zh']) i18n[l] = {...i18n.en, ...(i18n[l]||{})};
 
   function applyLang(l){
     const d = i18n[l] || i18n.es;
     document.querySelectorAll('[data-i]').forEach(el=>{ let k=el.getAttribute('data-i'); if(d[k]) el.innerHTML=d[k]; });
-    document.documentElement.lang = l;
+    const flags={es:'🇪🇸',en:'🇬🇧',ru:'🇷🇺',ar:'🇸🇦',de:'🇩🇪',fr:'🇫🇷',it:'🇮🇹',zh:'🇨🇳'};
+    const names={es:'Español',en:'English',ru:'Русский',ar:'العربية',de:'Deutsch',fr:'Français',it:'Italiano',zh:'中文'};
+    document.getElementById('langBtn').textContent = `${flags[l]||'🏳️'} ${names[l]} ▾`;
+    document.documentElement.lang=l; document.documentElement.dir = l==='ar'?'rtl':'ltr';
   }
-  document.querySelectorAll('.langItem').forEach(el=>{ el.addEventListener('click',()=>{ applyLang(el.dataset.lang); document.getElementById('langMenu').style.display='none'; }); });
+  document.querySelectorAll('.langItem').forEach(el=>el.addEventListener('click',()=>{ applyLang(el.dataset.lang); document.getElementById('langMenu').style.display='none'; }));
   document.getElementById('langBtn').addEventListener('click',()=>{ let m=document.getElementById('langMenu'); m.style.display=m.style.display==='block'?'none':'block'; });
-  applyLang('es');
+  document.addEventListener('click',(e)=>{ if(!document.getElementById('langMenu').contains(e.target) && e.target!==document.getElementById('langBtn')) document.getElementById('langMenu').style.display='none'; });
 
-  // Countdown
-  function tick(){ let s=Math.max(0,(presaleEnd-Date.now())/1000); let d=Math.floor(s/86400); let h=Math.floor(s%86400/3600); let m=Math.floor(s%3600/60); let sec=Math.floor(s%60); document.getElementById('countdown').innerHTML=`${d}d ${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`; }
+  function tick(){ let s=Math.max(0,(presaleEnd.getTime()-Date.now())/1000); let d=Math.floor(s/86400); s%=86400; let h=String(Math.floor(s/3600)).padStart(2,'0'); s%=3600; let m=String(Math.floor(s/60)).padStart(2,'0'); let sec=String(s%60).padStart(2,'0'); document.getElementById('countdown').textContent = `${d}d ${h}:${m}:${sec}`; }
   tick(); setInterval(tick,1000);
+  document.getElementById('addMetaMask')?.addEventListener('click',async()=>{ if(!window.ethereum) alert('Instala MetaMask'); else await window.ethereum.request({method:'wallet_watchAsset',params:{type:'ERC20',options:{address:TOKEN_ADDRESS,symbol:'MoWo',decimals:18,image:'moonworld_logo.png'}}}); });
+  let walletInfo=document.getElementById('walletInfo');
+  document.getElementById('connectWallet')?.addEventListener('click',async()=>{ if(window.ethereum){ await window.ethereum.request({method:'eth_requestAccounts'}); let acc=window.ethereum.selectedAddress; walletInfo.innerText=`✅ ${acc.slice(0,6)}...${acc.slice(-4)}`; } else alert('MetaMask no detectado'); });
+  document.getElementById('buyCard')?.addEventListener('click',()=>{ new TransakSDK({apiKey:'',environment:'PRODUCTION',cryptoCurrencyCode:'POL',network:'polygon'}).init(); });
+  document.getElementById('copyGold')?.addEventListener('click',()=>{ navigator.clipboard.writeText(GOLD_ADDR); alert('Copiado'); });
+  document.getElementById('copyZhao')?.addEventListener('click',()=>{ navigator.clipboard.writeText(ZHAO_ADDR); alert('Copiado'); });
+  document.getElementById('copyPlotInfo')?.addEventListener('click',()=>{ navigator.clipboard.writeText("MoonWorld H1-H8 Deed: Propiedad registrada en blockchain. Certificado de domicilio lunar #MW-"+Math.floor(Math.random()*9999)); alert("Documento de propiedad copiado (simbólico)."); });
 
-  // Funciones auxiliares
-  document.getElementById('copyGold')?.addEventListener('click',()=>navigator.clipboard.writeText(GOLD_ADDR).then(()=>alert('Copiado')));
-  document.getElementById('copyZhao')?.addEventListener('click',()=>navigator.clipboard.writeText(ZHAO_ADDR).then(()=>alert('Copiado')));
-  document.getElementById('addMetaMask')?.addEventListener('click',async()=>{ if(window.ethereum) await window.ethereum.request({method:'wallet_watchAsset',params:{type:'ERC20',options:{address:TOKEN_ADDRESS,symbol:'MoWo',decimals:18}}}); else alert('Instala MetaMask'); });
-  document.getElementById('connectWallet')?.addEventListener('click',async()=>{ if(window.ethereum) await window.ethereum.request({method:'eth_requestAccounts'}); else alert('Instala MetaMask'); });
-  document.getElementById('buyCard')?.addEventListener('click',()=>alert('Demo: Transak listo para integrar'));
-  async function addSplToPhantom(mint){ try{ let prov=window?.phantom?.solana; if(!prov){alert('Instala Phantom');return;} if(!prov.isConnected)await prov.connect(); alert('Conectado. Puedes añadir el token desde Phantom usando la dirección.'); }catch(e){alert('Error');} }
+  async function addSplToPhantom(mintStr){
+    try{ let provider=window?.phantom?.solana||window?.solana; if(!provider) return alert('Instala Phantom'); if(!provider.isConnected) await provider.connect(); alert('Solicitud enviada. Puede requerir firma.'); }catch(e){ alert('Error'); }
+  }
   document.getElementById('addGoldPhantom')?.addEventListener('click',()=>addSplToPhantom(GOLD_ADDR));
   document.getElementById('addZhaoPhantom')?.addEventListener('click',()=>addSplToPhantom(ZHAO_ADDR));
 
-  // Estrellas
-  (function(){ const c=document.getElementById('stars'),ctx=c.getContext('2d'); let w,h; function resize(){ w=c.width=innerWidth; h=c.height=innerHeight; } function draw(){ ctx.clearRect(0,0,w,h); for(let i=0;i<400;i++){ ctx.fillStyle=`rgba(255,255,200,${Math.random()*0.6+0.2})`; ctx.fillRect(Math.random()*w,Math.random()*h,1.5,1.5); } requestAnimationFrame(draw); } window.addEventListener('resize',resize); resize(); draw(); })();
+  (function(){ let c=document.getElementById('stars'),ctx=c.getContext('2d'); let w,h,stars=[]; function resize(){ w=c.width=innerWidth; h=c.height=innerHeight; stars=[]; for(let i=0;i<400;i++) stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5,a:Math.random()*Math.PI*2}); } function draw(){ ctx.clearRect(0,0,w,h); for(let s of stars){ ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${0.3+Math.sin(s.a)*0.4})`; ctx.fill(); s.x+=0.05; if(s.x>w) s.x=0; } requestAnimationFrame(draw); } window.addEventListener('resize',resize); resize(); draw(); })();
+  applyLang('es');
 </script>
 </body>
 </html>
